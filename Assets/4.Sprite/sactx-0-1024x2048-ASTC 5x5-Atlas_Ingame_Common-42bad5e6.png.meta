@@ -1,0 +1,2225 @@
+fileFormatVersion: 2
+guid: df4e1e44b21e4154e8091239d04fb926
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1097
+        width: 43
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4685b18caf123c44b814bd927ab69e41
+      internalID: -1402597666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 1230
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c87b73dbfcc8d0d488091424297647aa
+      internalID: 1657707681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1210
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63e65bbabed71374286b846b5758987b
+      internalID: 1889237186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_3
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 1145
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 596a38ae93979e74997c25a6291f29c7
+      internalID: 1796278351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 965
+        width: 550
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99583f1804e70734f841c9136dfa0757
+      internalID: -1973178336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 930
+        width: 40
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25d56c78ca02ecf48a989f08336d2465
+      internalID: 1788183069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_6
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 925
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f960fd1925023464fb0f7380c2320d5f
+      internalID: -998024858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_7
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 931
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 036bbb4222dc71840a26c944766ff0a8
+      internalID: -982014363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_8
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 955
+        width: 36
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1db54905ba9f21a4598317b821c96f6d
+      internalID: 129585469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_9
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 920
+        width: 115
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cfd3c22d57118f4eb07c102244c2b66
+      internalID: -356760900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_10
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 923
+        width: 114
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4a3b12f21e0e9e408db69e2051184c3
+      internalID: -2012134173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_11
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 926
+        width: 44
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3633cd34492816042ad5a9a9b5123c14
+      internalID: 1585896714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_12
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 932
+        width: 44
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa51acb012de74241878c2a44f51c30b
+      internalID: 1612181099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_13
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 930
+        width: 8
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa365d123140b34498772d6d336fe9a1
+      internalID: 215797334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_14
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 945
+        width: 47
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f1001c04598174198b19e88af23d40
+      internalID: -16511175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_15
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 936
+        width: 36
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51fc21dcccfe9a847b253728a6201a04
+      internalID: 464093276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_16
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 945
+        width: 86
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d128507c1ae6c944f82039ad0c7a757e
+      internalID: 576376523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_17
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 682
+        width: 290
+        height: 325
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1433c8d69bea3429a0887e9454445e
+      internalID: 1959295453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_18
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 936
+        width: 36
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fbdf0d71a5767644a89ba0646a7008a
+      internalID: 2122732459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_19
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 910
+        width: 38
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 15, y: 15, z: 15, w: 15}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72d2741c07538d049ba4acf3badd45b9
+      internalID: 1242051733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_20
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 911
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc5a7bd18af692d4e937984792718883
+      internalID: -878150072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_21
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 910
+        width: 4
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91e166768fd641d4ab471cccab5a4b0d
+      internalID: -1510953731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 926
+        width: 10
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 022e697b1cd77eb47aab6876da815586
+      internalID: 1524414447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_23
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 847
+        width: 56
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6414a0fa2711e3a44a3e977db8282bbe
+      internalID: 1936730307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_24
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 881
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cc04318eacf08e45a22a3ba44d5413f
+      internalID: 1129858387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_25
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 876
+        width: 56
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 054475b706beb234ea483f6800f21f4b
+      internalID: -975980154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 810
+        width: 395
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb20e7003911b1d429127a33d68cd42a
+      internalID: -1154746016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_27
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 900
+        width: 34
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1072f2f2d2b245a4cb4a85e7e6581b40
+      internalID: 202672514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_28
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 848
+        width: 70
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b9366749f2c29b4099b360de53ae938
+      internalID: -895429039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_29
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 847
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 426eeb57c7d88e2448e2e8029e7b75d9
+      internalID: -1269449867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_30
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 856
+        width: 52
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f51d7e2b71348b74c83d0a08d53ac8ad
+      internalID: 646304965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_31
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 810
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 540315fa6eed327489c0ce951c15a611
+      internalID: 1623915014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_32
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 850
+        width: 53
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d69698f7a09114048a2007a0ffca5305
+      internalID: 836541628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_33
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 811
+        width: 9
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79591e27051522a4ca9bae7efe61b2aa
+      internalID: 585610392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_34
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 835
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5331dca0393490e4d8828cf07072dbd9
+      internalID: -1881846836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_35
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 700
+        width: 41
+        height: 145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8daa948dca610d5469a908c5615e311c
+      internalID: 797770428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_36
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 840
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 886aa1a7751a2674eb38f20a442e79f9
+      internalID: 580360941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 611
+        width: 370
+        height: 199
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edb8f0f0dc00abd40a457a01cc4329a7
+      internalID: 1905386031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_38
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 790
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2b4d900dc69c2a45853c57bbcfd3df3
+      internalID: 664529916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_39
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 718
+        width: 78
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e84506ab1fb564481c1135f2b34209
+      internalID: -2029921695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_40
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 790
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43f84c911865bf44297cfc6746766853
+      internalID: 604681907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_41
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 747
+        width: 69
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bae391113663d8045812b5e2d1b85467
+      internalID: 1024909848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_42
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 755
+        width: 91
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b83a01f81d155dd4eb6c58a9ee908f13
+      internalID: -38539786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_43
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 777
+        width: 57
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52387c88c91f67a4fa7c63409b3a38b3
+      internalID: -164424505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_44
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 456
+        width: 336
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16951b89814a538458e42c99b3e7b138
+      internalID: 1401493087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_45
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 686
+        width: 127
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae281d6edfaa5524aa830cc6c097a2c8
+      internalID: 347487721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_46
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 735
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7a5675a0f8c274485eaed9ceda444b
+      internalID: 498952975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_47
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 695
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e211022a04f18c4cbbbbebc09d4dd21
+      internalID: -1971527412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_48
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 720
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 787028d9ed52de94f8e4b8995d12bc80
+      internalID: 592988579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_49
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 624
+        width: 116
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad59f2dfe1fdf66418ed338f358f2e60
+      internalID: 1580569770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_50
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 610
+        width: 93
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f8117fd28da2764e82a759acfd5b579
+      internalID: -611000484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_51
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 681
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c9c4bb1e718d8a4b9640a95be0aae2f
+      internalID: -1368110418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_52
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 585
+        width: 135
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73459430ba148374d8346462ee26eea4
+      internalID: -855286425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_53
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 675
+        width: 12
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c22190ca0074d34e8e2b7cf9d7014db
+      internalID: -728220076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_54
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 520
+        width: 100
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc5a8cb6aab13543b25b32fd3d90426
+      internalID: 1231241548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_55
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 630
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 612e2ded11a696b4581d55891f13596e
+      internalID: 654874367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_56
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 626
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0595d5b23b17db44b2718e1da30283f
+      internalID: -1703199422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_57
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 520
+        width: 95
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef6171c0712315b429c71083ba5be7df
+      internalID: -1194635448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_58
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 520
+        width: 95
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa06cd729e851674f8016a8e7d0140cb
+      internalID: -136231042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_59
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 615
+        width: 25
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a988048290d093a44964f90f79d139a9
+      internalID: -1325455208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 514
+        width: 242
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cdc0c8c918f2614c8fac75a393e5302
+      internalID: -1350012701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_61
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 565
+        width: 20
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab6a5732bb5c8a4cbfaf459b02510d8
+      internalID: 1651683407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_62
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 540
+        width: 135
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17c9f2d65b1f864479bed9e9c75ca373
+      internalID: -946122097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_63
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 604
+        width: 65
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffe29c9bbed449949ab27fdec753e2c1
+      internalID: 1974076193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_64
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 529
+        width: 42
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ac5a7308e146e8428cd9a4eeaf6fd53
+      internalID: -373600398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_65
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 520
+        width: 15
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96165c42ed0443b4285754d299fc46ca
+      internalID: 1448085552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_66
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 520
+        width: 40
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04212913adbe10242abaea791cd48558
+      internalID: 588182897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_67
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 510
+        height: 506
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8966e69c3bff3264bbff6bb9d7f662f3
+      internalID: 1814968409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_68
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 465
+        width: 225
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab1e004cd1d318644a7235ac75a4420a
+      internalID: 1457592844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_69
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 453
+        width: 32
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b591f4ee8c11c4391faf3877879cc8
+      internalID: 946485294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_70
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 330
+        width: 134
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2716a3853997eca4094439d68b929b90
+      internalID: -2146774871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_71
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 434
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00a478054cfa06c478058b5d61bfb451
+      internalID: -507838143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_72
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 330
+        width: 124
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 732699414b48be14b8b07da556919bac
+      internalID: 116458749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_73
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 320
+        width: 75
+        height: 145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39375e8aa77c2f64289e40515c2ee442
+      internalID: 669496938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_74
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 392
+        width: 143
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 476ede641168d68458c1babd39e368df
+      internalID: -1427149961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_75
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 332
+        width: 139
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30e50510993f5a243a504be814beab6c
+      internalID: 834168064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_76
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 325
+        width: 59
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa577bf8c210ae4459a53a8562d3e7eb
+      internalID: -417012168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_77
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 367
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 448a93df9261c1944a09b263d5b97fe2
+      internalID: -1062368988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_78
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 330
+        width: 10
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b24b79a08e84ab44e81f83d32442079c
+      internalID: -1476510637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_79
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 330
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e902b60337abfd4a901be48545b7af6
+      internalID: 1655441141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_80
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 330
+        width: 37
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53afe58633dc156469a9ba56a411ecb9
+      internalID: -377453994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_81
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 288
+        width: 41
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f70a8a377090ecc4d90b4e1b573cf42a
+      internalID: -1452156336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_82
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 326
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d931b13e79534ce428fe0a73c09f8d13
+      internalID: -829395576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_83
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 275
+        width: 4
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a712f229b224fc409a25b071d60e8d5
+      internalID: 632784469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_84
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 240
+        width: 349
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81fcfc7675d002d40a695dcd2bf2d3fa
+      internalID: 1936524693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_85
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 300
+        width: 4
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08eed2289f3817b4e9a935a446654efc
+      internalID: 1915848987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_86
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 236
+        width: 60
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4fb1233e285fec49acdf39538b361e4
+      internalID: 2125341828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_87
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 266
+        width: 41
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85240f23dfe29b34ebdcdb6761179ebf
+      internalID: 2114565989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_88
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 259
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e1ab7455d471504996c6f5cfb1a396d
+      internalID: -1223893423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_89
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 235
+        width: 35
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab1f2216a01ada34f886063efb5dbf03
+      internalID: 1741051284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_90
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 253
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d90fc612c395984894fcb1941ca954d
+      internalID: -14044048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_91
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 195
+        width: 4
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b11de58456ed964dab166047f54fdee
+      internalID: 1371405359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_92
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 230
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc157db686fcc954fbffaf7f38040bec
+      internalID: 570836572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_93
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 0
+        width: 230
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6e0870ebfdcf434bb500939e6a8e688
+      internalID: 633050468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_94
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 0
+        width: 4
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 913239511b7f7b740a07cf2493ec0a0d
+      internalID: 263558221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_0: -1402597666
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_1: 1657707681
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_10: -2012134173
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_11: 1585896714
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_12: 1612181099
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_13: 215797334
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_14: -16511175
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_15: 464093276
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_16: 576376523
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_17: 1959295453
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_18: 2122732459
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_19: 1242051733
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_2: 1889237186
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_20: -878150072
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_21: -1510953731
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_22: 1524414447
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_23: 1936730307
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_24: 1129858387
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_25: -975980154
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_26: -1154746016
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_27: 202672514
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_28: -895429039
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_29: -1269449867
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_3: 1796278351
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_30: 646304965
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_31: 1623915014
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_32: 836541628
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_33: 585610392
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_34: -1881846836
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_35: 797770428
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_36: 580360941
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_37: 1905386031
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_38: 664529916
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_39: -2029921695
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_4: -1973178336
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_40: 604681907
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_41: 1024909848
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_42: -38539786
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_43: -164424505
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_44: 1401493087
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_45: 347487721
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_46: 498952975
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_47: -1971527412
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_48: 592988579
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_49: 1580569770
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_5: 1788183069
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_50: -611000484
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_51: -1368110418
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_52: -855286425
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_53: -728220076
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_54: 1231241548
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_55: 654874367
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_56: -1703199422
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_57: -1194635448
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_58: -136231042
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_59: -1325455208
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_6: -998024858
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_60: -1350012701
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_61: 1651683407
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_62: -946122097
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_63: 1974076193
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_64: -373600398
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_65: 1448085552
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_66: 588182897
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_67: 1814968409
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_68: 1457592844
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_69: 946485294
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_7: -982014363
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_70: -2146774871
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_71: -507838143
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_72: 116458749
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_73: 669496938
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_74: -1427149961
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_75: 834168064
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_76: -417012168
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_77: -1062368988
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_78: -1476510637
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_79: 1655441141
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_8: 129585469
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_80: -377453994
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_81: -1452156336
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_82: -829395576
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_83: 632784469
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_84: 1936524693
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_85: 1915848987
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_86: 2125341828
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_87: 2114565989
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_88: -1223893423
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_89: 1741051284
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_9: -356760900
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_90: -14044048
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_91: 1371405359
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_92: 570836572
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_93: 633050468
+      sactx-0-1024x2048-ASTC 5x5-Atlas_Ingame_Common-42bad5e6_94: 263558221
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
