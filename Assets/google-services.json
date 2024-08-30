@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "544804861338",
+    "firebase_url": "https://cookierun-19b7b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "cookierun-19b7b",
+    "storage_bucket": "cookierun-19b7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544804861338:android:b631ac8b24e5d468813623",
+        "android_client_info": {
+          "package_name": "com.chaewon.cookierun"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANr4M8lAve-lF4J_H928Yk0NSOGrymqLE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
