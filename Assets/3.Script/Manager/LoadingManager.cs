@@ -8,8 +8,16 @@ public class LoadingManager : MonoBehaviour
 {
     public static LoadingManager instance { get; private set; }
 
+
+    private AsyncOperation asyncLoad;
     public string currentScene = "LobbyScene";
     public GameObject touchBtn;
+    public GameObject SceneChange;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -18,13 +26,13 @@ public class LoadingManager : MonoBehaviour
 
     private IEnumerator LoadGame(string scene)
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+        asyncLoad = SceneManager.LoadSceneAsync(scene);
         asyncLoad.allowSceneActivation = false;
 
         float time = 0;
         while(!asyncLoad.isDone && time <= 2.5f)
         {
-            // todo : 로딩바 && time >=5f
+            // todo : 로딩바 
 
             //if (asyncLoad.progress >= 0.9f && time >= 5f)
             //{
@@ -34,5 +42,17 @@ public class LoadingManager : MonoBehaviour
             yield return null;
         }
         touchBtn.SetActive(true);
+    }
+        
+    public void Scenechange()
+    {
+        StartCoroutine(Change());
+    }
+
+    public IEnumerator Change()
+    {
+        SceneChange.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        asyncLoad.allowSceneActivation = true;
     }
 }
