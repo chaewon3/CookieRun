@@ -10,6 +10,8 @@ public class ChangeNamePanel : MonoBehaviour
     public TextMeshProUGUI errorMsg;
     public Button confirmBtn;
 
+    public TextMeshProUGUI name;
+
     private void Awake()
     {
         confirmBtn.onClick.AddListener(ChangeButtnClick);
@@ -29,6 +31,7 @@ public class ChangeNamePanel : MonoBehaviour
         FirebaseManager.instance.UpdateUserName(newNameInput.text,
             () =>
             {
+                name.text = newNameInput.text;
                 this.gameObject.SetActive(false);
             },
             ()=>

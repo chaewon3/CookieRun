@@ -111,12 +111,12 @@ public class FirebaseManager : MonoBehaviour
 
     public async void UpdateUserName(string name, Action callback = null, Action failureback = null)
     {
-        DatabaseReference Ref = DB.GetReference($"names");
-        DataSnapshot snapshot = await Ref.Child(name).GetValueAsync();
+        DatabaseReference Ref = DB.GetReference($"names/{name}");
+        DataSnapshot snapshot = await Ref.GetValueAsync();
 
         if(!snapshot.Exists)
         {
-            await userRef.Child("names").Child(name).SetValueAsync(true);
+            await Ref.SetValueAsync(true);
 
             string refKey = nameof(userData.username);
 

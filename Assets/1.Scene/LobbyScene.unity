@@ -96,7 +96,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 61641c6cb6c2d5a4f86ecf9ff5323e36, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1085,7 +1085,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &137216672
 GameObject:
@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: P L A Y
+  m_text: PLAY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8366c9e34e2ca84f889ca25d20ce176, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 18d25d8bda310fd47855858c8b7ac6e5, type: 2}
@@ -1516,7 +1516,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 68.35
+  m_fontSize: 100.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4117,7 +4117,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &518160266
 MonoBehaviour:
@@ -7326,7 +7326,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 89.068, z: 0}
 --- !u!1 &901560835
 GameObject:
@@ -10034,6 +10034,7 @@ MonoBehaviour:
   newNameInput: {fileID: 2084916176}
   errorMsg: {fileID: 772894189}
   confirmBtn: {fileID: 2057062121}
+  name: {fileID: 0}
 --- !u!1 &1340591410
 GameObject:
   m_ObjectHideFlags: 0
@@ -13607,7 +13608,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50.045, y: -263.921, z: 114.543}
 --- !u!114 &1762219446
 MonoBehaviour:
@@ -15127,7 +15128,7 @@ RectTransform:
   - {fileID: 294325970}
   - {fileID: 717622719}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -82.298, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15911,7 +15912,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 59.9
+  m_fontSize: 59.85
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
