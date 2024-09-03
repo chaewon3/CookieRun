@@ -10034,7 +10034,7 @@ MonoBehaviour:
   newNameInput: {fileID: 2084916176}
   errorMsg: {fileID: 772894189}
   confirmBtn: {fileID: 2057062121}
-  name: {fileID: 0}
+  name: {fileID: 1658516664}
 --- !u!1 &1340591410
 GameObject:
   m_ObjectHideFlags: 0

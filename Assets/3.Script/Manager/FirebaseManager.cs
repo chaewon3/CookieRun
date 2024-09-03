@@ -113,7 +113,7 @@ public class FirebaseManager : MonoBehaviour
     {
         DatabaseReference Ref = DB.GetReference($"names/{name}");
         DataSnapshot snapshot = await Ref.GetValueAsync();
-
+        // todo : 여기 아래로 친구목록도 만들면 좋을 듯
         if(!snapshot.Exists)
         {
             await Ref.SetValueAsync(true);
