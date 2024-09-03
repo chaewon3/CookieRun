@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     CookieBase Cookie;
 
-    float moveSpeed = 5f;
+    float moveSpeed;
     bool canMove = true; //todo : 나중에 시작할때 멈춰놔야함
     float DashCooltime = 0;
     CharacterController cc;
@@ -21,6 +21,7 @@ public class PlayerMove : MonoBehaviour
     private void Awake()
     {
         Cookie = GetComponentInChildren<CookieBase>();
+        moveSpeed = Cookie.Cookie.Data.moveSpeed;
     }
 
     private void Update()
@@ -28,13 +29,13 @@ public class PlayerMove : MonoBehaviour
         if (Cookie == null)
             return;
 
-        //dir.y += Physics.gravity.y * Time.deltaTime;
-        //if(canMove)
-        //{
-        //    // 이부분은?
-        //    cc.Move(dir * moveSpeed * Time.deltaTime);
-        //    transform.rotation = Quaternion.Euler(rotate);
-        //}
+        dir.y += Physics.gravity.y * Time.deltaTime;
+        if (canMove)
+        {
+            // 이부분은?
+            cc.Move(dir * moveSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(rotate);
+        }
 
         //// 이부분은 통째로 쿠키업데이트에 넣기
         //if (comboTime > 0)

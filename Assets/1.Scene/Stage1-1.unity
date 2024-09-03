@@ -7680,14 +7680,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9976dea7d765e45b0f0b00d4e93523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Data: {fileID: 11400000, guid: 18c8c3b3e3f394f469d3bff0172b0c4b, type: 2}
   anim: {fileID: 0}
-  currentHP: 0
   maxHP: 0
+  currentHP: 0
   ATK: 0
   DEF: 0
   skillCT: 0
   ultimateCT: 0
-  moveSpeed: 0
   DashCooltime: 0
 --- !u!1001 &497917326
 PrefabInstance:
@@ -13466,6 +13466,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4290132903557952584, guid: 0c554768be213e449a60e7227088e476, type: 3}
     - {fileID: 4290132903557952951, guid: 0c554768be213e449a60e7227088e476, type: 3}
+    - {fileID: 4290132903557952587, guid: 0c554768be213e449a60e7227088e476, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0c554768be213e449a60e7227088e476, type: 3}
 --- !u!1001 &835829100
 PrefabInstance:
@@ -33853,6 +33854,7 @@ GameObject:
   - component: {fileID: 2099059800}
   - component: {fileID: 2099059799}
   - component: {fileID: 2099059801}
+  - component: {fileID: 2099059802}
   m_Layer: 0
   m_Name: GameObject (2)
   m_TagString: Untagged
@@ -33918,6 +33920,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307fcf4196a271540aca89cc244dbec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &2099059802
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099059798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 3.11
+  m_Radius: 0.78
+  m_SlopeLimit: 20
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.61, z: 0}
 --- !u!4 &2112152749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 82eb98bff98fe4bfab6a4cf3dcb00879, type: 3}
