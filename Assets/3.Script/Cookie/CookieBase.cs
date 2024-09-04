@@ -1,26 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CookieBase : MonoBehaviour, ICookie
 {
     [SerializeField]
-    private CookieSO Data;
+    protected CookieSO Data;
     public CookieData Cookie { get; set; }
-
-    
-    CharacterController cc;
-    public Animator anim { get; private set; } // 애니메이션 클립 쿠키데이터에..?
+        
+    protected CharacterController cc;
+    public Animator anim { get; protected set; } // 애니메이션 클립 쿠키데이터에..?
     public float moveSpeed => Data.moveSpeed;
-    public float DashCooltime { get; private set; } = 0;
+    public float DashCT { get; protected set; } = 0;
+    public float DashCoolTimeFillAmount => DashCT/Data.dashCT;
+    public float SkillCT { get; protected set; } = 0;
+    public float SkillCoolTimeFillAmount => SkillCT/Data.skillCT;
+    public float UltimateCT { get; protected set; } = 0;
+    public float UltimateCoolTimeFillAmount => UltimateCT/Data.ultimateCT;
+    public Sprite CutSceneIcon => Data.icon;
 
     protected int maxHP;
     protected int currentHP;
     protected int ATK;
     protected int DEF;
 
-    protected float skillCT;
-    protected float ultimateCT;
     //public float DashCooltime;
 
     public virtual void Awake()
@@ -41,23 +45,22 @@ public class CookieBase : MonoBehaviour, ICookie
     }
     public virtual void Update()
     {
-        if (DashCooltime > 0)
+        if (DashCT > 0)
         {
-            DashCooltime -= Time.deltaTime;
+            DashCT -= Time.deltaTime;
         }
     }
 
-    public virtual IEnumerator Attack() 
-    { yield return null; }
+    public virtual IEnumerator Attack() { yield return null; }
      
-    public virtual void Skill() { }
+    public virtual IEnumerator Skill() { yield return null; }
 
-    public virtual void Ultimate() { }
+    public virtual IEnumerator Ultimate() { yield return null; }
 
     public virtual IEnumerator Dash(Vector3 moveDir)
     {
         Gamemanager.instance.canMove = false;
-         DashCooltime = Data.dashCT;
+         DashCT = Data.dashCT;
          anim.SetTrigger("Dash");
         
          float durtion = 0;

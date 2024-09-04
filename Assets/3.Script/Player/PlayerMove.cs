@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
-    ICookie Cookie;
+    public ICookie Cookie;
 
     float moveSpeed;
     float DashCooltime = 0;
@@ -59,12 +59,25 @@ public class PlayerMove : MonoBehaviour
 
     void OnAttack()
     {
-        StartCoroutine(Cookie.Attack());
+        if(Gamemanager.instance.canMove)
+           StartCoroutine(Cookie.Attack());
     }
 
+    void OnSkill()
+    {
+        if (Gamemanager.instance.canMove)
+            StartCoroutine(Cookie.Skill());
+    }
+    void OnUltimate()
+    {
+        if (Gamemanager.instance.canMove || Cookie.UltimateCT <= 0)
+        {
+            StartCoroutine(Cookie.Ultimate());
+        }
+    }
     void OnDash()
     {
-        if (Cookie.DashCooltime <= 0)
+        if (Cookie.DashCT <= 0)
         {
             transform.rotation = Quaternion.Euler(rotate);
 
