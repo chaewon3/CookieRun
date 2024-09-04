@@ -10,16 +10,18 @@ public class CookieBase : MonoBehaviour, ICookie
 
     
     CharacterController cc;
-    public Animator anim; // 애니메이션 클립 쿠키데이터에..?
+    public Animator anim { get; private set; } // 애니메이션 클립 쿠키데이터에..?
+    public float moveSpeed => Data.moveSpeed;
+    public float DashCooltime { get; private set; } = 0;
 
-    public int maxHP;
-    public int currentHP;
-    public int ATK;
-    public int DEF;
+    protected int maxHP;
+    protected int currentHP;
+    protected int ATK;
+    protected int DEF;
 
-    public float skillCT;
-    public float ultimateCT;
-    public float DashCooltime;
+    protected float skillCT;
+    protected float ultimateCT;
+    //public float DashCooltime;
 
     public virtual void Awake()
     {
@@ -45,33 +47,27 @@ public class CookieBase : MonoBehaviour, ICookie
         }
     }
 
-    public virtual void Attack() { }
-
-    public virtual void Dash(Vector3 moveDir)
-    {
-        StartCoroutine(dash(moveDir));
-    }
-
+    public virtual IEnumerator Attack() 
+    { yield return null; }
+     
     public virtual void Skill() { }
 
     public virtual void Ultimate() { }
 
-    IEnumerator dash(Vector3 moveDir)
+    public virtual IEnumerator Dash(Vector3 moveDir)
     {
-        if (DashCooltime <= 0)
-        {
-            DashCooltime = Data.dashCT;
-            anim.SetTrigger("Dash");
-
-            float durtion = 0;
-            while (durtion < 0.13f) // 이거 초도 clip길이만큼으로 바꿔줘야함
-            {
-                cc.Move(moveDir.normalized * 35f * Time.deltaTime);
-                durtion += Time.deltaTime;
-                yield return null;
-            }
-        }        
+        Gamemanager.instance.canMove = false;
+         DashCooltime = Data.dashCT;
+         anim.SetTrigger("Dash");
+        
+         float durtion = 0;
+         while (durtion < 0.13f) // 이거 초도 clip길이만큼으로 바꿔줘야함
+         {
+             cc.Move(moveDir.normalized * 35f * Time.deltaTime);
+             durtion += Time.deltaTime;
+             yield return null;
+         }
+         Gamemanager.instance.canMove = true;
     }
-
 
 }

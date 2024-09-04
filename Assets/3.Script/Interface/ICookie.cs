@@ -1,14 +1,19 @@
+using System.Collections;
 using UnityEngine;
 
 public interface ICookie
 {
-    void Attack();
+    float moveSpeed { get; }
+    float DashCooltime { get; }
+    Animator anim { get; }
+
+    IEnumerator Attack();
 
     void Skill();
 
     void Ultimate();
 
-    void Dash(Vector3 moveDir);
+    IEnumerator Dash(Vector3 moveDir);
 
     
 }

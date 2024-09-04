@@ -24,19 +24,24 @@ public class CookieSO : ScriptableObject
     public int baseDEF;
 
     [Header("Skills")]
-    [TextArea(5, 10)]
+    public string ATKName;
+    [TextArea(3, 10)]
     public string ATKDes;
 
     [Space(10)]
+    public string skillName;
     public float skillCT;
-    [TextArea(5, 10)]
+    [TextArea(3, 10)]
     public string skillDes;
 
     [Space(10)]
+    public string ultimateName;
     public float ultimateCT;
-    [TextArea(5, 10)]
+    [TextArea(3, 10)]
     public string ultimateDes;
 
     [Space(10)]
+    public string dashName;
     public float dashCT;
+    public string dashDes;
 }
