@@ -25,12 +25,11 @@ public class CookieBase : MonoBehaviour, ICookie
     protected int ATK;
     protected int DEF;
 
-    //public float DashCooltime;
-
     public virtual void Awake()
     {
         cc = GetComponentInParent<CharacterController>();
-        anim = GetComponent<Animator>();
+        GameObject cookie = Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
+        anim = GetComponentInChildren<Animator>();
     }
     private void Start()
     {
@@ -66,7 +65,7 @@ public class CookieBase : MonoBehaviour, ICookie
          float durtion = 0;
          while (durtion < 0.13f) // 이거 초도 clip길이만큼으로 바꿔줘야함
          {
-             cc.Move(moveDir.normalized * 35f * Time.deltaTime);
+             cc.Move(moveDir.normalized * 25f * Time.deltaTime);
              durtion += Time.deltaTime;
              yield return null;
          }

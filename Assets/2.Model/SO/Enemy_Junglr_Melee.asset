@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a740e921c0a0d41b31ef6664da0e93, type: 3}
+  m_Name: Enemy_Junglr_Melee
+  m_EditorClassIdentifier: 
+  tableId: 1
+  ModelPrefab: {fileID: 1736740555343505, guid: e2e125640111dee45a9532fbb7f3b7ba, type: 3}
+  HP: 500
+  ATK: 10
+  DEF: 5
+  moveSpeed: 1

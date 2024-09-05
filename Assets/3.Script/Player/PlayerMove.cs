@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class PlayerMove : MonoBehaviour
 {
     public ICookie Cookie;
+    public Action UltimateAction;
 
     float moveSpeed;
     float DashCooltime = 0;
@@ -14,10 +16,11 @@ public class PlayerMove : MonoBehaviour
     Vector3 dir = Vector3.zero;
     Vector3 rotate = Vector3.zero;
 
+
     private void Awake()
     {
         Cookie = GetComponentInChildren<ICookie>();
-        cc = GetComponent<CharacterController>();
+        cc = transform.GetComponent<CharacterController>();
         Gamemanager.instance.canMove = true;
     }
 
@@ -32,7 +35,8 @@ public class PlayerMove : MonoBehaviour
         if (Cookie == null)
             return;
 
-        dir.y += Physics.gravity.y * Time.deltaTime;
+        //dir.y += Physics.gravity.y * Time.deltaTime;
+        cc.Move(cc.transform.up * Physics.gravity.y * Time.deltaTime);
         if (Gamemanager.instance.canMove)
         {
             // 이부분은?
@@ -68,11 +72,13 @@ public class PlayerMove : MonoBehaviour
         if (Gamemanager.instance.canMove)
             StartCoroutine(Cookie.Skill());
     }
-    void OnUltimate()
+    IEnumerator OnUltimate()
     {
-        if (Gamemanager.instance.canMove || Cookie.UltimateCT <= 0)
+        if (Gamemanager.instance.canMove && Cookie.UltimateCT <= 0)
         {
             StartCoroutine(Cookie.Ultimate());
+            yield return new WaitForSeconds(0.1f);
+            UltimateAction?.Invoke();
         }
     }
     void OnDash()

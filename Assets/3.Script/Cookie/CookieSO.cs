@@ -7,7 +7,7 @@ public enum Grade
     EPIC
 }
 
-[CreateAssetMenu(fileName = "Cookie", menuName = "Add Cookie")]
+[CreateAssetMenu(fileName = "Cookie", menuName = "CookieRun/Add Cookie")]
 public class CookieSO : ScriptableObject
 {
     public int tableId;

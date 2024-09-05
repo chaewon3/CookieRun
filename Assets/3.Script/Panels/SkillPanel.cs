@@ -21,11 +21,18 @@ public class SkillPanel : MonoBehaviour
     public Image UltimateCT;
     public TextMeshProUGUI UltimateText;
 
+    public GameObject UltimateCutscne;
+
     public PlayerMove player;
 
     private void Awake()
     {
         player = FindObjectOfType<PlayerMove>();
+        player.UltimateAction += () =>
+        {
+            UltimateCutscne.SetActive(true);
+            Invoke("Disable", 1);
+        };
     }
 
     private void Update()
@@ -71,5 +78,10 @@ public class SkillPanel : MonoBehaviour
         }
 
         
+    }
+
+    void Disable()
+    {
+        UltimateCutscne.SetActive(false);
     }
 }
