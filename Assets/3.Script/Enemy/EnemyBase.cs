@@ -10,12 +10,15 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
     protected Rigidbody rig;
     protected Animator anim;
+
     protected int HP;
     protected int ATk;
     protected int DEF;
 
     protected bool canMove;
     protected float atkCT;
+
+    public int HPPer => HP/data.HP;
 
     private void Awake()
     {
@@ -26,20 +29,29 @@ public class EnemyBase : MonoBehaviour, IEnemy
         DEF = data.DEF;
         target = FindObjectOfType<PlayerMove>().gameObject;
     }
+    private IEnumerator Start()
+    {
+        yield return new WaitForSeconds(1.67f); // 나중에 spawn애니메이션 추가하고 시간 바까야함
+        canMove = true;
+    }
 
     public virtual void Update()
     {
         float distance = Vector3.Distance(transform.position, target.transform.position);
-        if (distance > 1)
+        
+        if (distance > 1 && canMove)
             Move();
-        else
+        else if( distance <= 1 && canMove)
         {
             anim.SetBool("Move", false);
-            Attack();
+            StartCoroutine(Attack());
         }
 
         if (HP <= 0)
-            Die();
+        {
+            StopAllCoroutines();
+            StartCoroutine(Die());
+        }
 
         if (atkCT > 0)
             atkCT -= Time.deltaTime;
@@ -49,7 +61,8 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
     private void LateUpdate()
     {
-        transform.LookAt(target.transform);
+        if(canMove)
+            transform.LookAt(target.transform);
     }
 
     public void Move()
@@ -58,23 +71,31 @@ public class EnemyBase : MonoBehaviour, IEnemy
         transform.position += transform.forward * data.moveSpeed * Time.deltaTime;
     }
 
-    public virtual void Attack()
+    public virtual IEnumerator Attack()
     {
         if(atkCT == 0)
         {
+            canMove = false;
             atkCT = 2;
             anim.SetTrigger("Attack");
+            yield return new WaitForSeconds(1.93f);
+            canMove = true;
         }
     }
 
-    public virtual void Die()
+    public virtual IEnumerator Die()
     {
         anim.SetTrigger("Die");
+        yield return new WaitForSeconds(1);
+        HPBarPanel.instance.RemoveHPPanel(this.transform);
         Destroy(this.gameObject);
     }
 
-    public virtual void Hit(int damage)
+    public virtual void Hit(int damage, float nuckback)
     {
+        if (HP == data.HP)
+            HPBarPanel.instance.SetHPPanel(this.transform);
+
         anim.SetTrigger("Damaged");
         HP -= damage;
     }

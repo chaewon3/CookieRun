@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class SpawnArea : MonoBehaviour
 {
-    public List<GameObject> colliders;
+    List<GameObject> childs;
+
+    private void Awake()
+    {
+        foreach(Transform child in transform)
+        {
+            childs.Add(child.gameObject);
+        }        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.TryGetComponent<PlayerMove>(out PlayerMove a)) return;
 
-        print("µé¾î¿È");
-        foreach(GameObject col in colliders)
+        foreach(GameObject col in childs)
         {
             col.SetActive(true);
         }
+
+        _ = GetComponent<BoxCollider>().enabled =false;
     }
+
 }

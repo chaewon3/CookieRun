@@ -22,5 +22,5 @@ public interface ICookie
 
     IEnumerator Dash(Vector3 moveDir);
 
-    
+    ///die¤¤
 }
