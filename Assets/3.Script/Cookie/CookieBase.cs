@@ -7,7 +7,7 @@ public class CookieBase : MonoBehaviour, ICookie
 {
     [SerializeField]
     protected CookieSO Data;
-    public CookieData Cookie { get; set; }
+    CookieData Cookie { get; set; }
         
     protected CharacterController cc;
     public Animator anim { get; protected set; } // 애니메이션 클립 쿠키데이터에..?
@@ -19,9 +19,10 @@ public class CookieBase : MonoBehaviour, ICookie
     public float UltimateCT { get; protected set; } = 0;
     public float UltimateCoolTimeFillAmount => UltimateCT/Data.ultimateCT;
     public Sprite CutSceneIcon => Data.icon;
+    public int CurrentHP { get; set; }
+    public float HPPer => (float)CurrentHP/maxHP;
 
     protected int maxHP;
-    protected int currentHP;
     protected int ATK;
     protected int DEF;
 
@@ -29,7 +30,7 @@ public class CookieBase : MonoBehaviour, ICookie
     {
         cc = GetComponentInParent<CharacterController>();
         GameObject cookie = Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponentInChildren<Animator>();       
     }
     private void Start()
     {
@@ -37,8 +38,8 @@ public class CookieBase : MonoBehaviour, ICookie
         {
             Cookie = new CookieData(Data); // todo : 이거저장데이터에서 가져와야함??
         }
-        maxHP = Cookie.HP;
-        currentHP = maxHP;
+        maxHP = Data.baseHP;
+        CurrentHP = maxHP;
         ATK = Cookie.ATK;
         DEF = Cookie.DEF;
     }
@@ -72,4 +73,8 @@ public class CookieBase : MonoBehaviour, ICookie
          Gamemanager.instance.canMove = true;
     }
 
+    public void Hit(int damage)
+    {
+        CurrentHP -= (damage);
+    }
 }

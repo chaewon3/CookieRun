@@ -11,6 +11,8 @@ public interface ICookie
     float SkillCoolTimeFillAmount { get; }
     float UltimateCT { get; }
     float UltimateCoolTimeFillAmount { get; }
+    int CurrentHP { get;}
+    float HPPer { get; }
     Sprite CutSceneIcon { get; }
     Animator anim { get; }
 
@@ -22,5 +24,6 @@ public interface ICookie
 
     IEnumerator Dash(Vector3 moveDir);
 
+    void Hit(int damage);
     ///die¤¤
 }

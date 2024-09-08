@@ -4,26 +4,34 @@ using UnityEngine;
 
 public class SpawnArea : MonoBehaviour
 {
-    List<GameObject> childs;
-
-    private void Awake()
-    {
-        foreach(Transform child in transform)
-        {
-            childs.Add(child.gameObject);
-        }        
-    }
+    public List<GameObject> walls = new List<GameObject>();
+    public List<GameObject> enemies = new List<GameObject>();
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.TryGetComponent<PlayerMove>(out PlayerMove a)) return;
 
-        foreach(GameObject col in childs)
+        foreach(GameObject col in walls)
         {
             col.SetActive(true);
+        }
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.transform.parent.gameObject.SetActive(true);
         }
 
         _ = GetComponent<BoxCollider>().enabled =false;
     }
 
+    public void enemyDie(GameObject enemy)
+    {
+        enemies.Remove(enemy);
+        if(enemies.Count == 0)
+        {
+            foreach (GameObject col in walls)
+            {
+                col.SetActive(false);
+            }
+        }
+    }
 }

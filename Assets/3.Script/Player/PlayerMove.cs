@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviour
 
 
     private void Awake()
-    {
+    {        //todo :나중에 쿠키태그시스템 생기면 직접 넣어줘야함
         Cookie = GetComponentInChildren<ICookie>();
         cc = transform.GetComponent<CharacterController>();
         Gamemanager.instance.canMove = true;
@@ -64,18 +64,25 @@ public class PlayerMove : MonoBehaviour
     void OnAttack()
     {
         if(Gamemanager.instance.canMove)
-           StartCoroutine(Cookie.Attack());
+        {
+            LootAtMouse();
+            StartCoroutine(Cookie.Attack());
+        }
     }
 
     void OnSkill()
     {
         if (Gamemanager.instance.canMove)
+        {
+            LootAtMouse();
             StartCoroutine(Cookie.Skill());
+        }
     }
     IEnumerator OnUltimate()
     {
         if (Gamemanager.instance.canMove && Cookie.UltimateCT <= 0)
         {
+            LootAtMouse();
             StartCoroutine(Cookie.Ultimate());
             yield return new WaitForSeconds(0.1f);
             UltimateAction?.Invoke();
@@ -91,6 +98,23 @@ public class PlayerMove : MonoBehaviour
             Vector3 moveDir = rotation * Vector3.forward;
 
             StartCoroutine(Cookie.Dash(moveDir));            
+        }
+    }
+
+    void LootAtMouse() //PC플랫폼일때만
+    {
+        Vector3 mouseScreen = Mouse.current.position.ReadValue();
+        RaycastHit hit;
+
+        Ray ray = Camera.main.ScreenPointToRay(mouseScreen);
+        if(Physics.Raycast(ray, out hit, 100f))
+        {
+            Vector3 dir = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            dir = dir - transform.position;
+
+            Quaternion lookTarget = Quaternion.LookRotation(dir);
+            rotate = lookTarget.eulerAngles;
+            cc.transform.rotation = Quaternion.Euler(rotate);
         }
     }
     

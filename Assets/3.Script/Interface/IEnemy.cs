@@ -4,9 +4,9 @@ using UnityEngine;
 
 public interface IEnemy
 {
-    int HPPer { get; }
+    float HPPer { get; }
     void Move();
     IEnumerator Attack();
-    void Hit(int damage, float nuckback);
+    void Hit(int damage, float nuckback=0);
     IEnumerator Die();
 }

@@ -9,6 +9,10 @@ public class CreamSoda : CookieBase
     float comboTime;
     float skillTime;
 
+    Vector3 attactrange = new Vector3(0.7f,0.7f,0.7f);
+    Vector3 skillrange = new Vector3(1,1,1);
+    Vector3 ultimaterange = new Vector3(1, 1, 1);
+
     public override void Update()
     {
         base.Update();
@@ -35,6 +39,7 @@ public class CreamSoda : CookieBase
             UltimateCT -= Time.deltaTime;
         else
             UltimateCT = 0;
+
     }
 
     public override IEnumerator Attack()
@@ -47,6 +52,7 @@ public class CreamSoda : CookieBase
             comboCount++;
             comboTime = 0.95f;
             StartCoroutine(attackDash(5f, 0.1f));
+            StartCoroutine(Raycast(0.1f, attactrange, ATK*0.76f,0.1f));
             anim.SetTrigger("Attack1");
             yield return new WaitForSeconds(0.4f);
         }
@@ -55,6 +61,7 @@ public class CreamSoda : CookieBase
             comboCount++;
             comboTime = 1.15f;
             StartCoroutine(attackDash(5f, 0.1f));
+            StartCoroutine(Raycast(0.1f, attactrange, ATK * 0.76f, 0.1f));
             anim.SetTrigger("Attack2");
             yield return new WaitForSeconds(0.642f);
         }
@@ -62,6 +69,7 @@ public class CreamSoda : CookieBase
         {
             comboCount = 0;
             StartCoroutine(attackDash(10f, 0.1f));
+            StartCoroutine(Raycast(0.1f, attactrange, ATK, 0.1f));
             anim.SetTrigger("Attack3");
             yield return new WaitForSeconds(0.433f);
         }
@@ -79,7 +87,8 @@ public class CreamSoda : CookieBase
             skillTime = 4;
             anim.SetTrigger("Skill1");
             yield return new WaitForSeconds(0.25f);
-            StartCoroutine(attackDash(30f, 0.1f));
+            StartCoroutine(attackDash(20f, 0.1f));
+            StartCoroutine(Raycast(1, skillrange, ATK * 2.39f, 0.1f));
             yield return new WaitForSeconds(0.417f);
         }
         else if (skillCount == 1 && skillTime > 0)
@@ -88,7 +97,8 @@ public class CreamSoda : CookieBase
             skillTime = 4;
             anim.SetTrigger("Skill2");
             yield return new WaitForSeconds(0.25f);
-            StartCoroutine(attackDash(30f, 0.1f));
+            StartCoroutine(attackDash(20f, 0.1f));
+            StartCoroutine(Raycast(1, skillrange, ATK * 2.47f, 0.1f));
             yield return new WaitForSeconds(0.383f);
         }
         else if (skillCount == 2 && skillTime > 0)
@@ -96,7 +106,8 @@ public class CreamSoda : CookieBase
             skillCount = 0;
             anim.SetTrigger("Skill3");
             yield return new WaitForSeconds(0.25f);
-            StartCoroutine(attackDash(30f, 0.1f));
+            StartCoroutine(attackDash(20f, 0.1f));
+            StartCoroutine(Raycast(1, skillrange, ATK * 2.64f, 0.1f));
             yield return new WaitForSeconds(0.583f);
         }
         Gamemanager.instance.canMove = true;
@@ -109,6 +120,9 @@ public class CreamSoda : CookieBase
         Gamemanager.instance.canMove = false;
         UltimateCT = Data.ultimateCT;
         anim.SetTrigger("Ultimate");
+        StartCoroutine(Raycast(2, ultimaterange, ATK * 4.9f, 1.2f));
+        StartCoroutine(Raycast(2, ultimaterange, ATK * 4.9f, 1.3f));
+        StartCoroutine(Raycast(2, ultimaterange, ATK * 4.9f, 1.4f));
         yield return new WaitForSeconds(1.75f);
         Gamemanager.instance.canMove = true;
         anim.SetBool("Move", true);
@@ -128,5 +142,38 @@ public class CreamSoda : CookieBase
             durtion += Time.deltaTime;
             yield return null;
         }
+    }
+
+    IEnumerator Raycast(float range,Vector3 boxsize, float damage, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        Vector3 boxCenter = cc.transform.position +cc.transform.up + cc.transform.forward;
+        RaycastHit[] hits = Physics.BoxCastAll(boxCenter, boxsize, cc.transform.forward, Quaternion.identity, range);
+
+        LayerMask enemylayer = LayerMask.NameToLayer("Enemy");
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider.gameObject.layer != enemylayer)
+            {
+                continue;
+            }
+            if(hit.collider.TryGetComponent<IEnemy>(out IEnemy enemy))
+            {
+                enemy.Hit((int)damage);
+                print((int)damage);
+            }
+        }
+
+        float time = 0;
+        while(time< 2)
+        {
+            time += Time.deltaTime;
+            // BoxCast의 시작과 끝을 시각적으로 표시
+            Debug.DrawLine(cc.transform.position, cc.transform.position + cc.transform.forward * range, Color.red);
+            Debug.DrawLine(boxCenter - boxsize / 2, boxCenter + boxsize / 2, Color.green);
+            yield return null;
+        }
+
     }
 }

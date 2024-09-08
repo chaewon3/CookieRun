@@ -9,7 +9,7 @@ public class HPBarPanel : MonoBehaviour
 
     [SerializeField] GameObject HPbarPrefab = null;
 
-    public List<Transform> EnemyList = new List<Transform>();
+    List<Transform> EnemyList = new List<Transform>();
     List<GameObject> HPbarList = new List<GameObject>();
 
     public Camera MainCam;
@@ -20,33 +20,21 @@ public class HPBarPanel : MonoBehaviour
             instance = this;
     }
 
-    private void Start()
-    {
-        // todo: set연결하면 지워야함
-        for (int i = 0; i < EnemyList.Count; i++)
-        {
-            GameObject HPbar = Instantiate(HPbarPrefab, EnemyList[i].transform.position, Quaternion.identity, transform);
-            HPbarList.Add(HPbar);
-        }
-    }
-
-    private void Update()
-    {
-        // hp 연동 로직 ?
-        for(int i = 0; i < EnemyList.Count; i++)
-        {
-            Slider HPbar = HPbarList[i].GetComponent<Slider>();
-            IEnemy enemy = EnemyList[i].GetComponent<IEnemy>();
-            HPbar.value = enemy.HPPer;
-        }
-    }
-
     public void SetHPPanel(Transform enemies)
     {
         EnemyList.Add(enemies);
         GameObject HPbar = Instantiate(HPbarPrefab, enemies.position, Quaternion.identity, transform);
-        HPbarList.Add(HPbar);
+        HPbarList.Add(HPbar);        
 
+    }
+
+    public void RefreshHP(Transform enemy)
+    {
+        int index = EnemyList.IndexOf(enemy);
+
+        Slider HPbar = HPbarList[index].GetComponent<Slider>();
+        IEnemy ienemy = EnemyList[index].GetComponent<IEnemy>();
+        HPbar.value = ienemy.HPPer;
     }
 
     public void RemoveHPPanel(Transform enemies)
