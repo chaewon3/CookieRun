@@ -160,7 +160,7 @@ public class CreamSoda : CookieBase
             }
             if(hit.collider.TryGetComponent<IEnemy>(out IEnemy enemy))
             {
-                enemy.Hit((int)damage);
+                enemy.Damaged((int)damage);
                 print((int)damage);
             }
         }

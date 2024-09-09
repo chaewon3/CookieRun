@@ -43,6 +43,8 @@ public class PlayerMove : MonoBehaviour
             cc.Move(dir * moveSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(rotate);
         }  
+        else
+            Cookie.anim.SetBool("IsMove", false);
     }
 
 

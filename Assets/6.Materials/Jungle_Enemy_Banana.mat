@@ -192,7 +192,7 @@ Material:
     - _ShadowColorLightAtten: 1
     - _SheetAniUV: 0
     - _SingleIndirectColor: 1
-    - _Smoothness: 0.5
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SoftShadowRange: 0.5
     - _SpecularHighlights: 1

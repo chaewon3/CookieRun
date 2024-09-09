@@ -11,9 +11,12 @@ public class SpawnArea : MonoBehaviour
     {
         if (!other.TryGetComponent<PlayerMove>(out PlayerMove a)) return;
 
-        foreach(GameObject col in walls)
+        if (walls.Count != 0)
         {
-            col.SetActive(true);
+            foreach (GameObject col in walls)
+            {
+                col.SetActive(true);
+            }
         }
         foreach (GameObject enemy in enemies)
         {
@@ -28,6 +31,8 @@ public class SpawnArea : MonoBehaviour
         enemies.Remove(enemy);
         if(enemies.Count == 0)
         {
+            if (walls.Count == 0) return;
+
             foreach (GameObject col in walls)
             {
                 col.SetActive(false);

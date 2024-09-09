@@ -13,8 +13,8 @@ public class EnemyBase : MonoBehaviour, IEnemy
     protected Rigidbody rig;
     protected Animator anim;
 
+    public int ATK { get; set; }
     protected int HP;
-    protected int ATk;
     protected int DEF;
 
     protected bool canMove;
@@ -22,14 +22,15 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
     public float HPPer => (float)HP / data.HP;
 
-    float distance;
 
-    private void Awake()
+    protected float distance;
+
+    public virtual void Awake()
     {
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody>();
         HP = data.HP;
-        ATk = data.ATK;
+        ATK = data.ATK;
         DEF = data.DEF;
         target = FindObjectOfType<PlayerMove>().gameObject;
     }
@@ -43,22 +44,15 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
     public virtual void Update()
     {
-        distance = Vector3.Distance(transform.position, target.transform.position);
-        if (distance > 1 && canMove)
-            Move();
-        else if (distance <= 1 && canMove)
-        {
-            anim.SetBool("Move", false);
-            StartCoroutine(Attack());
-        }
-
+        distance = Vector3.Distance(rig.transform.position, target.transform.position);
+        
         if (atkCT > 0)
             atkCT -= Time.deltaTime;
         else
             atkCT = 0;
     }
 
-    private void LateUpdate()
+    public virtual void LateUpdate()
     {
         if (canMove)
         {
@@ -70,21 +64,12 @@ public class EnemyBase : MonoBehaviour, IEnemy
     public void Move()
     {
         anim.SetBool("Move", true);
-        transform.position += transform.forward * data.moveSpeed * Time.deltaTime;
+        rig.transform.position += rig.transform.forward * data.moveSpeed * Time.deltaTime;
     }
 
     public virtual IEnumerator Attack()
     {
-        if (atkCT == 0)
-        {
-            canMove = false;
-            atkCT = 2;
-            anim.SetTrigger("Attack");
-            yield return new WaitForSeconds(1.133f);
-            Hit();
-            yield return new WaitForSeconds(1.93f);
-            canMove = true;
-        }
+        yield return null;
     }
 
     public virtual IEnumerator Die()
@@ -94,7 +79,7 @@ public class EnemyBase : MonoBehaviour, IEnemy
         float durtion = 0;
         while (durtion < 0.13f) // 이거 초도 clip길이만큼으로 바꿔줘야함
         {
-            transform.position += -transform.forward * 8 * Time.deltaTime;
+            rig.transform.position += -rig.transform.forward * 8 * Time.deltaTime;
             durtion += Time.deltaTime;
             yield return null;
         }
@@ -104,7 +89,7 @@ public class EnemyBase : MonoBehaviour, IEnemy
         Destroy(this.gameObject);
     }
 
-    public virtual void Hit(int damage, float nuckback = 0)
+    public virtual void Damaged(int damage)
     {
         if (HP <= 0)
             return;
@@ -122,27 +107,8 @@ public class EnemyBase : MonoBehaviour, IEnemy
         }
     }
 
-    void Hit()
+    public virtual void Hit()
     {
-        Vector3 boxCenter = transform.position + transform.up + transform.forward;
-        RaycastHit[] hits = Physics.BoxCastAll(boxCenter, new Vector3(0.5f,0.5f,0.5f),
-            transform.forward, Quaternion.identity, 0.5f);
 
-        LayerMask targetlayer = LayerMask.NameToLayer("Player");
-        foreach (RaycastHit hit in hits)
-        {
-            print(hit.transform.name);
-            if (hit.collider.gameObject.layer != targetlayer)
-            {
-                continue;
-            }
-
-            if (hit.collider.TryGetComponent<PlayerMove>(out PlayerMove cookie))
-            {
-                cookie.Cookie.Hit((int)ATk);
-                print((int)ATk);
-            }
-
-        }
     }
 }
