@@ -23,7 +23,6 @@ public class Arrow_shoot : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.name);
         if(other.TryGetComponent<PlayerMove>(out PlayerMove cookie))
         {
             cookie.Cookie.Hit((int)enemy.ATK);

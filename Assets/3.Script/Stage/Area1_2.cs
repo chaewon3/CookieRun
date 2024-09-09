@@ -23,7 +23,6 @@ public class Area1_2 : MonoBehaviour
     public void FireOn()
     {
         Fire -= 1;
-        print(Fire);
         if(Fire == 0)
         {
             Gate.SetTrigger("Open");

@@ -38,7 +38,6 @@ public class Enemy_JungleMelee : EnemyBase
         LayerMask targetlayer = LayerMask.NameToLayer("Player");
         foreach (RaycastHit hit in hits)
         {
-            print(hit.transform.name);
             if (hit.collider.gameObject.layer != targetlayer)
             {
                 continue;
@@ -47,7 +46,6 @@ public class Enemy_JungleMelee : EnemyBase
             if (hit.collider.TryGetComponent<PlayerMove>(out PlayerMove cookie))
             {
                 cookie.Cookie.Hit((int)ATK);
-                print((int)ATK);
             }
         }
     }

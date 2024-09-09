@@ -76,6 +76,7 @@ public class EnemyBase : MonoBehaviour, IEnemy
     {
         anim.SetTrigger("Die");
 
+        yield return new WaitForSeconds(0.3f);
         float durtion = 0;
         while (durtion < 0.13f) // 이거 초도 clip길이만큼으로 바꿔줘야함
         {
@@ -83,7 +84,8 @@ public class EnemyBase : MonoBehaviour, IEnemy
             durtion += Time.deltaTime;
             yield return null;
         }
-        Area.enemyDie(this.gameObject);
+        if(Area != null)
+          Area.enemyDie(this.gameObject);
         HPBarPanel.instance.RemoveHPPanel(this.transform);
         yield return new WaitForSeconds(1);
         Destroy(this.gameObject);
@@ -98,6 +100,8 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
         //anim.SetTrigger("Damaged");
         HP -= damage;
+
+        print(HPPer);
         HPBarPanel.instance.RefreshHP(this.transform);
 
         if (HP <= 0)
