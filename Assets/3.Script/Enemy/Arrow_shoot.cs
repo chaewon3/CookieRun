@@ -8,12 +8,12 @@ public class Arrow_shoot : MonoBehaviour
 
     private void Awake()
     {
-        enemy = transform.parent.GetComponent<IEnemy>();
-        transform.parent = null;
+        enemy = transform.parent.GetComponent<IEnemy>();        
     }
     private void Start()
     {
         Destroy(this.gameObject, 3f);
+        transform.parent = null;
     }
 
     private void Update()

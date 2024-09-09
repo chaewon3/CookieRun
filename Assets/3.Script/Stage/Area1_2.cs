@@ -15,6 +15,7 @@ public class Area1_2 : MonoBehaviour
     {
         if (!other.TryGetComponent<PlayerMove>(out PlayerMove a)) return;
 
+        transform.GetComponent<BoxCollider>().enabled = false;
         enemy.SetActive(true);
         StartCoroutine(cutscene());
     }

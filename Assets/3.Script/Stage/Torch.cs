@@ -13,7 +13,6 @@ public class Torch : MonoBehaviour
         if (onFire) return;
 
         onFire = true;
-        gameObject.GetComponent<BoxCollider>().enabled = false;
         fireEffect.SetActive(true);
         area.FireOn();
     }

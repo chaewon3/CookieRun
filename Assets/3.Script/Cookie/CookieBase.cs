@@ -59,18 +59,16 @@ public class CookieBase : MonoBehaviour, ICookie
 
     public virtual IEnumerator Dash(Vector3 moveDir)
     {
-        Gamemanager.instance.canMove = false;
          DashCT = Data.dashCT;
          anim.SetTrigger("Dash");
         
          float durtion = 0;
          while (durtion < 0.13f) // 이거 초도 clip길이만큼으로 바꿔줘야함
          {
-             cc.Move(moveDir.normalized * 25f * Time.deltaTime);
+             cc.Move(moveDir.normalized * 15f * Time.deltaTime);
              durtion += Time.deltaTime;
              yield return null;
          }
-         Gamemanager.instance.canMove = true;
     }
 
     public void Hit(int damage)

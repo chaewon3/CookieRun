@@ -26,15 +26,14 @@ public class Enemy_FireShoot : EnemyBase
     {
         if (atkCT == 0)
         {
-            canMove = false;
-            atkCT = 4f;
+            atkCT = 5f;
             anim.SetTrigger("Attack");
-            GameObject Arrow = Instantiate(FireArrowPrefab, ShootPoint.position+Vector3.up, transform.rotation, transform);
-            Quaternion targetrotation = Quaternion.LookRotation(target.transform.position - Arrow.transform.position);
-            Arrow.transform.rotation = Quaternion.Euler(0, targetrotation.eulerAngles.y, 0);
-            Arrow.SetActive(false);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.467f);
+            GameObject Arrow = Instantiate(FireArrowPrefab, ShootPoint.position+Vector3.up*0.5f, transform.rotation, transform);
+            yield return new WaitForSeconds(0.5f);
+            canMove = false;
             Arrow.SetActive(true);
+            yield return new WaitForSeconds(1.2f);
             canMove = true;
         }
     }
