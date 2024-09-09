@@ -7,6 +7,9 @@ public class Area1_2 : MonoBehaviour
 {
     public GameObject enemy;
     public CinemachineVirtualCamera CScam;
+    public Animator Gate;
+
+    int Fire = 2; 
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +17,16 @@ public class Area1_2 : MonoBehaviour
 
         enemy.SetActive(true);
         StartCoroutine(cutscene());
+    }
+
+    public void FireOn()
+    {
+        Fire -= 1;
+        print(Fire);
+        if(Fire == 0)
+        {
+            Gate.SetTrigger("Open");
+        }
     }
 
     IEnumerator cutscene()
