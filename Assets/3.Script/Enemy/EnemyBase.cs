@@ -101,7 +101,7 @@ public class EnemyBase : MonoBehaviour, IEnemy
         //anim.SetTrigger("Damaged");
         HP -= damage;
 
-        HPBarPanel.instance.RefreshHP(this.transform);
+        HPBarPanel.instance.RefreshHP(this.transform, damage);
 
         if (HP <= 0)
         {

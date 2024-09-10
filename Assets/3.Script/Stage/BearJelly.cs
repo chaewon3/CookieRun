@@ -6,13 +6,13 @@ public class BearJelly : MonoBehaviour
 {
     Animator anim;
     Collider col;
-    JellyPanel panel;
+    TopPanel panel;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         col = GetComponent<SphereCollider>();
-        panel = FindObjectOfType<JellyPanel>();
+        panel = FindObjectOfType<TopPanel>();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -6,6 +6,7 @@ public class SpawnArea : MonoBehaviour
 {
     public List<GameObject> walls = new List<GameObject>();
     public List<GameObject> enemies = new List<GameObject>();
+    public GameObject Jelly;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -37,6 +38,8 @@ public class SpawnArea : MonoBehaviour
             {
                 col.SetActive(false);
             }
+            if (Jelly != null)
+                Jelly.SetActive(true);
         }
     }
 }
