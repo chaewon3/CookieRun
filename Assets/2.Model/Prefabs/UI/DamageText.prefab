@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5064557765073224430}
   - component: {fileID: 663162799427468630}
   - component: {fileID: 503271764724870950}
+  - component: {fileID: 2581726540910506315}
   m_Layer: 5
   m_Name: DamageText
   m_TagString: Untagged
@@ -157,3 +158,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!225 &2581726540910506315
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323114109608597914}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

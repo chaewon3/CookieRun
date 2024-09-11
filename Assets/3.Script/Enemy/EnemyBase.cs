@@ -44,6 +44,13 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
     public virtual void Update()
     {
+        if (!Gamemanager.instance.onGame)
+        {
+            StopAllCoroutines();
+            anim.SetTrigger("Idle");
+            return;
+        }
+
         distance = Vector3.Distance(rig.transform.position, target.transform.position);
         
         if (atkCT > 0)

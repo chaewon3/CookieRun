@@ -10,6 +10,8 @@ public class Gamemanager : MonoBehaviour
     public int Coins { get; set; }
     public float time { get; private set; }
     public bool canMove = false;
+    public bool onGame = true;
+
     // 로비 => 게임씬 들어갈때 쿠키어떤거 들고가는지 관리도 여기서.
 
     private void Start()

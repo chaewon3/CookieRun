@@ -74,5 +74,12 @@ public class CookieBase : MonoBehaviour, ICookie
     public void Hit(int damage)
     {
         CurrentHP -= (damage);
+        if(CurrentHP <=0)
+        {
+            CurrentHP = 0;
+            anim.SetTrigger("Die");
+            Gamemanager.instance.onGame = false;
+            Gamemanager.instance.canMove = false;
+        }
     }
 }
