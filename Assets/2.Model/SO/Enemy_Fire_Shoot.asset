@@ -18,3 +18,4 @@ MonoBehaviour:
   ATK: 20
   DEF: 3
   moveSpeed: 1
+  coin: 17

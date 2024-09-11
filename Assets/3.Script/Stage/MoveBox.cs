@@ -7,7 +7,7 @@ public class MoveBox : MonoBehaviour
     bool canmove;
     public List<GameObject> paths;
     int index = 0;
-    float movetime = 0.7f;
+    float movetime = 0.4f;
 
     float distance;
 

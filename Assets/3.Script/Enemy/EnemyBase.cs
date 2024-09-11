@@ -77,6 +77,15 @@ public class EnemyBase : MonoBehaviour, IEnemy
         anim.SetTrigger("Die");
 
         yield return new WaitForSeconds(0.3f);
+
+        GameObject coin = Resources.Load<GameObject>("MonsterCoin");
+        if(coin!=null)
+        {
+            DropCoin(coin);
+            DropCoin(coin);
+            DropCoin(coin);
+        }
+
         float durtion = 0;
         while (durtion < 0.13f) // 이거 초도 clip길이만큼으로 바꿔줘야함
         {
@@ -113,5 +122,15 @@ public class EnemyBase : MonoBehaviour, IEnemy
     public virtual void Hit()
     {
 
+    }
+
+    void DropCoin(GameObject coinprefab)
+    {
+        GameObject coin = Instantiate(coinprefab,transform.position+Vector3.up*0.3f,Quaternion.identity, transform);
+        coin.transform.SetParent(null);
+        coin.GetComponentInChildren<Coin>().coin = data.coin;
+        coin.transform.Rotate(0,Random.Range(1,360),0);
+
+        coin.GetComponent<Rigidbody>().AddForce(coin.transform.forward*2,ForceMode.Impulse);
     }
 }

@@ -10,5 +10,5 @@ public class EnemySO : ScriptableObject
     public int ATK;
     public int DEF;
     public float moveSpeed;
-
+    public int coin;
 }

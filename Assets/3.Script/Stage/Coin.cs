@@ -22,26 +22,28 @@ public class Coin : MonoBehaviour
 
     IEnumerator getcoin(Collider cookie)
     {
+        float distance = Vector3.Distance(cookie.transform.position + Vector3.up * 0.5f, transform.position);
+        if (distance <= 0.8f)
+            Destroy(this.transform.parent.gameObject);
+
+        yield return new WaitForSeconds(0.7f);
         bool get = false;
         float speed = 3;
         while(true)
         {
-            float distance = Vector3.Distance(cookie.transform.position, transform.position);
-
+            distance = Vector3.Distance(cookie.transform.position, transform.position);
             Vector3 dir = cookie.transform.position+Vector3.up*0.5f - transform.position;
             transform.parent.position += dir.normalized * speed * Time.deltaTime;
 
-            if (speed < 6)
-                speed += 0.2f;
+            speed += 0.4f;
 
             if (distance <= 3f && !get)
             {
                 get = true;
                 anim.SetTrigger("Get");
-                Destroy(this.gameObject,0.7f);
+                Destroy(this.transform.parent.gameObject,0.7f);
             }
-            if (distance <= 0.5f)
-                Destroy(this.gameObject);
+
             yield return null;
         }
     }

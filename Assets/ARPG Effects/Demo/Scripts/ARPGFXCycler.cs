@@ -41,5 +41,10 @@ namespace ARPGFX
                     effectIndex = 0;
             }
         }
+
+        private void OnDisable()
+        {
+            Destroy(instantiatedEffect);
+        }
     }
 }
