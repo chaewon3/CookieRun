@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: abe81e4f00b33b44f88ff990a8225029
+guid: 34b8806247dc7184a843e606929bd7c6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
-    sRGBTexture: 0
+    enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
-    borderMipMap: 0
+    borderMipMap: 1
     mipMapsPreserveCoverage: 0
     alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
@@ -29,35 +29,35 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: 48
+  textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
     filterMode: 1
-    aniso: 1
+    aniso: 0
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 1
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 0
-  flipbookColumns: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -119,7 +119,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -131,5 +131,5 @@ TextureImporter:
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
-  assetBundleName: Jungle_Bg
+  assetBundleName: 
   assetBundleVariant: 

@@ -83,7 +83,7 @@ public class EnemyBase : MonoBehaviour, IEnemy
     {
         anim.SetTrigger("Die");
 
-        yield return new WaitForSeconds(0.3f);
+        //yield return new WaitForSeconds(0.3f);
 
         GameObject coin = Resources.Load<GameObject>("MonsterCoin");
         if(coin!=null)

@@ -26,7 +26,7 @@ public class Coin : MonoBehaviour
         if (distance <= 0.8f)
             Destroy(this.transform.parent.gameObject);
 
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.9f);
         bool get = false;
         float speed = 3;
         while(true)
