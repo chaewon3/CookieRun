@@ -46,7 +46,7 @@ public class CreamSoda : CookieBase
     {
         //todo : 나중에 애니메이션 클립으로 넣어야함
         // todo : PC일 경우에 마우스 방향 타겟팅 / 모바일일 경우에 오토타겟팅
-        Gamemanager.instance.canMove = false;
+        Stagemanager.instance.canMove = false;
         if (comboCount == 0)
         {
             comboCount++;
@@ -73,13 +73,13 @@ public class CreamSoda : CookieBase
             anim.SetTrigger("Attack3");
             yield return new WaitForSeconds(0.433f);
         }
-        Gamemanager.instance.canMove = true;
+        Stagemanager.instance.canMove = true;
     }
 
     public override IEnumerator Skill()
     {
         anim.SetBool("Move", false);
-        Gamemanager.instance.canMove = false;
+        Stagemanager.instance.canMove = false;
         if (SkillCT <= 0)
         {            
             skillCount++;
@@ -110,21 +110,21 @@ public class CreamSoda : CookieBase
             StartCoroutine(Raycast(1, skillrange, ATK * 2.64f, 0.1f));
             yield return new WaitForSeconds(0.583f);
         }
-        Gamemanager.instance.canMove = true;
+        Stagemanager.instance.canMove = true;
         anim.SetBool("Move", true);
     }
 
     public override IEnumerator Ultimate()
     {
         anim.SetBool("Move", false);
-        Gamemanager.instance.canMove = false;
+        Stagemanager.instance.canMove = false;
         UltimateCT = Data.ultimateCT;
         anim.SetTrigger("Ultimate");
         StartCoroutine(Raycast(2, ultimaterange, ATK * 4.9f, 1.2f));
         StartCoroutine(Raycast(2, ultimaterange, ATK * 4.9f, 1.3f));
         StartCoroutine(Raycast(2, ultimaterange, ATK * 4.9f, 1.4f));
         yield return new WaitForSeconds(1.75f);
-        Gamemanager.instance.canMove = true;
+        Stagemanager.instance.canMove = true;
         anim.SetBool("Move", true);
     }
     public override IEnumerator Dash(Vector3 moveDir)

@@ -31,10 +31,10 @@ public class Area1_2 : MonoBehaviour
 
     IEnumerator cutscene()
     {
-        Gamemanager.instance.canMove = false;
+        Stagemanager.instance.canMove = false;
         CScam.Priority = 11;
         yield return new WaitForSeconds(5);
-        Gamemanager.instance.canMove = true;
+        Stagemanager.instance.canMove = true;
         CScam.Priority = 9;
     }
 }

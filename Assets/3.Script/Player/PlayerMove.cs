@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
     {        //todo :나중에 쿠키태그시스템 생기면 직접 넣어줘야함
         Cookie = GetComponentInChildren<ICookie>();
         cc = transform.GetComponent<CharacterController>();
-        Gamemanager.instance.canMove = true;
+        Stagemanager.instance.canMove = true;
     }
 
     private IEnumerator Start()
@@ -37,7 +37,7 @@ public class PlayerMove : MonoBehaviour
 
         //dir.y += Physics.gravity.y * Time.deltaTime;
         cc.Move(cc.transform.up * Physics.gravity.y * Time.deltaTime);
-        if (Gamemanager.instance.canMove)
+        if (Stagemanager.instance.canMove)
         {
             // 이부분은?
             cc.Move(dir * moveSpeed * Time.deltaTime);
@@ -65,7 +65,7 @@ public class PlayerMove : MonoBehaviour
 
     void OnAttack()
     {
-        if(Gamemanager.instance.canMove)
+        if(Stagemanager.instance.canMove)
         {
             LootAtMouse();
             StartCoroutine(Cookie.Attack());
@@ -74,7 +74,7 @@ public class PlayerMove : MonoBehaviour
 
     void OnSkill()
     {
-        if (Gamemanager.instance.canMove)
+        if (Stagemanager.instance.canMove)
         {
             LootAtMouse();
             StartCoroutine(Cookie.Skill());
@@ -82,7 +82,7 @@ public class PlayerMove : MonoBehaviour
     }
     IEnumerator OnUltimate()
     {
-        if (Gamemanager.instance.canMove && Cookie.UltimateCT <= 0)
+        if (Stagemanager.instance.canMove && Cookie.UltimateCT <= 0)
         {
             LootAtMouse();
             StartCoroutine(Cookie.Ultimate());

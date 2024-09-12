@@ -13,6 +13,7 @@ public class BearJelly : MonoBehaviour
         anim = GetComponent<Animator>();
         col = GetComponent<SphereCollider>();
         panel = FindObjectOfType<TopPanel>();
+        Stagemanager.instance.setJelly(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -20,6 +21,7 @@ public class BearJelly : MonoBehaviour
         if (!other.GetComponent<PlayerMove>()) return;
 
         panel.GetJelly(this.gameObject);
+        Stagemanager.instance.setJelly(gameObject);
         anim.SetTrigger("Get");
         col.enabled = false;    
     }

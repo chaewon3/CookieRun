@@ -8,6 +8,11 @@ public class Torch : MonoBehaviour
     public GameObject fireEffect;
 
     bool onFire = false;
+    private void Start()
+    {
+        Stagemanager.instance.SetTorch(gameObject);
+    }
+
     public void Fire()
     {
         if (onFire) return;
@@ -15,5 +20,6 @@ public class Torch : MonoBehaviour
         onFire = true;
         fireEffect.SetActive(true);
         area.FireOn();
+        Stagemanager.instance.SetTorch(gameObject);
     }
 }

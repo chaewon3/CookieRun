@@ -78,8 +78,8 @@ public class CookieBase : MonoBehaviour, ICookie
         {
             CurrentHP = 0;
             anim.SetTrigger("Die");
-            Gamemanager.instance.onGame = false;
-            Gamemanager.instance.canMove = false;
+            Stagemanager.instance.onGame = false;
+            Stagemanager.instance.canMove = false;
         }
     }
 }

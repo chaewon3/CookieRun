@@ -17,14 +17,14 @@ public class TopPanel : MonoBehaviour
 
     private void Update()
     {
-        int time = (int)Gamemanager.instance.time;
+        int time = (int)Stagemanager.instance.time;
         timeText.text = $"{time / 60}:{time % 60}";
-        coinText.text = Gamemanager.instance.Coins.ToString();
+        coinText.text = Stagemanager.instance.Coins.ToString();
     }
 
     private void Awake()
     {
-        for(int i=0;i<Jellies.Length;i++)
+        for (int i = 0; i < Jellies.Length; i++)
         {
             GameObject image = Instantiate(jellyprefab, transform.GetChild(3));
             Jelly.Add(Jellies[i], image.GetComponent<Image>());

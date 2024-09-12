@@ -44,7 +44,7 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
     public virtual void Update()
     {
-        if (!Gamemanager.instance.onGame)
+        if (!Stagemanager.instance.onGame)
         {
             StopAllCoroutines();
             anim.SetTrigger("Idle");

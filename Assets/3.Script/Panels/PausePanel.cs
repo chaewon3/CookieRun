@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PausePanel : MonoBehaviour
 {
     public Button restartBtn;
+
+    public Sprite Starimg;
+    public GameObject[] missions = new GameObject[3];
+
 
     private void Awake()
     {
@@ -20,6 +25,16 @@ public class PausePanel : MonoBehaviour
     public void openPanel()
     {
         gameObject.SetActive(true);
+
+        for (int i = 0; i < 3; i++)
+        {
+            missions[i].transform.Find("Text").GetComponent<TextMeshProUGUI>().text = Stagemanager.instance.missionsText[i];
+            if (Stagemanager.instance.ExecuteMission(i))
+            {
+                missions[i].transform.Find("star").GetComponent<Image>().sprite = Starimg;
+            }
+        }
+
         Time.timeScale = 0;
         StartCoroutine(canvasAlpha());
     }
@@ -53,4 +68,6 @@ public class PausePanel : MonoBehaviour
         Time.timeScale = 1;
         gameObject.SetActive(false);
     }
+
+    
 }

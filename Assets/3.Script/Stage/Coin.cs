@@ -16,7 +16,7 @@ public class Coin : MonoBehaviour
     {
         if (!other.GetComponent<PlayerMove>()) return;
 
-        Gamemanager.instance.Coins += coin;
+        Stagemanager.instance.Coins += coin;
         StartCoroutine(getcoin(other));
     }
 
