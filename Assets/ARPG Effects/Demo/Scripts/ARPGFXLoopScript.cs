@@ -23,7 +23,6 @@ namespace ARPGFX
 
         IEnumerator EffectLoop()
         {
-            //GameObject effectPlayer = (GameObject)Instantiate(chosenEffect, transform.position, transform.rotation);
 
             GameObject effectPlayer = (GameObject)Instantiate(chosenEffect);
             effectPlayer.transform.position = transform.position;
@@ -34,7 +33,6 @@ namespace ARPGFX
             yield return new WaitForSeconds(loopTimeLimit);
 
             Destroy(effectPlayer);
-            PlayEffect();
         }
     }
 }
