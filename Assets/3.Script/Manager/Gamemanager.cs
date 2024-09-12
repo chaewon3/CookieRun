@@ -21,7 +21,8 @@ public class Gamemanager : MonoBehaviour
     }
     private void Update()
     {
-        time -= Time.deltaTime;
+        if(onGame)
+         time -= Time.deltaTime;
     }
     private void Awake()
     {

@@ -17,6 +17,7 @@ public class Goal : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Gamemanager.instance.canMove = false;
+        Gamemanager.instance.onGame = false;
         Gamemanager.instance.gameComplete = true;
         StartCoroutine(Effect());
         //캐릭터 애니메이션 후 Panel열기
