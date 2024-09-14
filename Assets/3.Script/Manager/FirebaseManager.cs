@@ -131,4 +131,9 @@ public class FirebaseManager : MonoBehaviour
         }
         
     }
+
+    public async void GetStage()
+    {
+        
+    }
 }
