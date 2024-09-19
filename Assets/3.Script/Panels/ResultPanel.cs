@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class ResultPanel : MonoBehaviour
 {
@@ -45,7 +44,6 @@ public class ResultPanel : MonoBehaviour
 
     public void Restart()
     {
-        // todo : 나중에 로딩매니저 만들면 바꾸기
-        SceneManager.LoadScene("Stage1-1");
+        LoadingManager.instance.SceneLoading();
     }
 }

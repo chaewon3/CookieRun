@@ -13,6 +13,9 @@ public class BearJelly : MonoBehaviour
         anim = GetComponent<Animator>();
         col = GetComponent<SphereCollider>();
         panel = FindObjectOfType<TopPanel>();
+    }
+    private void Start()
+    {
         Stagemanager.instance.setJelly(gameObject);
     }
 

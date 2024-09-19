@@ -9,9 +9,13 @@ public class PanelManager : MonoBehaviour
 
     public GameObject Main;
     public GameObject Play;
+    public GameObject Stage;
+    public GameObject Stageinfo;
+
     public GameObject Setting;
     public GameObject Dialog;
     public GameObject SceneChange;
+    public GameObject Loading;
 
     private Dictionary<string, GameObject> panelTable;
 
@@ -23,7 +27,13 @@ public class PanelManager : MonoBehaviour
             panelTable = new Dictionary<string, GameObject>
             {
                 { "Main", Main },
-                { "Play", Play }
+                { "Play", Play },
+                { "Stage", Stage },
+                { "StageInfo", Stageinfo },
+                { "Setting", Setting },
+                { "Dialog", Dialog },
+                {"SceneChange", SceneChange },
+                {"Loading", Loading }
             };
         }
         SceneChange.SetActive(true);
@@ -40,11 +50,26 @@ public class PanelManager : MonoBehaviour
         }
     }
 
-    public void PanelOpen(string panelName)
+    public void PanelChange(string panelName)
     {
         foreach(var row in panelTable)
         {
             row.Value.SetActive(row.Key.Equals(panelName));
         }
+    }
+
+    public void PanelOpen(string panelName)
+    {
+        panelTable[panelName].SetActive(true);
+    }
+
+    public IEnumerator ChangeAnimation(string panelName)
+    {
+        PanelOpen("SceneChange");
+        SceneChange.GetComponent<Animator>().SetTrigger("close");
+        yield return new WaitForSeconds(1);
+        PanelOpen(panelName);
+        yield return new WaitForSeconds(1);
+        SceneChange.SetActive(false);
     }
 }

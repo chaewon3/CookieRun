@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class StageData : MonoBehaviour
+[System.Serializable]
+public class StageData
 {
     public StageSO Data { get; set; }
     public bool isClear;
@@ -11,6 +10,7 @@ public class StageData : MonoBehaviour
 
     public StageData(StageSO data)
     {
+        Data = data;
         isClear = false;
         Jellies = new bool[data.Jellies];
     }

@@ -32,7 +32,9 @@ public class Stagemanager : MonoBehaviour
         {
             instance = this;
         }
+        data = Gamemanager.instance.CurrentStage;
 
+        print(data.Data.Stagename);
         missions[0] = data.Data.Mission_1;
         missionsText[0] = data.Data.Mission_1Text;
         missions[1] = data.Data.Mission_2;
@@ -45,15 +47,18 @@ public class Stagemanager : MonoBehaviour
             
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
-        //todo : 나중에 여기서말고 스테이지에서 해야함
+        yield return new WaitForEndOfFrame();
+
         time = maxTime;
 
         int i = 0;
-        foreach (var jelly in Jelly)
+        List<GameObject> keys = new List<GameObject>(Jelly.Keys);
+        
+        foreach (var key in keys)
         {
-            Jelly[jelly.Key] = data.Jellies[i];
+            Jelly[key] = data.Jellies[i];
             i++;
         }
     }

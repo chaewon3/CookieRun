@@ -17,33 +17,49 @@ public class LoadingManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    private void Start()
+    IEnumerator Start()
     {
-        StartCoroutine(LoadGame(currentScene));   
+        asyncLoad = SceneManager.LoadSceneAsync(currentScene);
+        asyncLoad.allowSceneActivation = false;
+
+        float time = 0;
+        while (!asyncLoad.isDone && time <= 2.5f)
+        {
+            time += Time.deltaTime;
+            yield return null;
+        }
+        touchBtn.SetActive(true);
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        SceneChange = GameObject.Find("SceneChange");
+    }
+
+    public void SceneLoading()
+    {
+        StartCoroutine(LoadGame(currentScene));
     }
 
     private IEnumerator LoadGame(string scene)
     {
+        PanelManager.instance.PanelChange("Loading");
         asyncLoad = SceneManager.LoadSceneAsync(scene);
         asyncLoad.allowSceneActivation = false;
 
         float time = 0;
         while(!asyncLoad.isDone && time <= 2.5f)
         {
-            // todo : ·Îµù¹Ù 
-
-            //if (asyncLoad.progress >= 0.9f && time >= 5f)
-            //{
-                
-            //}
             time += Time.deltaTime;
             yield return null;
         }
-        touchBtn.SetActive(true);
+
+        StartCoroutine(Change());
     }
-        
+
     public void Scenechange()
     {
         StartCoroutine(Change());

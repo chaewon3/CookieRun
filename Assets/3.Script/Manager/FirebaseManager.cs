@@ -132,8 +132,25 @@ public class FirebaseManager : MonoBehaviour
         
     }
 
-    public async void GetStage()
+    public async void GetStage(StageSO data, Action<StageData> callback)
     {
-        
+        DatabaseReference Ref = DB.GetReference($"stages/{userData.userid}/{data.Stagename}");
+        DataSnapshot snapshot = await Ref.GetValueAsync();
+        if(snapshot.Exists)
+        { // 데이터가 있으면 가져와서 덮어씀
+            string json = snapshot.GetRawJsonValue();
+            StageData stage = JsonConvert.DeserializeObject<StageData>(json);
+
+            callback?.Invoke(stage);
+        }
+        else
+        { // 데이터가 없으면 새로운 데이터 테이블 생성
+            StageData stagedata = new StageData(data);
+
+            string stageDataJson = JsonConvert.SerializeObject(stagedata);
+            await Ref.SetRawJsonValueAsync(stageDataJson);
+
+            callback?.Invoke(stagedata);
+        }
     }
 }
