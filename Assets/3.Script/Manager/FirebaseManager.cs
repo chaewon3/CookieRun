@@ -7,6 +7,8 @@ using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Extensions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Linq;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -113,15 +115,15 @@ public class FirebaseManager : MonoBehaviour
     {
         DatabaseReference Ref = DB.GetReference($"names/{name}");
         DataSnapshot snapshot = await Ref.GetValueAsync();
-        // todo : 여기 아래로 친구목록도 만들면 좋을 듯
         if(!snapshot.Exists)
         {
-            await Ref.SetValueAsync(true);
-
             string refKey = nameof(userData.username);
 
-            var nameRef = userRef.Child(refKey);
-            await nameRef.SetValueAsync(name);
+            var nameRef = Ref.Child(userData.userid);
+            await nameRef.SetValueAsync(userData.userid);
+
+            var userref = userRef.Child(refKey);
+            await userref.SetValueAsync(name);
 
             callback?.Invoke();
         }
@@ -130,6 +132,57 @@ public class FirebaseManager : MonoBehaviour
             failureback?.Invoke();
         }
         
+    }
+
+
+    public async void GetFriend(List<string> friends, Action<UserData> callback)
+    {
+        foreach (string friend in friends)
+        {
+            DatabaseReference Ref = DB.GetReference($"users/{friend}");
+            DataSnapshot snapshot = await Ref.GetValueAsync();
+
+            if (snapshot.Exists)
+            {
+                string json = snapshot.GetRawJsonValue();
+                UserData freindData = JsonConvert.DeserializeObject<UserData>(json);
+
+                callback?.Invoke(freindData);
+            }
+            else // 친구계정이 사라졌을 경우? 해당 친구 지우기
+            {
+                DatabaseReference userref = DB.GetReference($"users/{userData.userid}/friends");
+
+                await userref.RemoveValueAsync();
+            }
+        }
+    }
+
+
+    public async void FriendRequest(string freindname)
+    {
+        DatabaseReference friendRef = DB.GetReference($"names/{freindname}");
+        DataSnapshot friendsnapshot = await friendRef.GetValueAsync();
+        string json = friendsnapshot.GetRawJsonValue();
+        var jsonObj = JObject.Parse(json);
+        string friendID = jsonObj.Properties().First().Value.ToString();
+
+        print(friendID);
+        DatabaseReference Ref = DB.GetReference($"users/{friendID}");
+        DataSnapshot snapshot = await Ref.GetValueAsync();
+
+        if (snapshot.Exists)
+        {
+            DatabaseReference requestRef = DB.GetReference($"users/{friendID}/friendRequest");
+            var nameRef = requestRef.Child(userData.userid);
+            await nameRef.SetValueAsync(userData.userid);
+        }
+        else 
+        {
+            //todo:해당한느유저가 없습니다 알림띄우기
+            print("유저없음");
+        }
+
     }
 
     public async void GetStage(StageSO data, Action<StageData> callback)

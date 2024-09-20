@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class UserData
@@ -16,6 +17,8 @@ public class UserData
     public int heart;
     public int coin;
     public Cookies representCookie; //¥Î«•ƒÌ≈∞
+    public List<string> friends = new List<string>();
+    public List<string> friendRequest = new List<string>();
 
     public UserData() { }
 
@@ -38,12 +41,6 @@ public class CookieList
 
 [Serializable]
 public class Inventory
-{
-
-}
-
-[Serializable]
-public class Freind
 {
 
 }
