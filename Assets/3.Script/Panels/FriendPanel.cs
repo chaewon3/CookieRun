@@ -6,7 +6,7 @@ using TMPro;
 
 public class FriendPanel : MonoBehaviour
 {
-    UserData playerdata;
+    FriendData Frienddata;
     List<UserData> friendData = new List<UserData>();
     List<UserData> RequestData = new List<UserData>();
 
@@ -25,29 +25,8 @@ public class FriendPanel : MonoBehaviour
 
     private void OnEnable()
     {
-        playerdata = FirebaseManager.instance.userData;
-
-        FirebaseManager.instance.GetFriend(playerdata.friends, (data) => friendData.Add(data));
-
-        foreach(UserData data in friendData)
-        {
-            GameObject friend = Instantiate(friendPrefab, friendList.transform);
-            friend.GetComponent<FriendInfo>().data = data;
-        }
-
-        FirebaseManager.instance.GetFriend(playerdata.friendRequest, (data) => RequestData.Add(data));
-
-        foreach (UserData data in RequestData)
-        {
-            GameObject friend = Instantiate(RequestPrefab, RequestList.transform);
-            friend.GetComponent<FriendInfo>().data = data;
-        }
-
-    }
-
-    private void OnDisable()
-    {
-        friendData.Clear();
+        PanelRefresh();
+        RequestList.transform.parent.parent.gameObject.SetActive(false);
     }
 
     void FreindRequest()
@@ -57,5 +36,47 @@ public class FriendPanel : MonoBehaviour
         friendName.text = string.Empty;
     }
 
-    
+    public void PanelRefresh()
+    {
+        friendData.Clear();
+        RequestData.Clear();
+
+        foreach (Transform child in friendList.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in RequestList.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        FirebaseManager.instance.FriendListRefresh(()=>
+        {
+            Frienddata = FirebaseManager.instance.friendData;
+
+            FirebaseManager.instance.GetFriend(Frienddata.friendRequest, (data) => RequestData.Add(data),
+                () =>
+                {
+                    foreach (UserData data in RequestData)
+                    {
+                        if (data is null) continue;
+                        GameObject friend = Instantiate(RequestPrefab, RequestList.transform);
+                        friend.GetComponent<FriendInfo>().data = data;
+                        friend.GetComponent<FriendInfo>().panel = this;
+                    }
+                });
+
+            FirebaseManager.instance.GetFriend(Frienddata.friends, (data) => friendData.Add(data),
+                () =>
+                {
+                    foreach (UserData data in friendData)
+                    {
+                        GameObject friend = Instantiate(friendPrefab, friendList.transform);
+                        friend.GetComponent<FriendInfo>().data = data;
+                        friend.GetComponent<FriendInfo>().panel = this;
+                    }
+                });
+
+        });
+    }
+
 }

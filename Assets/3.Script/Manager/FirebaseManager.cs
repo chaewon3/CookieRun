@@ -24,6 +24,8 @@ public class FirebaseManager : MonoBehaviour
     public UserData userData;
     public DatabaseReference userRef;
 
+    public FriendData friendData = new FriendData();
+
     private void Awake()
     {
         if(instance == null)
@@ -62,14 +64,9 @@ public class FirebaseManager : MonoBehaviour
             var result = await Auth.CreateUserWithEmailAndPasswordAsync(email, pw);
 
             userRef = DB.GetReference($"users/{result.User.UserId}");
-
             UserData userData = new UserData(result.User.UserId);
-
             string userDataJson = JsonConvert.SerializeObject(userData);
-
             await userRef.SetRawJsonValueAsync(userDataJson);
-
-            this.userData = userData;
 
             callback?.Invoke(result.User);
 
@@ -88,7 +85,6 @@ public class FirebaseManager : MonoBehaviour
 
             userRef = DB.GetReference($"users/{result.User.UserId}");
             DataSnapshot userDataValues = await userRef.GetValueAsync();
-
             if (userDataValues.Exists)
             {
                 string json = userDataValues.GetRawJsonValue();
@@ -109,6 +105,32 @@ public class FirebaseManager : MonoBehaviour
         {
             failurecallback?.Invoke("유저정보가 없습니다. 회원가입을 진행해주세요.");
         }
+    }
+
+    public async void FriendListRefresh(Action callback)
+    {
+        friendData.friends.Clear();
+        friendData.friendRequest.Clear();
+
+        DatabaseReference friendListRef = DB.GetReference($"friendList/{userData.userid}");
+        DataSnapshot friendDataValues = await friendListRef.GetValueAsync();
+        if (friendDataValues.Exists)
+        {
+            foreach (var child in friendDataValues.Children)
+            {
+                friendData.friends.Add(child.Key);
+            }
+        }
+        DatabaseReference requestListRef = DB.GetReference($"requestList/{userData.userid}");
+        DataSnapshot requestDataValues = await requestListRef.GetValueAsync();
+        if (requestDataValues.Exists)
+        {
+            foreach (var child in requestDataValues.Children)
+            {
+                friendData.friendRequest.Add(child.Key);
+            }
+        }
+        callback?.Invoke();
     }
 
     public async void UpdateUserName(string name, Action callback = null, Action failureback = null)
@@ -135,7 +157,7 @@ public class FirebaseManager : MonoBehaviour
     }
 
 
-    public async void GetFriend(List<string> friends, Action<UserData> callback)
+    public async void GetFriend(List<string> friends, Action<UserData> addList, Action callback)
     {
         foreach (string friend in friends)
         {
@@ -146,34 +168,36 @@ public class FirebaseManager : MonoBehaviour
             {
                 string json = snapshot.GetRawJsonValue();
                 UserData freindData = JsonConvert.DeserializeObject<UserData>(json);
-
-                callback?.Invoke(freindData);
+                if(freindData != null)
+                    addList?.Invoke(freindData);
             }
-            else // 친구계정이 사라졌을 경우? 해당 친구 지우기
+            else // todo : 나중에 수정 친구계정이 사라졌을 경우? 해당 친구 지우기
             {
-                DatabaseReference userref = DB.GetReference($"users/{userData.userid}/friends");
-
-                await userref.RemoveValueAsync();
+                //DatabaseReference userref = DB.GetReference($"friend/{userData.userid}/friends");
+                //await userref.RemoveValueAsync();
             }
         }
+        callback?.Invoke();
     }
 
 
     public async void FriendRequest(string freindname)
     {
+        //이름으로된 테이블에서 해당하는 유저id 가져옴
         DatabaseReference friendRef = DB.GetReference($"names/{freindname}");
         DataSnapshot friendsnapshot = await friendRef.GetValueAsync();
+
         string json = friendsnapshot.GetRawJsonValue();
         var jsonObj = JObject.Parse(json);
         string friendID = jsonObj.Properties().First().Value.ToString();
 
-        print(friendID);
-        DatabaseReference Ref = DB.GetReference($"users/{friendID}");
+        //가져온 id로 그 유저의 친구요청목록에 접근
+        DatabaseReference Ref = DB.GetReference($"requestList/{friendID}");
         DataSnapshot snapshot = await Ref.GetValueAsync();
 
-        if (snapshot.Exists)
+        if (friendsnapshot.Exists)
         {
-            DatabaseReference requestRef = DB.GetReference($"users/{friendID}/friendRequest");
+            DatabaseReference requestRef = DB.GetReference($"requestList/{friendID}");
             var nameRef = requestRef.Child(userData.userid);
             await nameRef.SetValueAsync(userData.userid);
         }
@@ -185,6 +209,29 @@ public class FirebaseManager : MonoBehaviour
 
     }
 
+    public async void FriendRequestAccept(string friendid, Action callback)
+    {
+        DatabaseReference requestListRef = DB.GetReference($"requestList/{userData.userid}/{friendid}");
+        await requestListRef.RemoveValueAsync();
+
+
+        DatabaseReference friendListRef = DB.GetReference($"friendList/{userData.userid}");
+        var friendRef = friendListRef.Child(friendid);
+        await friendRef.SetValueAsync(friendid);
+
+        DatabaseReference friendsListRef = DB.GetReference($"friendList/{friendid}");
+        var friendsRef = friendsListRef.Child(userData.userid);
+        await friendsRef.SetValueAsync(userData.userid);
+
+        callback?.Invoke();
+    }
+    public async void FriendRequestRefuse(string friendid, Action callback)
+    {
+        DatabaseReference requestListRef = DB.GetReference($"requestList/{userData.userid}/{friendid}");
+
+        await requestListRef.RemoveValueAsync();
+        callback?.Invoke();
+    }
     public async void GetStage(StageSO data, Action<StageData> callback)
     {
         DatabaseReference Ref = DB.GetReference($"stages/{userData.userid}/{data.Stagename}");
