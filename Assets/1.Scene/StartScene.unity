@@ -1725,9 +1725,13 @@ MonoBehaviour:
     userid: 
     username: 
     level: 0
+    exp: 0
     heart: 0
     coin: 0
     representCookie: 0
+  friendData:
+    friends: []
+    friendRequest: []
 --- !u!4 &615477093
 Transform:
   m_ObjectHideFlags: 0
