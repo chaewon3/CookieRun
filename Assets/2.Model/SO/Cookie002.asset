@@ -35,3 +35,4 @@ MonoBehaviour:
   dashName: "\uB300"
   dashCT: 2
   dashDes: "\uC804\uBC29\uC73C\uB85C \uBE60\uB974\uAC8C \uB3CC\uC9C4\uD55C\uB2E4."
+  ChairAnim: {fileID: 9100000, guid: fe9c8ab8cdc9419489dafeb3637fc67f, type: 2}

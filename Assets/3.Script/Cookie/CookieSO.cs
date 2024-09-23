@@ -44,4 +44,7 @@ public class CookieSO : ScriptableObject
     public string dashName;
     public float dashCT;
     public string dashDes;
+
+    [Space(10)]
+    public RuntimeAnimatorController ChairAnim;
 }
