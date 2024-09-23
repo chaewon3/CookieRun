@@ -11,6 +11,7 @@ public class PanelManager : MonoBehaviour
     public GameObject Play;
     public GameObject Stage;
     public GameObject Stageinfo;
+    public GameObject invite;
 
     public GameObject Setting;
     public GameObject Dialog;
@@ -30,6 +31,7 @@ public class PanelManager : MonoBehaviour
                 { "Play", Play },
                 { "Stage", Stage },
                 { "StageInfo", Stageinfo },
+                { "Invite", invite},
                 { "Setting", Setting },
                 { "Dialog", Dialog },
                 {"SceneChange", SceneChange },

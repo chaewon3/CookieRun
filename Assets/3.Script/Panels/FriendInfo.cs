@@ -16,6 +16,7 @@ public class FriendInfo : MonoBehaviour
 
     public Button AcceptBtn;
     public Button RefuseBtn;
+    public Button inviteBtn;
 
     private void Start()
     {
@@ -27,6 +28,10 @@ public class FriendInfo : MonoBehaviour
             AcceptBtn.onClick.AddListener(AcceptBtnClick);
             RefuseBtn.onClick.AddListener(RefuseBtnClick);
         }
+        if(inviteBtn != null)
+        {
+            inviteBtn.onClick.AddListener(inviteBtnClick);
+        }
     }
 
     void AcceptBtnClick()
@@ -37,6 +42,11 @@ public class FriendInfo : MonoBehaviour
     void RefuseBtnClick()
     {
         FirebaseManager.instance.FriendRequestRefuse(data.userid, () => panel.PanelRefresh());
+    }
+
+    void inviteBtnClick()
+    {
+
     }
 
 }

@@ -14,6 +14,7 @@ public class FriendPanel : MonoBehaviour
     public GameObject friendPrefab;
     public GameObject RequestList;
     public GameObject RequestPrefab;
+    public GameObject partyPrefab;
 
     public TMP_InputField friendName;
     public Button submitBtn;
@@ -34,6 +35,32 @@ public class FriendPanel : MonoBehaviour
         FirebaseManager.instance.FriendRequest(friendName.text);
 
         friendName.text = string.Empty;
+    }
+
+    public void PartyFriend(Transform content)
+    {
+        friendData.Clear();
+        foreach (Transform child in content)
+        {
+            Destroy(child.gameObject);
+        }
+        FirebaseManager.instance.FriendListRefresh(() =>
+        {
+            Frienddata = FirebaseManager.instance.friendData;
+
+            FirebaseManager.instance.GetFriend(Frienddata.friends, (data) => friendData.Add(data),
+                () =>
+                {
+                    foreach (UserData data in friendData)
+                    {
+                        GameObject friend = Instantiate(partyPrefab, content);
+                        friend.GetComponent<FriendInfo>().data = data;
+                        friend.GetComponent<FriendInfo>().panel = this;
+                    }
+                });
+        });
+
+
     }
 
     public void PanelRefresh()
