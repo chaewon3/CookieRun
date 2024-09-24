@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 
 public class FriendInfo : MonoBehaviour
@@ -30,7 +32,7 @@ public class FriendInfo : MonoBehaviour
         }
         if(inviteBtn != null)
         {
-            inviteBtn.onClick.AddListener(inviteBtnClick);
+            inviteBtn.onClick.AddListener(() => StartCoroutine(inviteBtnClick()));
         }
     }
 
@@ -44,9 +46,15 @@ public class FriendInfo : MonoBehaviour
         FirebaseManager.instance.FriendRequestRefuse(data.userid, () => panel.PanelRefresh());
     }
 
-    void inviteBtnClick()
+    IEnumerator inviteBtnClick()
     {
-
+        PanelManager.instance.CreateParty();
+        while(!PhotonNetwork.InRoom)
+        {
+            yield return null;
+        }
+        FirebaseManager.instance.InviteFriend(data.userid);
+        inviteBtn.interactable = false;
     }
 
 }

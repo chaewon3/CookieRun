@@ -11,7 +11,7 @@ public class MainPanel : MonoBehaviour
     public TextMeshProUGUI levelText;
 
     public TextMeshProUGUI heartText;
-    public TextMeshProUGUI coinText;
+    public TextMeshProUGUI coinText;    
 
     private void OnEnable()
     {

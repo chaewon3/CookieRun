@@ -6,6 +6,7 @@ using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 using Cinemachine;
+using System;
 
 public class RaidPanel : MonoBehaviourPunCallbacks
 {
@@ -15,6 +16,7 @@ public class RaidPanel : MonoBehaviourPunCallbacks
     Dictionary<int, GameObject> playersCookie = new Dictionary<int, GameObject>();
     Dictionary<int, GameObject> playersnametag = new Dictionary<int, GameObject>();
     List<GameObject> InviteBtns = new List<GameObject>();
+    List<GameObject> destroylist = new List<GameObject>();
 
     public Transform[] cookiePositions = new Transform[4];
     public GameObject platertagPrefab;
@@ -34,6 +36,8 @@ public class RaidPanel : MonoBehaviourPunCallbacks
     [Header("Invite Panel")]
     public Button createParty;
     public Button LeaveBtn;
+    public Button BackBtn;
+    public Button CopyBtn;
     public TextMeshProUGUI RaidmodText;
     public TextMeshProUGUI PartyID;
     public GameObject PartyPanel;
@@ -51,17 +55,23 @@ public class RaidPanel : MonoBehaviourPunCallbacks
     {
         createParty.onClick.AddListener(CreatePartyButtonClick);
         LeaveBtn.onClick.AddListener(LeaveBtnClick);
-        AttendanceBtn.onClick.AddListener(AttendanceBtnClick);
+        AttendanceBtn.onClick.AddListener(() => AttendanceBtnClick(PartyIDinput.text));
         homeBtn.onClick.AddListener(()=> raidCam.Priority = 9);
+        homeBtn.onClick.AddListener(LeaveBtnClick);
+        BackBtn.onClick.AddListener(LeaveBtnClick);
+        homeBtn.onClick.AddListener(() => StartCoroutine(leaveroom("Main")));
+        BackBtn.onClick.AddListener(() => StartCoroutine(leaveroom("Play")));
+        CopyBtn.onClick.AddListener(() => GUIUtility.systemCopyBuffer = roomName);
     }
 
-    public override void OnEnable()
+    public void Start()
     { //todo : 쿠키리스트부터 만들고 거기서 가져와야할듯?
         GameObject cookie = Instantiate(Data.ModelPrefab, cookiePositions[0]);
         cookie.GetComponent<Animator>().runtimeAnimatorController = Data.ChairAnim;
         var tag = Instantiate(platertagPrefab, icons.transform).GetComponent<PlayerTag>();
         tag.gameObject.transform.position = mainCam.WorldToScreenPoint(cookiePositions[0].position + Vector3.up * 30+Vector3.right*3);
         tag.name.text = FirebaseManager.instance.userData.username;
+        PartyList[0].GetComponentInChildren<TextMeshProUGUI>().text = FirebaseManager.instance.userData.username;
 
         playersCookie.Add(0, cookie);
         playersnametag.Add(0, tag.gameObject);
@@ -80,18 +90,9 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         }
     }
 
-    public override void OnDisable()
+    public void CreatePartyButtonClick()
     {
-        GameObject cookie = playersCookie[0];
-        Destroy(cookie);
-        playersCookie.Remove(0);
-        GameObject tag = playersnametag[0];
-        Destroy(tag);
-        playersnametag.Remove(0);
-    }
-
-    void CreatePartyButtonClick()
-    {
+        if (PhotonNetwork.InRoom) return;
         char[] stringChars = new char[6];
         System.Random random = new System.Random();
 
@@ -118,16 +119,26 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         PartyIdPanel.SetActive(false);
         LeaveBtn.gameObject.SetActive(false);
         RaidmodText.text = "레이드 모드";
-        PhotonNetwork.LeaveRoom();
-        base.OnDisable();
         playernum = 1;
+
+        if (!PhotonNetwork.InRoom) return;
+        PhotonNetwork.LeaveRoom();
+    }
+    IEnumerator leaveroom(string panel)
+    {
+        while(PhotonNetwork.InRoom)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.1f);
+        PanelManager.instance.PanelChange(panel);
     }
 
-    void AttendanceBtnClick()
+    public void AttendanceBtnClick(string roomname)
     {
-        PhotonNetwork.JoinRoom(PartyIDinput.text);
+        PhotonNetwork.JoinRoom(roomname);
         base.OnEnable();
-        roomName = PartyIDinput.text;
+        roomName = roomname;
     }
 
     public override void OnJoinedRoom()
@@ -144,6 +155,12 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
+    public override void OnLeftRoom()
+    {
+        LeavePlayer();
+        base.OnDisable();
+    }
+
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         switch(returnCode)
@@ -155,12 +172,16 @@ public class RaidPanel : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
+        UserData partydata = new UserData();
+        FirebaseManager.instance.GetPartyData(newPlayer.NickName, (data) => partydata = data);
+        Gamemanager.instance.players.Add(newPlayer.ActorNumber, partydata);
         JoinPlayer(newPlayer);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        LeavePlayer(otherPlayer);
+        Gamemanager.instance.players.Remove(otherPlayer.ActorNumber);
+        LeavePlayer();
     }
 
     void JoinPlayer(Player player)
@@ -175,9 +196,9 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         playersCookie.Add(player.ActorNumber, PlayerCookie);
         playersnametag.Add(player.ActorNumber, tag.gameObject);
 
-        UserData partydata = new UserData();
-        FirebaseManager.instance.GetPartyData(player.NickName, (data) => partydata = data);
-        Gamemanager.instance.players.Add(player.ActorNumber, partydata);
+        destroylist.Add(PlayerCookie);
+        destroylist.Add(tag.gameObject);
+
         tag.name.text = player.NickName;
 
         GameObject invitebtn = InviteBtns[playernum-1];
@@ -185,18 +206,8 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         playernum++;
     }
 
-    void LeavePlayer(Player player)
+    void LeavePlayer()
     {
-        List<GameObject> destroylist = new List<GameObject>();
-
-        destroylist.Add(playersCookie[player.ActorNumber]);
-        destroylist.Add(playersnametag[player.ActorNumber]);
-
-        foreach (Player PL in PhotonNetwork.CurrentRoom.Players.Values)
-        {
-            destroylist.Add(playersCookie[PL.ActorNumber]);
-            destroylist.Add(playersnametag[PL.ActorNumber]);
-        }
         playersCookie.Clear();
         playersnametag.Clear();
         for (int i = destroylist.Count-1;i>=0;i--)
@@ -204,7 +215,11 @@ public class RaidPanel : MonoBehaviourPunCallbacks
             Destroy(destroylist[i]);
         }
 
-        Gamemanager.instance.players.Remove(player.ActorNumber);
+        for(int i = 1; i<4;i++)
+        {
+            PartyList[i].SetActive(false);
+        }
+
         playernum =1;
         foreach(var btn in InviteBtns)
         {
@@ -215,6 +230,7 @@ public class RaidPanel : MonoBehaviourPunCallbacks
 
     void gameRoomRefresh()
     {
+        if (!PhotonNetwork.InRoom) return;
         foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
         {   
             if (player == PhotonNetwork.LocalPlayer) continue;

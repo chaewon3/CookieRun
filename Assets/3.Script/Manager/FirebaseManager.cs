@@ -9,6 +9,8 @@ using Firebase.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Linq;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class FirebaseManager : MonoBehaviour
 
     public UserData userData;
     public DatabaseReference userRef;
+    public DatabaseReference inviteRef;
 
     public FriendData friendData = new FriendData();
 
@@ -89,6 +92,10 @@ public class FirebaseManager : MonoBehaviour
             {
                 string json = userDataValues.GetRawJsonValue();
                 userData = JsonConvert.DeserializeObject<UserData>(json);
+
+                inviteRef = DB.GetReference($"invite/{result.User.UserId}");
+                await inviteRef.SetValueAsync(true);
+                inviteRef.ChildAdded += ReceiveInvitation;
             }
             else
             {
@@ -105,6 +112,11 @@ public class FirebaseManager : MonoBehaviour
         {
             failurecallback?.Invoke("유저정보가 없습니다. 회원가입을 진행해주세요.");
         }
+    }
+
+    private async void OnApplicationQuit()
+    {
+        await inviteRef.RemoveValueAsync();
     }
 
     public async void FriendListRefresh(Action callback)
@@ -152,10 +164,8 @@ public class FirebaseManager : MonoBehaviour
         else
         {
             failureback?.Invoke();
-        }
-        
+        }        
     }
-
 
     public async void GetFriend(List<string> friends, Action<UserData> addList, Action callback)
     {
@@ -205,7 +215,6 @@ public class FirebaseManager : MonoBehaviour
             //todo:해당한느유저가 없습니다 알림띄우기
             print("유저없음");
         }
-
     }
 
     public async void FriendRequestAccept(string friendid, Action callback)
@@ -231,6 +240,29 @@ public class FirebaseManager : MonoBehaviour
         await requestListRef.RemoveValueAsync();
         callback?.Invoke();
     }
+
+    public async void InviteFriend(string friendid)
+    {
+        DatabaseReference Ref = DB.GetReference($"invite/{friendid}");
+        DataSnapshot snapshot = await Ref.GetValueAsync();
+        if(snapshot.Exists)
+        {
+            var nameRef = Ref.Child(userData.username);
+            await nameRef.SetValueAsync(PhotonNetwork.CurrentRoom.Name);
+        }
+        else
+        {
+            // 유저가 접속중이지 않습니다.
+        }
+    }
+
+    public async void ReceiveInvitation(object sender, ChildChangedEventArgs args)
+    {
+        string dialog = $"<color=#DB552F>{args.Snapshot.Key}</color>님이 <color=#1C68BF>레이드 모드</color> 파티에 초대했어요.";
+        PanelManager.instance.Invitation(dialog, args.Snapshot.Value.ToString());
+        await inviteRef.Child(args.Snapshot.Key).RemoveValueAsync();
+    }
+
     public async void GetPartyData(string username, Action<UserData> callback)
     {
         DatabaseReference friendRef = DB.GetReference($"names/{username}");

@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Cinemachine;
 
 public class PanelManager : MonoBehaviour
 {
     public static PanelManager instance { get; private set; }
 
+    public CinemachineVirtualCamera raidcam;
 
-    public GameObject Main;
-    public GameObject Play;
+    public MainPanel Main;
+    public PlayPanel Play;
     public GameObject Story;
-    public GameObject Raid;
+    public RaidPanel Raid;
 
     public GameObject Stageinfo;
     public GameObject invite;
     public GameObject Setting;
-    public GameObject Dialog;
+    public DialogPanel Dialog;
     public GameObject SceneChange;
     public GameObject Loading;
 
@@ -28,20 +31,21 @@ public class PanelManager : MonoBehaviour
             instance = this;
             panelTable = new Dictionary<string, GameObject>
             {
-                { "Main", Main },
-                { "Play", Play },
+                { "Main", Main.gameObject },
+                { "Play", Play.gameObject },
                 { "Story", Story },
                 { "StageInfo", Stageinfo },
-                { "Raid", Raid},
+                { "Raid", Raid.gameObject},
                 { "Invite", invite},
                 { "Setting", Setting },
-                { "Dialog", Dialog },
+                { "Dialog", Dialog.gameObject },
                 {"SceneChange", SceneChange },
                 {"Loading", Loading }
             };
         }
         SceneChange.SetActive(true);
-        PanelOpen("Main");
+        PanelChange("Main");
+        PanelOpen("SceneChange");
     }
 
     private IEnumerator Start()
@@ -75,5 +79,27 @@ public class PanelManager : MonoBehaviour
         PanelOpen(panelName);
         yield return new WaitForSeconds(1);
         SceneChange.SetActive(false);
+    }
+
+    public void CreateParty()
+    {
+        Raid.CreatePartyButtonClick();
+    }
+
+    public void Invitation(string dialog, string roomname)
+    {
+        PanelOpen("Dialog");
+        Dialog.onDialog(dialog, () =>
+        {
+            StartCoroutine(enterRoom(roomname));
+        });
+    }
+
+    IEnumerator enterRoom(string roomname)
+    {
+        raidcam.Priority = 11;
+        yield return new WaitForSeconds(0.2f);
+        PanelChange("Raid");
+        Raid.AttendanceBtnClick(roomname);
     }
 }

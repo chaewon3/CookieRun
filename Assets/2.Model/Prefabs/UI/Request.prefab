@@ -568,6 +568,7 @@ GameObject:
   - component: {fileID: 6273461357238862538}
   - component: {fileID: 6003930270174870253}
   - component: {fileID: 6003930270174870252}
+  - component: {fileID: -9182421609438168562}
   m_Layer: 5
   m_Name: Request
   m_TagString: Untagged
@@ -627,6 +628,7 @@ MonoBehaviour:
   name: {fileID: 6003930270213370599}
   AcceptBtn: {fileID: 4575031658290415958}
   RefuseBtn: {fileID: 5037847185060008680}
+  inviteBtn: {fileID: 0}
 --- !u!222 &6003930270174870253
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -665,6 +667,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.84
+--- !u!114 &-9182421609438168562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003930270174870254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 1
+  m_AspectRatio: 6.52
 --- !u!1 &6003930270213370601
 GameObject:
   m_ObjectHideFlags: 0
