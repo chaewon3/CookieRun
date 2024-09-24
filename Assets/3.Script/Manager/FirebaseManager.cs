@@ -180,7 +180,6 @@ public class FirebaseManager : MonoBehaviour
         callback?.Invoke();
     }
 
-
     public async void FriendRequest(string freindname)
     {
         //이름으로된 테이블에서 해당하는 유저id 가져옴
@@ -231,6 +230,24 @@ public class FirebaseManager : MonoBehaviour
 
         await requestListRef.RemoveValueAsync();
         callback?.Invoke();
+    }
+    public async void GetPartyData(string username, Action<UserData> callback)
+    {
+        DatabaseReference friendRef = DB.GetReference($"names/{username}");
+        DataSnapshot friendsnapshot = await friendRef.GetValueAsync();
+        string json = friendsnapshot.GetRawJsonValue();
+        var jsonObj = JObject.Parse(json);
+        string friendID = jsonObj.Properties().First().Value.ToString();
+
+        DatabaseReference Ref = DB.GetReference($"users/{friendID}");
+        DataSnapshot snapshot = await Ref.GetValueAsync();
+
+        if(snapshot.Exists)
+        {
+            string userjson = snapshot.GetRawJsonValue();
+            UserData data = JsonConvert.DeserializeObject<UserData>(userjson);
+            callback?.Invoke(data);
+        }
     }
     public async void GetStage(StageSO data, Action<StageData> callback)
     {

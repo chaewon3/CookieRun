@@ -9,10 +9,11 @@ public class PanelManager : MonoBehaviour
 
     public GameObject Main;
     public GameObject Play;
-    public GameObject Stage;
+    public GameObject Story;
+    public GameObject Raid;
+
     public GameObject Stageinfo;
     public GameObject invite;
-
     public GameObject Setting;
     public GameObject Dialog;
     public GameObject SceneChange;
@@ -29,8 +30,9 @@ public class PanelManager : MonoBehaviour
             {
                 { "Main", Main },
                 { "Play", Play },
-                { "Stage", Stage },
+                { "Story", Story },
                 { "StageInfo", Stageinfo },
+                { "Raid", Raid},
                 { "Invite", invite},
                 { "Setting", Setting },
                 { "Dialog", Dialog },
