@@ -192,16 +192,27 @@ public class RaidPanel : MonoBehaviourPunCallbacks
     }
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
-        if(changedProps.ContainsKey("Ready"))
+        if (changedProps.ContainsKey("GameLoad") )
+        {
+            bool GameLoad = (bool)changedProps["GameLoad"];
+            print("ÁØºñ®c");
+            if (CheckReady("GameLoad"))
+                LoadingManager.instance.SceneChange();
+            return;
+        }
+
+        if (changedProps.ContainsKey("Ready"))
         {
             bool isReady = (bool)changedProps["Ready"];
             if (targetPlayer != PhotonNetwork.LocalPlayer)
                 ReadyToggle[targetPlayer.ActorNumber].gameObject.SetActive(isReady);
-            if (PhotonNetwork.IsMasterClient && isReady)
+            if (isReady)
             {
-                CheckReady();
+                if (CheckReady("Ready"))
+                    GameStart();
             }
         }
+       
     }
     void JoinPlayer(Player player)
     {// todo : ÇÃ·¹ÀÌ¾î Á¤º¸¿¡¼­ ÄíÅ° °¡Á®¿Í¾ßÇÔ
@@ -274,31 +285,28 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         localplayer.SetCustomProperties(customProps);
     }
 
-    void CheckReady()
+    bool CheckReady(string props)
     {
-        if (playernum != PhotonNetwork.CurrentRoom.MaxPlayers) return;
-
+        //if (PhotonNetwork.CurrentRoom.MaxPlayers != playernum) return false;
         foreach(Player player in PhotonNetwork.CurrentRoom.Players.Values)
         {
-            if(player.CustomProperties.TryGetValue("Ready", out object isReady))
+            if(player.CustomProperties.TryGetValue(props, out object isReady))
             {
                 if(isReady is bool ready && !ready)
                 {
-                    return;
+                    return false;
                 }
             }
             else
             {
-                return;
+                return false;
             }
         }
-
-        GameStart();
+        return true;
     }
 
     void GameStart()
     {
-        print("°ÔÀÓ ½ÃÀÛ");
         foreach(Player player in PhotonNetwork.CurrentRoom.Players.Values)
         { //ÄíÅ°Á¤º¸µµ ³Ö¾î¾ß ÇÔ
             UserData partydata = new UserData();
@@ -310,6 +318,12 @@ public class RaidPanel : MonoBehaviourPunCallbacks
 
         //·ÎµùÈ­¸é¶ç¿ì°í ¾À ÀÌµ¿
         LoadingManager.instance.currentScene = "RaidScene";
-        LoadingManager.instance.SceneLoad(); // ·Îµù½Ã°£ ´Ã¸±Áö´Â ÂÉ±Ý °í¹Î
+        LoadingManager.instance.PhotonLoadgame(()=>
+        {
+            Player localplayer = PhotonNetwork.LocalPlayer;
+            Hashtable customProps = localplayer.CustomProperties;
+            customProps["GameLoad"] = true;
+            localplayer.SetCustomProperties(customProps);
+        }); 
     }
 }

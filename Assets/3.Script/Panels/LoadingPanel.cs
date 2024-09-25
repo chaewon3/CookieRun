@@ -19,7 +19,6 @@ public class LoadingPanel : MonoBehaviour
     private void OnEnable()
     {
         LoadImg.gameObject.SetActive(true);
-        print(LoadImg.gameObject);
         raidLoading.SetActive(false);
         RandomImage();
     }

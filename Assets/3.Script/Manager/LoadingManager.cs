@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class LoadingManager : MonoBehaviour
 {
@@ -69,5 +72,19 @@ public class LoadingManager : MonoBehaviour
            changeEffect.SetActive(true);
         yield return new WaitForSeconds(1f);
         asyncLoad.allowSceneActivation = true;
+    }
+    
+    public async void PhotonLoadgame(Action callback)
+    {
+        asyncLoad = SceneManager.LoadSceneAsync(currentScene);
+        asyncLoad.allowSceneActivation = false;
+
+        float time = 0;
+        while(!asyncLoad.isDone && time <= 3f)
+        {
+            time += Time.deltaTime;
+            await Task.Yield();
+        }
+        callback?.Invoke();
     }
 }
