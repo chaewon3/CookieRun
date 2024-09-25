@@ -44,6 +44,6 @@ public class ResultPanel : MonoBehaviour
 
     public void Restart()
     {
-        LoadingManager.instance.SceneLoading();
+        LoadingManager.instance.SceneLoad();
     }
 }

@@ -38,7 +38,7 @@ public class LoginPanel : MonoBehaviour
                 PhotonNetwork.ConnectUsingSettings();
                 if (LoadingManager.instance == null)
                     print("????");
-                LoadingManager.instance.Scenechange();
+                LoadingManager.instance.SceneChange();
             },
             (msg) =>
             {

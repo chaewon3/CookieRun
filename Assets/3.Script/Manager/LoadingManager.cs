@@ -12,7 +12,7 @@ public class LoadingManager : MonoBehaviour
     private AsyncOperation asyncLoad;
     public string currentScene = "LobbyScene";
     public GameObject touchBtn;
-    public GameObject SceneChange;
+    private GameObject changeEffect;
 
     private void Awake()
     {
@@ -36,12 +36,16 @@ public class LoadingManager : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        SceneChange = GameObject.Find("SceneChange");
+        changeEffect = GameObject.Find("SceneChange");
     }
-
-    public void SceneLoading()
+    public void SceneLoad()
     {
         StartCoroutine(LoadGame(currentScene));
+    }
+
+    public void SceneChange()
+    {
+        StartCoroutine(Change());
     }
 
     private IEnumerator LoadGame(string scene)
@@ -56,18 +60,13 @@ public class LoadingManager : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
+        SceneChange();
+    }        
 
-        StartCoroutine(Change());
-    }
-
-    public void Scenechange()
+    private IEnumerator Change()
     {
-        StartCoroutine(Change());
-    }
-
-    public IEnumerator Change()
-    {
-        SceneChange.SetActive(true);
+        if(changeEffect!= null)
+           changeEffect.SetActive(true);
         yield return new WaitForSeconds(1f);
         asyncLoad.allowSceneActivation = true;
     }

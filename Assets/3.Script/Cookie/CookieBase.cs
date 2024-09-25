@@ -18,7 +18,7 @@ public class CookieBase : MonoBehaviour, ICookie
     public float SkillCoolTimeFillAmount => SkillCT/Data.skillCT;
     public float UltimateCT { get; protected set; } = 0;
     public float UltimateCoolTimeFillAmount => UltimateCT/Data.ultimateCT;
-    public Sprite CutSceneIcon => Data.icon;
+    public Sprite CutSceneIcon => Data.portrait;
     public int CurrentHP { get; set; }
     public float HPPer => (float)CurrentHP/maxHP;
 

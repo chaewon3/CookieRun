@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scene/1-1.unity
     guid: 7682330fd52d2f84a97ce9b5c302a430
+  - enabled: 1
+    path: Assets/1.Scene/RaidScene.unity
+    guid: ffd0a33a1f4b84c419238e354ac0a49c
   m_configObjects: {}

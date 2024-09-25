@@ -9,6 +9,7 @@ public class Gamemanager : MonoBehaviour
     public StageData CurrentStage { get; set; }
     public CookieData[] cookies = new CookieData[3];
     public Dictionary<int, UserData> players = new Dictionary<int, UserData>();
+    public Dictionary<int, CookieData> playersCookie = new Dictionary<int, CookieData>();
 
     private void Awake()
     {

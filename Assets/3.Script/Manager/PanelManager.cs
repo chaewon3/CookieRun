@@ -20,7 +20,7 @@ public class PanelManager : MonoBehaviour
     public GameObject Setting;
     public DialogPanel Dialog;
     public GameObject SceneChange;
-    public GameObject Loading;
+    public LoadingPanel Loading;
 
     private Dictionary<string, GameObject> panelTable;
 
@@ -40,7 +40,7 @@ public class PanelManager : MonoBehaviour
                 { "Setting", Setting },
                 { "Dialog", Dialog.gameObject },
                 {"SceneChange", SceneChange },
-                {"Loading", Loading }
+                {"Loading", Loading.gameObject }
             };
         }
         SceneChange.SetActive(true);
@@ -71,6 +71,11 @@ public class PanelManager : MonoBehaviour
         panelTable[panelName].SetActive(true);
     }
 
+    public void RaidLoading()
+    {
+        panelTable["Loading"].SetActive(true);
+        Loading.RaidLoading();
+    }
     public IEnumerator ChangeAnimation(string panelName)
     {
         PanelOpen("SceneChange");

@@ -35,9 +35,8 @@ public class StageInfo : MonoBehaviour
     {
         PanelManager.instance.PanelOpen("Loading");
         Gamemanager.instance.CurrentStage = stage;
-        print($"stage : {Gamemanager.instance.CurrentStage.Data.Stagename}");
         LoadingManager.instance.currentScene = stage.Data.Stagename;
-        LoadingManager.instance.SceneLoading();
+        LoadingManager.instance.SceneLoad();
         //로딩매니저 current scene에 data.name;
     }
 }

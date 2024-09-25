@@ -7,14 +7,25 @@ public enum Grade
     EPIC
 }
 
+public enum Type
+{
+    Fire,
+    Water,
+    Light,
+    Dark,
+    Wind,
+    Ground
+}
+
 [CreateAssetMenu(fileName = "Cookie", menuName = "CookieRun/Add Cookie")]
 public class CookieSO : ScriptableObject
 {
     public int tableId;
     public string name;
     public Grade grade;
+    public Type type;
     public GameObject ModelPrefab;
-    public Sprite icon;
+    public Sprite portrait;
 
     [Header("Info")]
 

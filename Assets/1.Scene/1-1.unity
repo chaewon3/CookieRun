@@ -9537,7 +9537,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.05
+  m_fontSize: 39.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10169,7 +10169,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.6
+  m_fontSize: 22.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -50817,7 +50817,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.1
+  m_fontSize: 26.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -54130,7 +54130,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.6125}
   m_AnchorMax: {x: 0.40500003, y: 0.938}
   m_AnchoredPosition: {x: -202, y: 0}
-  m_SizeDelta: {x: 406.1024, y: 0}
+  m_SizeDelta: {x: 284.0512, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1265116336
 MonoBehaviour:
@@ -61092,13 +61092,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa62e2d10ea06044d9321b87fa00b30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missions: 000000000300000002000000
+  data:
+    isClear: 0
+    Jellies: 
+    Missions: 
   missionsText:
   - "\uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4\uD558\uAE30"
   - "\uBAA8\uB4E0 \uD683\uBD88\uC5D0 \uBD88 \uBD99\uC774\uAE30"
   - "02:30 \uC548\uC5D0 \uD074\uB9AC\uC5B4\uD558\uAE30"
   maxTime: 300
-  cleartime: 150
 --- !u!4 &1427342976
 Transform:
   m_ObjectHideFlags: 0
