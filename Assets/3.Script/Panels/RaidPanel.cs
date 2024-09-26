@@ -310,9 +310,11 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
         { //쿠키정보도 넣어야 함
             UserData partydata = new UserData();
+            CookieData cookiedata;
             FirebaseManager.instance.GetPartyData(player.NickName, (data) =>
             {
                 Gamemanager.instance.players.Add(player.ActorNumber, data);
+                //Gamemanager.instance.playersCookie.Add(player.ActorNumber, cookiedata);
                 countPlayer++;
                 if (countPlayer == PhotonNetwork.CurrentRoom.MaxPlayers)
                     PanelManager.instance.RaidLoading();

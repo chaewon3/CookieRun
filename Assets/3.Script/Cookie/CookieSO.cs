@@ -17,10 +17,17 @@ public enum Type
     Ground
 }
 
+public enum Cookies
+{
+    BraveCookie,
+    Creamsoda,
+    lemonZest
+}
+
 [CreateAssetMenu(fileName = "Cookie", menuName = "CookieRun/Add Cookie")]
 public class CookieSO : ScriptableObject
 {
-    public int tableId;
+    public Cookies cookie;
     public string name;
     public Grade grade;
     public Type type;

@@ -8,7 +8,7 @@ public class CookieData
 {
     private CookieSO data;
     public CookieSO Data { get => data; set => data = value; }
-    public int tableId;
+    public Cookies cookie;
     public int level;
     public int HP;
     public int ATK;
@@ -20,20 +20,20 @@ public class CookieData
     {
         this.data = data;
         this.level = level;
-        tableId = data.tableId;
+        cookie = data.cookie;
         HP = data.baseHP;
         ATK = data.baseATK;
         DEF = data.baseDEF;
     }
 
-    // 안써도 될거같기도? 나중에 저장할때 테스트해보고 지우기
-    public CookieData(CookieSO data, int level, int HP, int ATK, int DEF, int[] equipment) : this(data, level)
+    public CookieData(CookieSO SOdata, CookieData data) : this(SOdata, data.level)
     {
-        this.equipment = equipment;
-        this.HP = HP;
-        this.ATK = ATK;
-        this.DEF = DEF;
+        this.equipment = data.equipment;
+        this.HP = data.HP;
+        this.ATK = data.ATK;
+        this.DEF = data.DEF;
     }
+
 
     public void levelUP()
     { // todo : 레벨업 제한은 버튼에서 할 것

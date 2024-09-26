@@ -24,6 +24,7 @@ public class FirebaseManager : MonoBehaviour
     public event Action onInit;
 
     public UserData userData;
+    public CookieList cookieList;
     public DatabaseReference userRef;
     public DatabaseReference inviteRef;
 
@@ -70,6 +71,14 @@ public class FirebaseManager : MonoBehaviour
             UserData userData = new UserData(result.User.UserId);
             string userDataJson = JsonConvert.SerializeObject(userData);
             await userRef.SetRawJsonValueAsync(userDataJson);
+
+            CookieList cookieList = new CookieList();
+            foreach(CookieData cookie in cookieList.cookies)
+            {
+                DatabaseReference cookieRef = DB.GetReference($"cookieList/{result.User.UserId}/{cookie.cookie.ToString()}");
+                string cookielistJson = JsonConvert.SerializeObject(cookie);
+                await cookieRef.SetRawJsonValueAsync(cookielistJson);
+            }
 
             callback?.Invoke(result.User);
 

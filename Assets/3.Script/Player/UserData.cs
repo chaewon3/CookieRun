@@ -4,13 +4,6 @@ using System.Collections.Generic;
 [Serializable]
 public class UserData
 {
-    public enum Cookies
-    {
-        BraveCookie,
-        Creamsoda,
-        lemonZest
-    }
-
     public string userid;
     public string username;
     public int level;
@@ -36,7 +29,14 @@ public class UserData
 [Serializable]
 public class CookieList
 {
+    public List<CookieData> cookies = new List<CookieData>();
 
+    public CookieList ()
+    {
+        //쿠키SO 목록에서 BraveCookie인 쿠키를 가져와 그 쿠키 SO로 데이터 생성, 쿠키 리스트에 Add.
+        //CookieData commoncookie = new CookieData();
+        //cookies.Add();
+    }
 }
 
 [Serializable]
