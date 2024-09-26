@@ -195,7 +195,6 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         if (changedProps.ContainsKey("GameLoad") )
         {
             bool GameLoad = (bool)changedProps["GameLoad"];
-            print("ÁØºñ®c");
             if (CheckReady("GameLoad"))
                 LoadingManager.instance.SceneChange();
             return;
@@ -287,7 +286,7 @@ public class RaidPanel : MonoBehaviourPunCallbacks
 
     bool CheckReady(string props)
     {
-        //if (PhotonNetwork.CurrentRoom.MaxPlayers != playernum) return false;
+        if (PhotonNetwork.CurrentRoom.MaxPlayers != playernum) return false;
         foreach(Player player in PhotonNetwork.CurrentRoom.Players.Values)
         {
             if(player.CustomProperties.TryGetValue(props, out object isReady))
@@ -307,14 +306,19 @@ public class RaidPanel : MonoBehaviourPunCallbacks
 
     void GameStart()
     {
-        foreach(Player player in PhotonNetwork.CurrentRoom.Players.Values)
+        int countPlayer = 0;
+        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
         { //ÄíÅ°Á¤º¸µµ ³Ö¾î¾ß ÇÔ
             UserData partydata = new UserData();
-            FirebaseManager.instance.GetPartyData(player.NickName, (data) => partydata = data);
+            FirebaseManager.instance.GetPartyData(player.NickName, (data) =>
+            {
+                Gamemanager.instance.players.Add(player.ActorNumber, data);
+                countPlayer++;
+                if (countPlayer == PhotonNetwork.CurrentRoom.MaxPlayers)
+                    PanelManager.instance.RaidLoading();
 
-            Gamemanager.instance.players.Add(player.ActorNumber, partydata);
+            });
         }
-        PanelManager.instance.RaidLoading();
 
         //·ÎµùÈ­¸é¶ç¿ì°í ¾À ÀÌµ¿
         LoadingManager.instance.currentScene = "RaidScene";

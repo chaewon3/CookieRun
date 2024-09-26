@@ -40,6 +40,8 @@ public class LoadingPanel : MonoBehaviour
             UserData data = Gamemanager.instance.players[player.ActorNumber];
             var portrait = Instantiate(portraitPrefab, portraitContent.transform).GetComponent<PlayerTag>();
             portrait.name.text = data.username;
+            if (player == PhotonNetwork.LocalPlayer)
+                portrait.localplayer = true;
 
         }
     }

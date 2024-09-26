@@ -270,7 +270,6 @@ public class FirebaseManager : MonoBehaviour
         string json = friendsnapshot.GetRawJsonValue();
         var jsonObj = JObject.Parse(json);
         string friendID = jsonObj.Properties().First().Value.ToString();
-
         DatabaseReference Ref = DB.GetReference($"users/{friendID}");
         DataSnapshot snapshot = await Ref.GetValueAsync();
 
