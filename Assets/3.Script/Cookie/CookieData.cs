@@ -8,7 +8,7 @@ public class CookieData
 {
     private CookieSO data;
     public CookieSO Data { get => data; set => data = value; }
-    public Cookies cookie;
+    public Cookies cookie; // cookie를 key로 cookieSO를 불러올 것
     public int level;
     public int HP;
     public int ATK;

@@ -1,5 +1,28 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
+
+public class DataManager : MonoBehaviour
+{
+    public static DataManager instance;
+
+    public List<CookieSO> cookieList = new List<CookieSO>();
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
+
+    public CookieSO GetCookieSO(Cookies cookietype)
+    {
+        CookieSO SO = cookieList.Find(cookie => cookie.cookie == cookietype);
+        return SO;
+    }    
+}
 
 [Serializable]
 public class UserData
@@ -31,11 +54,19 @@ public class CookieList
 {
     public List<CookieData> cookies = new List<CookieData>();
 
-    public CookieList ()
+    public CookieList (Cookies cookie)
     {
         //쿠키SO 목록에서 BraveCookie인 쿠키를 가져와 그 쿠키 SO로 데이터 생성, 쿠키 리스트에 Add.
-        //CookieData commoncookie = new CookieData();
-        //cookies.Add();
+        if (DataManager.instance == null)
+            Debug.Log("왜없지");
+        CookieData commoncookie = new CookieData(DataManager.instance.GetCookieSO(cookie));
+        cookies.Add(commoncookie);
+    }
+
+    public void AddCookie(CookieData data)
+    {
+        CookieData cookie = new CookieData(DataManager.instance.GetCookieSO(data.cookie), data);
+        cookies.Add(data);
     }
 }
 

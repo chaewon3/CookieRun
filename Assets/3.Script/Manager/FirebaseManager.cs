@@ -72,7 +72,7 @@ public class FirebaseManager : MonoBehaviour
             string userDataJson = JsonConvert.SerializeObject(userData);
             await userRef.SetRawJsonValueAsync(userDataJson);
 
-            CookieList cookieList = new CookieList();
+            CookieList cookieList = new CookieList(Cookies.BraveCookie);
             foreach(CookieData cookie in cookieList.cookies)
             {
                 DatabaseReference cookieRef = DB.GetReference($"cookieList/{result.User.UserId}/{cookie.cookie.ToString()}");
@@ -105,6 +105,15 @@ public class FirebaseManager : MonoBehaviour
                 inviteRef = DB.GetReference($"invite/{result.User.UserId}");
                 await inviteRef.SetValueAsync(true);
                 inviteRef.ChildAdded += ReceiveInvitation;
+
+                DatabaseReference cookieRef = DB.GetReference($"cookieList/{result.User.UserId}");
+                DataSnapshot cookiesnap = await cookieRef.GetValueAsync();
+                foreach(var childsnap in cookiesnap.Children)
+                {
+                    string cookiejson = childsnap.GetRawJsonValue();
+                    CookieData cookiedata = JsonConvert.DeserializeObject<CookieData>(cookiejson);
+                    cookieList.AddCookie(cookiedata);
+                }
             }
             else
             {

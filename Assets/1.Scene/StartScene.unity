@@ -153,7 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScene: LobbyScene
   touchBtn: {fileID: 1968543784}
-  SceneChange: {fileID: 548980232}
 --- !u!4 &11622252
 Transform:
   m_ObjectHideFlags: 0
@@ -1875,6 +1874,8 @@ MonoBehaviour:
     heart: 0
     coin: 0
     representCookie: 0
+  cookieList:
+    cookies: []
   friendData:
     friends: []
     friendRequest: []
@@ -3359,6 +3360,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751535694}
   m_CullTransparentMesh: 1
+--- !u!1 &1765855809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1765855811}
+  - component: {fileID: 1765855810}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1765855810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765855809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a0a02af5e2f3f419a5fceb20aa64d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookieList:
+  - {fileID: 11400000, guid: 18c8c3b3e3f394f469d3bff0172b0c4b, type: 2}
+--- !u!4 &1765855811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765855809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.8135357, y: 20.810339, z: -34.354515}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1825791748
 GameObject:
   m_ObjectHideFlags: 0
