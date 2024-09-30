@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class CookieBase : MonoBehaviour, ICookie
 {
@@ -24,11 +25,15 @@ public class CookieBase : MonoBehaviour, ICookie
     protected int maxHP;
     protected int ATK;
     protected int DEF;
-
+    protected PhotonView photonView;
     public virtual void Awake()
     {
-        cc = GetComponentInParent<CharacterController>();
-        anim = GetComponent<Animator>();       
+        if(PhotonNetwork.IsConnected)
+        {
+            if (!(photonView = GetComponent<PhotonView>()).IsMine)
+                this.GetComponent<CookieBase>().enabled = false;
+        }
+        
     }
     private void Start()
     {
@@ -37,7 +42,8 @@ public class CookieBase : MonoBehaviour, ICookie
         CurrentHP = maxHP;
         ATK = Cookie.ATK;
         DEF = Cookie.DEF;
-
+        cc = GetComponentInParent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
 
     public virtual void Update()

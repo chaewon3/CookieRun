@@ -11,7 +11,6 @@ public class RaidManager : MonoBehaviour
     public RaidManager instance { get; set; }
 
     public GameObject[] PlayerPositions;
-    public GameObject localPlayer;
     public InputActionAsset playerMove;
     public CinemachineVirtualCamera camera;
 
@@ -36,20 +35,26 @@ public class RaidManager : MonoBehaviour
             CookieData data = playersCookie[player.ActorNumber];
             if (player == PhotonNetwork.LocalPlayer)
             {
-                var playerInput = PlayerPositions[playernum].GetComponent<PlayerInput>();
-                CookieBase localCK = Instantiate(data.Data.ModelPrefab, PlayerPositions[playernum].transform).GetComponent<CookieBase>();
-                //PhotonNetwork.Instantiate
+                GameObject localPL = PhotonNetwork.Instantiate("LocalPlayer", PlayerPositions[playernum].transform.position, PlayerPositions[playernum].transform.rotation);
+                var playerInput = localPL.AddComponent<PlayerInput>();
+                playerInput.actions = playerMove;
+                playerInput.defaultControlScheme = "PC";
+                playerInput.defaultActionMap = "PlayerAction";
+                playerInput.ActivateInput();
+                localPL.AddComponent<PlayerMove>();
+
+                CookieBase localCK = PhotonNetwork.Instantiate($"{data.cookie.ToString()}", PlayerPositions[playernum].transform.position, PlayerPositions[playernum].transform.rotation).GetComponent<CookieBase>();
                 localCK.Cookie = data;
                 camera.Follow = PlayerPositions[playernum].transform;
 
-                playerInput.enabled = true;
-                PlayerPositions[playernum].GetComponent<PlayerMove>().enabled = true;
+                int parentid = localPL.GetComponent<PhotonView>().ViewID;
+                int childid = localCK.gameObject.GetComponent<PhotonView>().ViewID;
+                PhotonView photonView = localPL.GetComponent<PhotonView>();
+                photonView.RPC("SetParent", RpcTarget.All, childid, parentid);
             }
-            else
-            {
-                GameObject CK = Instantiate(data.Data.LobbyPrefab, PlayerPositions[playernum].transform);
-            }
+
             playernum++;
         }
     }
+    
 }

@@ -35,7 +35,7 @@ public class LoadingPanel : MonoBehaviour
     {
         LoadImg.gameObject.SetActive(false);
         raidLoading.SetActive(true);
-        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
+        foreach (Player player in PhotonNetwork.PlayerList)
         {
             UserData data = Gamemanager.instance.playersData[player.ActorNumber];
             var portrait = Instantiate(portraitPrefab, portraitContent.transform).GetComponent<PlayerTag>();

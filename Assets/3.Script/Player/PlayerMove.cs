@@ -17,10 +17,14 @@ public class PlayerMove : MonoBehaviour
     Vector3 rotate = Vector3.zero;
 
 
-    private void Start()
+    private IEnumerator Start()
     {
-        Cookie = GetComponentInChildren<ICookie>();
         cc = transform.GetComponent<CharacterController>();
+        while (Cookie == null)
+        {
+            Cookie = GetComponentInChildren<ICookie>();
+            yield return null;
+        }
         moveSpeed = Cookie.moveSpeed;
         Gamemanager.instance.canMove = true;
     }
@@ -112,5 +116,6 @@ public class PlayerMove : MonoBehaviour
             cc.transform.rotation = Quaternion.Euler(rotate);
         }
     }
-    
+
+   
 }
