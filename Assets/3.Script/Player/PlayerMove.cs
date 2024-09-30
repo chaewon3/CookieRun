@@ -17,17 +17,12 @@ public class PlayerMove : MonoBehaviour
     Vector3 rotate = Vector3.zero;
 
 
-    private void Awake()
-    {        //todo :나중에 쿠키태그시스템 생기면 직접 넣어줘야함
+    private void Start()
+    {
         Cookie = GetComponentInChildren<ICookie>();
         cc = transform.GetComponent<CharacterController>();
-        Stagemanager.instance.canMove = true;
-    }
-
-    private IEnumerator Start()
-    {
-        yield return null;
         moveSpeed = Cookie.moveSpeed;
+        Gamemanager.instance.canMove = true;
     }
 
     private void Update()
@@ -35,11 +30,9 @@ public class PlayerMove : MonoBehaviour
         if (Cookie == null)
             return;
 
-        //dir.y += Physics.gravity.y * Time.deltaTime;
         cc.Move(cc.transform.up * Physics.gravity.y * Time.deltaTime);
-        if (Stagemanager.instance.canMove)
+        if (Gamemanager.instance.canMove)
         {
-            // 이부분은?
             cc.Move(dir * moveSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(rotate);
         }  
@@ -48,7 +41,7 @@ public class PlayerMove : MonoBehaviour
     }
 
 
-    void OnMove(InputValue value)
+    public void OnMove(InputValue value)
     {
         Vector3 input = -value.Get<Vector2>();
 
@@ -63,18 +56,18 @@ public class PlayerMove : MonoBehaviour
             Cookie.anim.SetBool("IsMove", false);
     }
 
-    void OnAttack()
+    public void OnAttack()
     {
-        if(Stagemanager.instance.canMove)
+        if(Gamemanager.instance.canMove)
         {
             LootAtMouse();
             StartCoroutine(Cookie.Attack());
         }
     }
 
-    void OnSkill()
+    public void OnSkill()
     {
-        if (Stagemanager.instance.canMove)
+        if (Gamemanager.instance.canMove)
         {
             LootAtMouse();
             StartCoroutine(Cookie.Skill());
@@ -82,7 +75,7 @@ public class PlayerMove : MonoBehaviour
     }
     IEnumerator OnUltimate()
     {
-        if (Stagemanager.instance.canMove && Cookie.UltimateCT <= 0)
+        if (Gamemanager.instance.canMove && Cookie.UltimateCT <= 0)
         {
             LootAtMouse();
             StartCoroutine(Cookie.Ultimate());
@@ -90,7 +83,7 @@ public class PlayerMove : MonoBehaviour
             UltimateAction?.Invoke();
         }
     }
-    void OnDash()
+    public void OnDash()
     {
         if (Cookie.DashCT <= 0)
         {
@@ -103,7 +96,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    void LootAtMouse() //PC플랫폼일때만
+    public void LootAtMouse() //PC플랫폼일때만
     {
         Vector3 mouseScreen = Mouse.current.position.ReadValue();
         RaycastHit hit;

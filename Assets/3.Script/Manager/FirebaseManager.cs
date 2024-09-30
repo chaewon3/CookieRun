@@ -128,6 +128,7 @@ public class FirebaseManager : MonoBehaviour
         }
         catch (Exception e)
         {
+            print(e.Message);
             failurecallback?.Invoke("유저정보가 없습니다. 회원가입을 진행해주세요.");
         }
     }
@@ -295,6 +296,7 @@ public class FirebaseManager : MonoBehaviour
         {
             string userjson = snapshot.GetRawJsonValue();
             UserData data = JsonConvert.DeserializeObject<UserData>(userjson);
+            print(data.username) ;
             callback?.Invoke(data);
         }
     }
@@ -317,6 +319,24 @@ public class FirebaseManager : MonoBehaviour
             await Ref.SetRawJsonValueAsync(stageDataJson);
 
             callback?.Invoke(stagedata);
+        }
+    }
+
+    public async void GetCookieData(string userid, Cookies cookie, Action<CookieData> callback)
+    {
+        DatabaseReference Ref = DB.GetReference($"cookieList/{userData.userid}/{cookie.ToString()}");
+        DataSnapshot snapshot = await Ref.GetValueAsync();
+        if (snapshot.Exists)
+        { // 데이터가 있으면 가져와서 덮어씀
+            string json = snapshot.GetRawJsonValue();
+            CookieData cookiedata = JsonConvert.DeserializeObject<CookieData>(json);
+            cookiedata = new CookieData (DataManager.instance.GetCookieSO(cookiedata.cookie), cookiedata);
+            print($"쿠키{cookiedata.cookie.ToString()}");
+            callback?.Invoke(cookiedata);
+        }
+        else
+        {
+            print("없음");
         }
     }
 }

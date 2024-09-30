@@ -54,6 +54,7 @@ public class CookieList
 {
     public List<CookieData> cookies = new List<CookieData>();
 
+    public CookieList() { }
     public CookieList (Cookies cookie)
     {
         //쿠키SO 목록에서 BraveCookie인 쿠키를 가져와 그 쿠키 SO로 데이터 생성, 쿠키 리스트에 Add.

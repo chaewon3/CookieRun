@@ -20,7 +20,6 @@ public class Stagemanager : MonoBehaviour
     public float time { get; private set; }
     public bool ClearGame { get; set; }
 
-    public bool canMove { get; set; }
     public bool onGame { get; set; } = true;
     public Dictionary<GameObject, bool> Torch = new Dictionary<GameObject, bool>();
     public Dictionary<GameObject, bool> Jelly = new Dictionary<GameObject, bool>();

@@ -120,17 +120,6 @@
                 },
                 {
                     "name": "",
-                    "id": "6f5b1d57-8429-454e-99e4-6bb0020c8396",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mobile",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "45df30ee-c607-475a-bab5-f8e6019797b2",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -177,17 +166,6 @@
                 },
                 {
                     "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "Mobile",
-            "bindingGroup": "Mobile",
-            "devices": [
-                {
-                    "devicePath": "<Touchscreen>",
                     "isOptional": false,
                     "isOR": false
                 }

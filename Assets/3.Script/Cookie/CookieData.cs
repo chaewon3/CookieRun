@@ -1,4 +1,5 @@
 using UnityEngine;
+using Newtonsoft.Json;
 
 /// <summary>
 /// 저장용 데이터클래스
@@ -6,7 +7,9 @@ using UnityEngine;
 [System.Serializable]
 public class CookieData
 {
+    [JsonIgnore]
     private CookieSO data;
+    [JsonIgnore]
     public CookieSO Data { get => data; set => data = value; }
     public Cookies cookie; // cookie를 key로 cookieSO를 불러올 것
     public int level;
@@ -16,6 +19,7 @@ public class CookieData
 
     public int[] equipment = new int[4];
 
+    public CookieData() { }
     public CookieData(CookieSO data, int level = 1)
     {
         this.data = data;

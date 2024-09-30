@@ -32,6 +32,7 @@ public class CookieSO : ScriptableObject
     public Grade grade;
     public Type type;
     public GameObject ModelPrefab;
+    public GameObject LobbyPrefab;
     public Sprite portrait;
 
     [Header("Info")]

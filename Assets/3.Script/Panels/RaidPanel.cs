@@ -71,7 +71,7 @@ public class RaidPanel : MonoBehaviourPunCallbacks
 
     public void Start()
     { //todo : 쿠키리스트부터 만들고 거기서 가져와야할듯?
-        GameObject cookie = Instantiate(Data.ModelPrefab, cookiePositions[0]);
+        GameObject cookie = Instantiate(Data.LobbyPrefab, cookiePositions[0]);
         cookie.GetComponent<Animator>().runtimeAnimatorController = Data.ChairAnim;
         var tag = Instantiate(playertagPrefab, icons.transform).GetComponent<PlayerTag>();
         tag.gameObject.transform.position = mainCam.WorldToScreenPoint(cookiePositions[0].position + Vector3.up * 30+Vector3.right*3);
@@ -220,7 +220,7 @@ public class RaidPanel : MonoBehaviourPunCallbacks
 
         object isReady = player.CustomProperties.TryGetValue("Ready", out object ready);
 
-        GameObject PlayerCookie = Instantiate(Data.ModelPrefab, cookiePositions[playernum]);
+        GameObject PlayerCookie = Instantiate(Data.LobbyPrefab, cookiePositions[playernum]);
         PlayerCookie.GetComponent<Animator>().runtimeAnimatorController = Data.ChairAnim;
         var tag = Instantiate(playertagPrefab, icons.transform).GetComponent<PlayerTag>();
         tag.gameObject.transform.position = mainCam.WorldToScreenPoint(cookiePositions[playernum].position + Vector3.up * 30 + Vector3.right * 3);
@@ -269,7 +269,7 @@ public class RaidPanel : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.InRoom) return;
         foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
-        {   
+        {
             if (player == PhotonNetwork.LocalPlayer) continue;
             JoinPlayer(player);
         }
@@ -309,12 +309,16 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         int countPlayer = 0;
         foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
         { //쿠키정보도 넣어야 함
-            UserData partydata = new UserData();
-            CookieData cookiedata;
             FirebaseManager.instance.GetPartyData(player.NickName, (data) =>
             {
-                Gamemanager.instance.players.Add(player.ActorNumber, data);
-                //Gamemanager.instance.playersCookie.Add(player.ActorNumber, cookiedata);
+                Gamemanager.instance.playersData.Add(player.ActorNumber, data);
+
+                CookieData cookiedata;
+                FirebaseManager.instance.GetCookieData(data.userid, data.representCookie, (cookiedata) =>
+                    {
+                        Gamemanager.instance.playersCookie.Add(player.ActorNumber, cookiedata);
+                    });
+
                 countPlayer++;
                 if (countPlayer == PhotonNetwork.CurrentRoom.MaxPlayers)
                     PanelManager.instance.RaidLoading();

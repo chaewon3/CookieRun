@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3101607efaf6634990bed88e7b1dfb7, type: 3}
   m_Name: Cookie002
   m_EditorClassIdentifier: 
-  tableId: 2
+  cookie: 0
   name: "\uD06C\uB9BC\uC18C\uB2E4\uB9DB \uCFE0\uD0A4"
   grade: 2
   type: 1
   ModelPrefab: {fileID: 4291244144323091323, guid: 0c554768be213e449a60e7227088e476, type: 3}
+  LobbyPrefab: {fileID: 4291244144323091323, guid: b139982ea861d0c40a0c5c3dbc384616, type: 3}
   portrait: {fileID: 21300000, guid: 5133f29faddc95749a98d325853ec780, type: 3}
   moveSpeed: 5
   baseHP: 283

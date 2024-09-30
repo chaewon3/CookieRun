@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class CookieBase : MonoBehaviour, ICookie
 {
-    [SerializeField]
     protected CookieSO Data;
-    CookieData Cookie { get; set; }
+    public CookieData Cookie { get; set; }
         
     protected CharacterController cc;
     public Animator anim { get; protected set; } // 애니메이션 클립 쿠키데이터에..?
@@ -29,20 +28,18 @@ public class CookieBase : MonoBehaviour, ICookie
     public virtual void Awake()
     {
         cc = GetComponentInParent<CharacterController>();
-        GameObject cookie = Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
-        anim = GetComponentInChildren<Animator>();       
+        anim = GetComponent<Animator>();       
     }
     private void Start()
     {
-        if(Cookie == null)
-        {
-            Cookie = new CookieData(Data); // todo : 이거저장데이터에서 가져와야함??
-        }
+        Data = Cookie.Data;
         maxHP = Data.baseHP;
         CurrentHP = maxHP;
         ATK = Cookie.ATK;
         DEF = Cookie.DEF;
+
     }
+
     public virtual void Update()
     {
         if (DashCT > 0)
@@ -79,7 +76,7 @@ public class CookieBase : MonoBehaviour, ICookie
             CurrentHP = 0;
             anim.SetTrigger("Die");
             Stagemanager.instance.onGame = false;
-            Stagemanager.instance.canMove = false;
+            Gamemanager.instance.canMove = false;
         }
     }
 }

@@ -16,7 +16,7 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Stagemanager.instance.canMove = false;
+        Gamemanager.instance.canMove = false;
         Stagemanager.instance.onGame = false;
         Stagemanager.instance.ClearGame = true;
         StartCoroutine(Effect());
