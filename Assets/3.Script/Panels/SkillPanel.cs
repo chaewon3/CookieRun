@@ -25,7 +25,7 @@ public class SkillPanel : MonoBehaviour
 
     public PlayerMove player;
 
-    private void Awake()
+    private void Start()
     {
         player = FindObjectOfType<PlayerMove>();
         player.UltimateAction += () =>

@@ -11,8 +11,14 @@ public class RaidManager : MonoBehaviour
     public RaidManager instance { get; set; }
 
     public GameObject[] PlayerPositions;
+    public GameObject[] BossPositions;
     public InputActionAsset playerMove;
     public CinemachineVirtualCamera camera;
+    public GameObject warfPanel; 
+
+    int playerEnter = 0;
+    int loaclPLNum;
+    PhotonView photonView;
 
     public Dictionary<int, UserData> players { get; private set; } = new Dictionary<int, UserData>();
     public Dictionary<int, CookieData> playersCookie { get; private set; } = new Dictionary<int, CookieData>();
@@ -29,8 +35,36 @@ public class RaidManager : MonoBehaviour
 
     private void Start()
     {
+        CreatePlayer();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        LayerMask targetlayer = LayerMask.NameToLayer("Player");
+        if (other.gameObject.layer == targetlayer)
+        {
+            playerEnter++;
+            StartCoroutine(CheckReady());
+        }
+
+        print($"{playerEnter}현재 사람수");
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        LayerMask targetlayer = LayerMask.NameToLayer("Player");
+        if (other.gameObject.layer == targetlayer)
+        {
+            playerEnter--;
+            StopAllCoroutines();
+            warfPanel.SetActive(false);
+        }
+    }
+
+    void CreatePlayer()
+    {
         int playernum = 0;
-        foreach(Player player in PhotonNetwork.PlayerList)
+        foreach (Player player in PhotonNetwork.PlayerList)
         {
             CookieData data = playersCookie[player.ActorNumber];
             if (player == PhotonNetwork.LocalPlayer)
@@ -45,16 +79,26 @@ public class RaidManager : MonoBehaviour
 
                 CookieBase localCK = PhotonNetwork.Instantiate($"{data.cookie.ToString()}", PlayerPositions[playernum].transform.position, PlayerPositions[playernum].transform.rotation).GetComponent<CookieBase>();
                 localCK.Cookie = data;
-                camera.Follow = PlayerPositions[playernum].transform;
+                camera.Follow = localPL.transform;
 
                 int parentid = localPL.GetComponent<PhotonView>().ViewID;
                 int childid = localCK.gameObject.GetComponent<PhotonView>().ViewID;
-                PhotonView photonView = localPL.GetComponent<PhotonView>();
+                photonView = localPL.GetComponent<PhotonView>();
                 photonView.RPC("SetParent", RpcTarget.All, childid, parentid);
+                loaclPLNum = playernum;
             }
 
             playernum++;
         }
     }
     
+    IEnumerator CheckReady()
+    {
+        if(playerEnter == 4)
+        {
+            warfPanel.SetActive(true);
+            yield return new WaitForSeconds(7);
+            photonView.RPC("WarfBoss", RpcTarget.All, BossPositions[loaclPLNum].transform.position);
+        }
+    }
 }

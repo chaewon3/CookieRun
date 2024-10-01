@@ -17,6 +17,8 @@ public class PLHPBar : MonoBehaviour
 
     private void Start()
     {
+        Player = FindObjectOfType<PlayerMove>().gameObject.transform;
+
         MainCam = Camera.main;
         cookie = Player.GetComponent<PlayerMove>().Cookie;
     }

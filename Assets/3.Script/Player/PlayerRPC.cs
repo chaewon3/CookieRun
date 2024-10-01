@@ -12,4 +12,10 @@ public class PlayerRPC : MonoBehaviour
         GameObject parent = PhotonView.Find(parentid).gameObject;
         child.transform.SetParent(parent.transform);
     }
+
+    [PunRPC]
+    public void WarfBoss(Vector3 position)
+    {
+        this.transform.position = position;
+    }
 }
