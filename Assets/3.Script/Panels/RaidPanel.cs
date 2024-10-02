@@ -101,6 +101,7 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         }
     }
 
+
     public void CreatePartyButtonClick()
     {
         if (PhotonNetwork.InRoom) return;
@@ -168,12 +169,14 @@ public class RaidPanel : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
+        print("나가짐");
         LeavePlayer();
         base.OnDisable();
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
+        print($"코드 {returnCode}, 오류 {message}");
         switch(returnCode)
         {
             case 32766: errorMsg.text = "파티가 가득 찼습니다."; break;

@@ -75072,7 +75072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61d0a76ce895baa4888701721bbf92f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Data: {fileID: 11400000, guid: 18c8c3b3e3f394f469d3bff0172b0c4b, type: 2}
 --- !u!1 &1759305385
 GameObject:
   m_ObjectHideFlags: 0
@@ -97360,7 +97359,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 7569529464010030881}
   m_HandleRect: {fileID: 0}
@@ -97402,7 +97401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a498acbdddba7be4f9ad7e8e06b203e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 2099059800}
+  Player: {fileID: 0}
   HPtext: {fileID: 229047060}
   HPbar: {fileID: 7569529464821369603}
 --- !u!114 &7569529464945470428

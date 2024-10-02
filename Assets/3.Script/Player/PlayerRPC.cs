@@ -2,9 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class PlayerRPC : MonoBehaviour
 {
+    private void Start()
+    {
+        foreach (Player player in PhotonNetwork.PlayerList)
+        {
+            PhotonView photonView = GetComponent<PhotonView>();
+            if (player == photonView.Owner)
+            {
+                HPBarPanel.instance.SetRPCHP(this.transform, player);
+            }
+        }
+
+    }
+
     [PunRPC]
     public void SetParent(int childid, int parentid)
     {

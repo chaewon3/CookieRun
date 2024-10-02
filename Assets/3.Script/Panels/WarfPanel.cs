@@ -33,4 +33,9 @@ public class WarfPanel : MonoBehaviour
         fadeout.SetActive(false); ;
         this.gameObject.SetActive(false);
     }
+
+    private void OnDisable()
+    {
+        fadeout.SetActive(false); ;
+    }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class CookieBase : MonoBehaviour, ICookie
 {
@@ -44,6 +46,7 @@ public class CookieBase : MonoBehaviour, ICookie
         DEF = Cookie.DEF;
         cc = GetComponentInParent<CharacterController>();
         anim = GetComponent<Animator>();
+        RPCHP();
     }
 
     public virtual void Update()
@@ -83,6 +86,24 @@ public class CookieBase : MonoBehaviour, ICookie
             anim.SetTrigger("Die");
             Stagemanager.instance.onGame = false;
             Gamemanager.instance.canMove = false;
+        }
+        RPCHP();
+    }
+
+    void RPCHP()
+    {
+        if (TryGetComponent<PhotonView>(out PhotonView photonview))
+        {
+            if (PhotonNetwork.InRoom && photonview.Owner == PhotonNetwork.LocalPlayer)
+            {
+                Player localplayer = PhotonNetwork.LocalPlayer;
+                Hashtable HP = localplayer.CustomProperties;
+                HP["HP"] = CurrentHP;
+                localplayer.SetCustomProperties(HP);
+                Hashtable HPPer = localplayer.CustomProperties;
+                HPPer["HPPer"] = HPPer;
+                localplayer.SetCustomProperties(HPPer);
+            }
         }
     }
 }

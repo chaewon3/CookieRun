@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Realtime;
 
 public class HPBarPanel : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class HPBarPanel : MonoBehaviour
 
     [SerializeField] GameObject HPbarPrefab = null;
     [SerializeField] GameObject DamageTextPrefab;
+    [SerializeField] GameObject RPCHPbarPrefab;
 
     List<Transform> EnemyList = new List<Transform>();
     List<GameObject> HPbarList = new List<GameObject>();
-
+    Dictionary<Transform, GameObject> HPBarList = new Dictionary<Transform, GameObject>();
     public Camera MainCam;
 
     private void Awake()
@@ -22,15 +24,14 @@ public class HPBarPanel : MonoBehaviour
             instance = this;
     }
 
-    public void SetHPPanel(Transform enemies)
+    public void SetEnemyHP(Transform enemy)
     {
-        EnemyList.Add(enemies);
-        GameObject HPbar = Instantiate(HPbarPrefab, enemies.position, Quaternion.identity, transform);
-        HPbarList.Add(HPbar);        
-
+        EnemyList.Add(enemy);
+        GameObject HPbar = Instantiate(HPbarPrefab, enemy.position, Quaternion.identity, base.transform);
+        HPbarList.Add(HPbar);
     }
 
-    public void RefreshHP(Transform enemy, int damage)
+    public void RefreshEnemyHP(Transform enemy, int damage)
     {
         int index = EnemyList.IndexOf(enemy);
 
@@ -49,8 +50,11 @@ public class HPBarPanel : MonoBehaviour
         Destroy(DamageText, .5f);        
     }
 
-    public void RemoveHPPanel(Transform enemies)
+    public void RemoveEnemyHP(Transform enemies)
     {
+        Destroy(HPBarList[enemies]);
+        HPBarList.Remove(enemies);
+
         int index = EnemyList.IndexOf(enemies);
         if(index != -1)
         {
@@ -60,7 +64,18 @@ public class HPBarPanel : MonoBehaviour
         }
     }
 
-    
+    public void SetRPCHP(Transform transform, Player player)
+    {
+        GameObject HPbar = Instantiate(RPCHPbarPrefab, transform.position, Quaternion.identity, base.transform);
+        HPBarList.Add(transform, HPbar);
+
+        if (HPbar.TryGetComponent<RPCHpBar>(out var HP))
+        {
+            HP.Player = base.transform;
+            HP.player = player;
+        }
+
+    }
     private void LateUpdate()
     {
         if (EnemyList is null || HPbarList is null) return;

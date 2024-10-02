@@ -102,7 +102,7 @@ public class EnemyBase : MonoBehaviour, IEnemy
         }
         if(Area != null)
           Area.enemyDie(this.gameObject);
-        HPBarPanel.instance.RemoveHPPanel(this.transform);
+        HPBarPanel.instance.RemoveEnemyHP(this.transform);
         yield return new WaitForSeconds(1);
         Destroy(this.gameObject);
     }
@@ -112,12 +112,12 @@ public class EnemyBase : MonoBehaviour, IEnemy
         if (HP <= 0)
             return;
         if (HP == data.HP)
-            HPBarPanel.instance.SetHPPanel(this.transform);
+            HPBarPanel.instance.SetEnemyHP(this.transform);
 
         //anim.SetTrigger("Damaged");
         HP -= damage;
 
-        HPBarPanel.instance.RefreshHP(this.transform, damage);
+        HPBarPanel.instance.RefreshEnemyHP(this.transform, damage);
 
         if (HP <= 0)
         {

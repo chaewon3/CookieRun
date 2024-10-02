@@ -18,7 +18,7 @@ public class RaidManager : MonoBehaviour
 
     int playerEnter = 0;
     int loaclPLNum;
-    PhotonView photonView;
+    GameObject localPlayer;
 
     public Dictionary<int, UserData> players { get; private set; } = new Dictionary<int, UserData>();
     public Dictionary<int, CookieData> playersCookie { get; private set; } = new Dictionary<int, CookieData>();
@@ -44,10 +44,11 @@ public class RaidManager : MonoBehaviour
         if (other.gameObject.layer == targetlayer)
         {
             playerEnter++;
-            StartCoroutine(CheckReady());
+
+            if (playerEnter == 4)
+                StartCoroutine(CheckReady());
         }
 
-        print($"{playerEnter}현재 사람수");
     }
 
     private void OnTriggerExit(Collider other)
@@ -69,21 +70,21 @@ public class RaidManager : MonoBehaviour
             CookieData data = playersCookie[player.ActorNumber];
             if (player == PhotonNetwork.LocalPlayer)
             {
-                GameObject localPL = PhotonNetwork.Instantiate("LocalPlayer", PlayerPositions[playernum].transform.position, PlayerPositions[playernum].transform.rotation);
-                var playerInput = localPL.AddComponent<PlayerInput>();
+                localPlayer = PhotonNetwork.Instantiate("LocalPlayer", PlayerPositions[playernum].transform.position, PlayerPositions[playernum].transform.rotation);
+                var playerInput = localPlayer.AddComponent<PlayerInput>();
                 playerInput.actions = playerMove;
                 playerInput.defaultControlScheme = "PC";
                 playerInput.defaultActionMap = "PlayerAction";
                 playerInput.ActivateInput();
-                localPL.AddComponent<PlayerMove>();
+                localPlayer.AddComponent<PlayerMove>();
 
                 CookieBase localCK = PhotonNetwork.Instantiate($"{data.cookie.ToString()}", PlayerPositions[playernum].transform.position, PlayerPositions[playernum].transform.rotation).GetComponent<CookieBase>();
                 localCK.Cookie = data;
-                camera.Follow = localPL.transform;
+                camera.Follow = localPlayer.transform;
 
-                int parentid = localPL.GetComponent<PhotonView>().ViewID;
+                int parentid = localPlayer.GetComponent<PhotonView>().ViewID;
                 int childid = localCK.gameObject.GetComponent<PhotonView>().ViewID;
-                photonView = localPL.GetComponent<PhotonView>();
+                PhotonView photonView = localPlayer.GetComponent<PhotonView>();
                 photonView.RPC("SetParent", RpcTarget.All, childid, parentid);
                 loaclPLNum = playernum;
             }
@@ -94,11 +95,9 @@ public class RaidManager : MonoBehaviour
     
     IEnumerator CheckReady()
     {
-        if(playerEnter == 4)
-        {
-            warfPanel.SetActive(true);
-            yield return new WaitForSeconds(7);
-            photonView.RPC("WarfBoss", RpcTarget.All, BossPositions[loaclPLNum].transform.position);
-        }
+        warfPanel.SetActive(true);
+        yield return new WaitForSeconds(7);
+        localPlayer.transform.position = BossPositions[loaclPLNum].transform.position;
+        localPlayer.transform.rotation = BossPositions[loaclPLNum].transform.rotation;
     }
 }
