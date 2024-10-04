@@ -14,7 +14,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
     public float HPPer => (float)HP / data.HP;
 
     Animator anim;
-    bool canMove = true;
+    bool canMove = false;
     float atkCT;
     int statelength;
     public Transform[] Players = new Transform[4];
@@ -44,8 +44,10 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
     private void Update()
     {
         // 마스터 클라이언트에서만 움직이고 동기화 할 예정
-        //if (!PhotonNetwork.IsMasterClient) return;
-        distance = Vector3.Distance(rig.transform.position, TargetPlayer.position);
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        if (TargetPlayer != null)
+            distance = Vector3.Distance(rig.transform.position, TargetPlayer.position);
         if(canMove)
         {
             StartCoroutine(Attack());

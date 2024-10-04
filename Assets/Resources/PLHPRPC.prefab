@@ -377,8 +377,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   HPtext: {fileID: 4136485669639500131}
+  PlNumber: {fileID: 4302085819861129220}
   HPbar: {fileID: 5794973000125776244}
-  playerNumber: 0
 --- !u!1 &5794973000236310953
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ using Photon.Realtime;
 
 public class RPCHpBar : MonoBehaviourPunCallbacks
 {
-    public Transform Player;
+    public Transform playerTransform;
 
     public TextMeshProUGUI HPtext;
     public TextMeshProUGUI PlNumber;
@@ -25,7 +25,6 @@ public class RPCHpBar : MonoBehaviourPunCallbacks
         {
             if (player == this.player)
             {
-
                 PlNumber.text = $"{number}P";
             }
             number++;
@@ -34,7 +33,7 @@ public class RPCHpBar : MonoBehaviourPunCallbacks
 
     private void LateUpdate()
     {
-        transform.position = MainCam.WorldToScreenPoint(Player.position + new Vector3(0, 3f, 0));
+        transform.position = MainCam.WorldToScreenPoint(playerTransform.position + new Vector3(0, 3f, 0));
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
@@ -43,8 +42,11 @@ public class RPCHpBar : MonoBehaviourPunCallbacks
         if(changedProps.ContainsKey("HP"))
         {
             int hp = (int)changedProps["HP"];
-            float hpPer = (float)changedProps["HPPer"];
             HPtext.text = hp.ToString();
+        }
+        if(changedProps.ContainsKey("HPPer"))
+        {
+            float hpPer = (float)changedProps["HPPer"];
             HPbar.value = hpPer;
         }
     }

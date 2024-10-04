@@ -31,9 +31,9 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        if (Cookie == null)
+        if (Cookie == null || !Gamemanager.instance.OnGame)
             return;
-
+        print(transform.position);
         cc.Move(cc.transform.up * Physics.gravity.y * Time.deltaTime);
         if (Gamemanager.instance.canMove)
         {
@@ -117,5 +117,11 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    public void Warf(Transform transform)
+    {
+        print("Á¦¹ß");
+        cc.transform.position = transform.position;
+        cc.transform.rotation = transform.rotation;
+    }
    
 }

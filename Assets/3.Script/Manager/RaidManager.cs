@@ -14,7 +14,8 @@ public class RaidManager : MonoBehaviour
     public GameObject[] BossPositions;
     public InputActionAsset playerMove;
     public CinemachineVirtualCamera camera;
-    public GameObject warfPanel; 
+    public GameObject warfPanel;
+    public GameObject BossPosition;
 
     int playerEnter = 0;
     int loaclPLNum;
@@ -35,6 +36,8 @@ public class RaidManager : MonoBehaviour
 
     private void Start()
     {
+        if (PhotonNetwork.IsMasterClient)
+            PhotonNetwork.Instantiate("Jungle_Gorilla", BossPosition.transform.position, BossPosition.transform.rotation);
         CreatePlayer();
     }
 
@@ -53,10 +56,12 @@ public class RaidManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (!Gamemanager.instance.OnGame) return;
         LayerMask targetlayer = LayerMask.NameToLayer("Player");
         if (other.gameObject.layer == targetlayer)
         {
             playerEnter--;
+            print("취소ㅠ");
             StopAllCoroutines();
             warfPanel.SetActive(false);
         }
@@ -96,8 +101,11 @@ public class RaidManager : MonoBehaviour
     IEnumerator CheckReady()
     {
         warfPanel.SetActive(true);
-        yield return new WaitForSeconds(7);
-        localPlayer.transform.position = BossPositions[loaclPLNum].transform.position;
-        localPlayer.transform.rotation = BossPositions[loaclPLNum].transform.rotation;
+        yield return new WaitForSeconds(8);
+        print("안되고있나...?");
+        PlayerMove player = localPlayer.GetComponent<PlayerMove>();
+        player.Warf(BossPositions[loaclPLNum].transform);
+        //localPlayer.transform.position = BossPositions[loaclPLNum].transform.position;
+        //localPlayer.transform.rotation = BossPositions[loaclPLNum].transform.rotation;
     }
 }

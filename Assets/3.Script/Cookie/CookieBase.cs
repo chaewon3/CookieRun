@@ -97,11 +97,12 @@ public class CookieBase : MonoBehaviour, ICookie
             if (PhotonNetwork.InRoom && photonview.Owner == PhotonNetwork.LocalPlayer)
             {
                 Player localplayer = PhotonNetwork.LocalPlayer;
-                Hashtable HP = localplayer.CustomProperties;
+                Hashtable HP = new Hashtable();
                 HP["HP"] = CurrentHP;
                 localplayer.SetCustomProperties(HP);
-                Hashtable HPPer = localplayer.CustomProperties;
-                HPPer["HPPer"] = HPPer;
+
+                Hashtable HPPer = new Hashtable();
+                HPPer["HPPer"] = this.HPPer;
                 localplayer.SetCustomProperties(HPPer);
             }
         }

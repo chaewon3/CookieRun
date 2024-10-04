@@ -71,7 +71,7 @@ public class HPBarPanel : MonoBehaviour
 
         if (HPbar.TryGetComponent<RPCHpBar>(out var HP))
         {
-            HP.Player = base.transform;
+            HP.playerTransform = transform;
             HP.player = player;
         }
 

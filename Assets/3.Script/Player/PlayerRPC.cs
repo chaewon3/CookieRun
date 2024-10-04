@@ -6,7 +6,7 @@ using Photon.Realtime;
 
 public class PlayerRPC : MonoBehaviour
 {
-    private void Start()
+    private void Awake()
     {
         int playernum = 0;
         foreach (Player player in PhotonNetwork.PlayerList)

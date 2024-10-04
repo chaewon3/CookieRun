@@ -296,7 +296,6 @@ public class FirebaseManager : MonoBehaviour
         {
             string userjson = snapshot.GetRawJsonValue();
             UserData data = JsonConvert.DeserializeObject<UserData>(userjson);
-            print(data.username) ;
             callback?.Invoke(data);
         }
     }
@@ -331,7 +330,6 @@ public class FirebaseManager : MonoBehaviour
             string json = snapshot.GetRawJsonValue();
             CookieData cookiedata = JsonConvert.DeserializeObject<CookieData>(json);
             cookiedata = new CookieData (DataManager.instance.GetCookieSO(cookiedata.cookie), cookiedata);
-            print($"ÄíÅ°{cookiedata.cookie.ToString()}");
             callback?.Invoke(cookiedata);
         }
         else

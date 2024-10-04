@@ -26,6 +26,7 @@ public class WarfPanel : MonoBehaviour
             yield return null;
         }
         text.text = $"잠시 후 <color=#FFC739>보스 구역</color>으로 이동합니다.";
+        Gamemanager.instance.OnGame = false;
         yield return new WaitForSeconds(1f);
         fadeout.SetActive(true);
         textImg.SetActive(false);
