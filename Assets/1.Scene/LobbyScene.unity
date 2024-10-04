@@ -6411,19 +6411,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookies:
-  - tableId: 0
+  - cookie: 0
     level: 0
     HP: 0
     ATK: 0
     DEF: 0
     equipment: 
-  - tableId: 0
+  - cookie: 0
     level: 0
     HP: 0
     ATK: 0
     DEF: 0
     equipment: 
-  - tableId: 0
+  - cookie: 0
     level: 0
     HP: 0
     ATK: 0
