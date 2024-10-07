@@ -35,7 +35,7 @@ public class WarfPanel : MonoBehaviour
         textImg.SetActive(false);
         cutscene.Play();
         FindObjectOfType<Enemy_Boss_Gorilla>().CutScene();
-        yield return new WaitForSeconds(3.3f);
+        yield return new WaitForSeconds(4.3f);
         fadeout.SetActive(false); ;
         this.gameObject.SetActive(false);
     }

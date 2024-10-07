@@ -42,6 +42,9 @@ MonoBehaviour:
   - SetParent
   - WarfBoss
   - RushHit
+  - RushOn
+  - ColliderOn
+  - Warning
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

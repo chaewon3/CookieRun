@@ -13,6 +13,8 @@ public class RPCHpBar : MonoBehaviourPunCallbacks
     public TextMeshProUGUI HPtext;
     public TextMeshProUGUI PlNumber;
     public Slider HPbar;
+    public Image slider;
+    public Sprite greenSlider;
 
     public Player player;
     Camera MainCam;
@@ -26,6 +28,8 @@ public class RPCHpBar : MonoBehaviourPunCallbacks
             if (player == this.player)
             {
                 PlNumber.text = $"{number}P";
+                if (player == PhotonNetwork.LocalPlayer)
+                    slider.sprite = greenSlider;
             }
             number++;
         }

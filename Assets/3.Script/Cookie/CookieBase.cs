@@ -92,16 +92,13 @@ public class CookieBase : MonoBehaviour, ICookie
 
     public IEnumerator Crashed(Vector3 direction)
     {
-        print("ÁøÂ¥µÊ!");
-        float time = 0.5f;
-        Gamemanager.instance.canMove = false;
+        float time = 0.3f;
         while (time >= 0)
         {
             cc.Move(direction * Time.deltaTime);
             yield return null;
             time -= Time.deltaTime;
         }
-        Gamemanager.instance.canMove = true;
     }
 
     void RPCHP()

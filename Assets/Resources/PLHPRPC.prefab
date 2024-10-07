@@ -375,10 +375,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dab7adc1b52fc14989398a4f7760c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  playerTransform: {fileID: 0}
   HPtext: {fileID: 4136485669639500131}
   PlNumber: {fileID: 4302085819861129220}
   HPbar: {fileID: 5794973000125776244}
+  slider: {fileID: 5794973000400270697}
+  greenSlider: {fileID: 21300000, guid: 9e03205fb1e9ebe49aa710c05b8c6244, type: 2}
 --- !u!1 &5794973000236310953
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +523,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9e03205fb1e9ebe49aa710c05b8c6244, type: 2}
+  m_Sprite: {fileID: 21300000, guid: e223fe5683a587147ad1e751fb9026dd, type: 2}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
