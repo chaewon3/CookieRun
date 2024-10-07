@@ -90,6 +90,20 @@ public class CookieBase : MonoBehaviour, ICookie
         RPCHP();
     }
 
+    public IEnumerator Crashed(Vector3 direction)
+    {
+        print("ÁøÂ¥µÊ!");
+        float time = 0.5f;
+        Gamemanager.instance.canMove = false;
+        while (time >= 0)
+        {
+            cc.Move(direction * Time.deltaTime);
+            yield return null;
+            time -= Time.deltaTime;
+        }
+        Gamemanager.instance.canMove = true;
+    }
+
     void RPCHP()
     {
         if (TryGetComponent<PhotonView>(out PhotonView photonview))

@@ -31,13 +31,14 @@ public class RaidManager : MonoBehaviour
 
         players = Gamemanager.instance.playersData;
         playersCookie = Gamemanager.instance.playersCookie;
-
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Instantiate("Jungle_Gorilla", BossPosition.transform.position, BossPosition.transform.rotation);
+        }
     }
 
     private void Start()
     {
-        if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.Instantiate("Jungle_Gorilla", BossPosition.transform.position, BossPosition.transform.rotation);
         CreatePlayer();
     }
 
@@ -61,7 +62,6 @@ public class RaidManager : MonoBehaviour
         if (other.gameObject.layer == targetlayer)
         {
             playerEnter--;
-            print("취소ㅠ");
             StopAllCoroutines();
             warfPanel.SetActive(false);
         }
@@ -101,11 +101,8 @@ public class RaidManager : MonoBehaviour
     IEnumerator CheckReady()
     {
         warfPanel.SetActive(true);
-        yield return new WaitForSeconds(8);
-        print("안되고있나...?");
+        yield return new WaitForSeconds(10);
         PlayerMove player = localPlayer.GetComponent<PlayerMove>();
         player.Warf(BossPositions[loaclPLNum].transform);
-        //localPlayer.transform.position = BossPositions[loaclPLNum].transform.position;
-        //localPlayer.transform.rotation = BossPositions[loaclPLNum].transform.rotation;
     }
 }

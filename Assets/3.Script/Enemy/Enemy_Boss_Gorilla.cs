@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System;
+using Cinemachine;
 
 using RandomNum = UnityEngine.Random;
 public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
@@ -19,10 +20,12 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
     int statelength;
     public Transform[] Players = new Transform[4];
     public Transform TargetPlayer;
+    public CinemachineVirtualCamera cutscene;
     State currentState;
 
     float distance;
     Rigidbody rig;
+    PhotonView photonview;
 
     enum State
     {
@@ -38,6 +41,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
         statelength = Enum.GetValues(typeof(State)).Length;
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody>();
+        photonview = GetComponent<PhotonView>();
         StartCoroutine(Targeting());
     }
 
@@ -54,7 +58,32 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
             canMove = false; 
         }
     }
+    
+    public void CutScene()
+    {
+        StartCoroutine(cutScenecoroutine());
+    }
 
+    IEnumerator cutScenecoroutine()
+    {
+        if(PhotonNetwork.IsMasterClient)
+        {
+            
+        }
+        anim.SetTrigger("CutScene");
+        Camera cam = Camera.main;
+        int currentMask = cam.cullingMask;
+        int PLlayer = 1 << 3;
+        cam.cullingMask = currentMask & ~PLlayer;
+        yield return new WaitForSeconds(1.1f);
+        cutscene.Priority = 13;
+        yield return new WaitForSeconds(7f);
+        cutscene.Priority = 9;
+        Gamemanager.instance.OnGame = true;
+        cam.cullingMask = currentMask;
+        yield return new WaitForSeconds(2f);
+        canMove = true;
+    }
     public IEnumerator Attack()
     {
         //System.Random random = new System.Random();
@@ -91,6 +120,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
         Gizmos.matrix = Matrix4x4.TRS(boxCenter, boxRotation, Vector3.one);
         Gizmos.DrawCube(Vector3.zero, boxSize);
     }
+
     public IEnumerator SkillRush()
     {
         Quaternion targetrotation = Quaternion.LookRotation(TargetPlayer.position - transform.position);
@@ -113,21 +143,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
             wallhits = Physics.BoxCastAll(boxCenter, new Vector3(1f, 1f, 0.5f),
                 transform.forward, transform.rotation, 0.5f, 1 << 8);
 
-            RaycastHit[] Plhits = Physics.BoxCastAll(boxCenter, new Vector3(2.5f, 1f, 0.5f),
-                transform.forward, transform.rotation, 0.5f, 1 << 3);
-
-            foreach(RaycastHit hit in Plhits)
-            {
-                PlayerRPC cc = hit.collider.GetComponent<PlayerRPC>();
-                print(hit.collider.name);
-                Vector3 pushDirection = (hit.collider.transform.position - transform.position).normalized;
-                float pushForce = 20f; // 튕겨낼 힘의 크기
-                Vector3 moveDirection = pushDirection * pushForce;
-
-                // CharacterController를 사용하여 이동
-                cc.PlayerMove(moveDirection);
-            }
-
+            photonview.RPC("RushHit", RpcTarget.All, boxCenter);
         }
         anim.SetTrigger("Bump");
 
@@ -176,5 +192,29 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
     public void Move()
     {
         rig.transform.position += rig.transform.forward * data.moveSpeed * Time.deltaTime;
+    }
+
+    [PunRPC]
+    public void RushHit(Vector3 boxcenter)
+    {
+        LayerMask targetlayer = LayerMask.NameToLayer("Player");
+
+        RaycastHit[] Plhits = Physics.BoxCastAll(boxcenter, new Vector3(2.5f, 1f, 0.5f),
+            transform.forward, transform.rotation, 0.5f);
+        print("?");
+        foreach (RaycastHit hit in Plhits)
+        {
+            if (hit.collider.gameObject.layer != targetlayer) continue;
+            print(hit.collider.name);
+            var localPL = hit.collider.GetComponentInChildren<CookieBase>();
+            if (localPL == null) continue;
+            print($"2 : {localPL.gameObject.name}");
+            Vector3 pushDirection = (hit.collider.transform.position - transform.position+transform.forward).normalized;
+            float pushForce = 20f; // 튕겨낼 힘의 크기
+            Vector3 moveDirection = pushDirection * pushForce;
+
+            StartCoroutine(localPL.Crashed(moveDirection));
+            localPL.Hit(data.ATK);
+        }
     }
 }

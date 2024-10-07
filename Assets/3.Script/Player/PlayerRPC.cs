@@ -6,20 +6,27 @@ using Photon.Realtime;
 
 public class PlayerRPC : MonoBehaviour
 {
+
+    PhotonView photonview;
+    int playernum = 0;
+
     private void Awake()
     {
-        int playernum = 0;
         foreach (Player player in PhotonNetwork.PlayerList)
         {
             PhotonView photonView = GetComponent<PhotonView>();
             if (player == photonView.Owner)
             {
                 HPBarPanel.instance.SetRPCHP(this.transform, player);
-                FindObjectOfType<Enemy_Boss_Gorilla>().Players[playernum] = this.gameObject.transform;
+                return;
             }
             playernum++;
         }
-
+    }
+    private IEnumerator Start()
+    {
+        yield return new WaitUntil(() => FindObjectOfType<Enemy_Boss_Gorilla>() != null);
+        FindObjectOfType<Enemy_Boss_Gorilla>().Players[playernum] = this.gameObject.transform;
     }
 
     [PunRPC]

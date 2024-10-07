@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using TMPro;
 
 public class WarfPanel : MonoBehaviour
@@ -8,6 +9,7 @@ public class WarfPanel : MonoBehaviour
     public TextMeshProUGUI text;
     public GameObject fadeout;
     public GameObject textImg;
+    public PlayableDirector cutscene;
     float time = 5;
 
     private void OnEnable()
@@ -29,8 +31,11 @@ public class WarfPanel : MonoBehaviour
         Gamemanager.instance.OnGame = false;
         yield return new WaitForSeconds(1f);
         fadeout.SetActive(true);
+        yield return new WaitForSeconds(1f);
         textImg.SetActive(false);
-        yield return new WaitForSeconds(2.3f);
+        cutscene.Play();
+        FindObjectOfType<Enemy_Boss_Gorilla>().CutScene();
+        yield return new WaitForSeconds(3.3f);
         fadeout.SetActive(false); ;
         this.gameObject.SetActive(false);
     }
