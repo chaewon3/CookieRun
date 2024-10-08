@@ -50,6 +50,16 @@ public class HPBarPanel : MonoBehaviour
         Destroy(DamageText, .5f);        
     }
 
+    public void DamageText(Transform enemy, int damage)
+    {
+        GameObject DamageText = Instantiate(DamageTextPrefab, transform);
+        DamageText.GetComponent<TextMeshProUGUI>().text = damage.ToString();
+        DamageText.transform.position = MainCam.WorldToScreenPoint(
+            enemy.position + new Vector3(Random.Range(-1f, 1f), Random.Range(0.8f, 1.2f), 0));
+
+        Destroy(DamageText, .5f);
+    }
+
     public void RemoveEnemyHP(Transform enemies)
     {
         Destroy(HPBarList[enemies]);

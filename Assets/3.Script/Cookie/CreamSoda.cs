@@ -163,16 +163,5 @@ public class CreamSoda : CookieBase
                 enemy.Damaged((int)damage);
             }
         }
-
-        float time = 0;
-        while(time< 2)
-        {
-            time += Time.deltaTime;
-            // BoxCast의 시작과 끝을 시각적으로 표시
-            Debug.DrawLine(cc.transform.position, cc.transform.position + cc.transform.forward * range, Color.red);
-            Debug.DrawLine(boxCenter - boxsize / 2, boxCenter + boxsize / 2, Color.green);
-            yield return null;
-        }
-
     }
 }

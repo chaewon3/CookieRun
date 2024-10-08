@@ -25,8 +25,9 @@ public class SkillPanel : MonoBehaviour
 
     public PlayerMove player;
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitUntil(() => FindObjectOfType<PlayerMove>() != null);
         player = FindObjectOfType<PlayerMove>();
         player.UltimateAction += () =>
         {
@@ -37,6 +38,7 @@ public class SkillPanel : MonoBehaviour
 
     private void Update()
     {
+        if (player == null) return;
         //´ë½Ã
         if (player.Cookie.DashCT > 0)
         {

@@ -16,7 +16,8 @@ public class AttackCollider : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        var localPL = other.GetComponentInChildren<CookieBase>();
+        if (!other.TryGetComponent<PlayerMove>(out var t)) return;
+        var localPL = other.GetComponentInChildren<ICookie>();
         if (localPL == null) return;
         collider.enabled = false;
         Vector3 pushDirection = (other.transform.position - transform.position).normalized;

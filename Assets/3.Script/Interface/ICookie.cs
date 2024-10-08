@@ -24,6 +24,8 @@ public interface ICookie
 
     IEnumerator Dash(Vector3 moveDir);
 
+    IEnumerator Crashed(Vector3 direction);
+
     void Hit(int damage);
     ///die¤¤
 }

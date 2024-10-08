@@ -10,9 +10,9 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
 {
     public EnemySO data;
     public int ATK { get; set; }
-    int HP;
+    public int CurrentHP;
     int DEF;
-    public float HPPer => (float)HP / data.HP;
+    public float HPPer => (float)CurrentHP / data.HP;
 
     Animator anim;
     public bool canMove = false;
@@ -30,6 +30,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
     float distance;
     Rigidbody rig;
     PhotonView photonview;
+    BossHPPanel HPPanel;
 
     enum State
     {
@@ -49,6 +50,9 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
         StartCoroutine(Targeting());
         boxCollider.GetComponent<AttackCollider>().ATK = data.ATK;
         sphereCollider.GetComponent<AttackCollider>().ATK = (int)(data.ATK*1.5f);
+        dropCollider.GetComponent<AttackCollider>().ATK = (int)(data.ATK * 2);
+        HPPanel = HPBarPanel.instance.gameObject.GetComponentInChildren<BossHPPanel>(true);
+        CurrentHP = data.HP;
     }
 
     private void Update()
@@ -182,11 +186,10 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
         rig.transform.rotation = Quaternion.Euler(0, targetrotation.eulerAngles.y, 0);
 
         anim.SetTrigger(currentState.ToString());
-
         yield return new WaitForSeconds(3f);
+        GetComponent<Collider>().isTrigger = true;
         Vector3 targetposition = TargetPlayer.position;
         targetposition.y = rig.transform.position.y;
-        GetComponent<Collider>().isTrigger = true;
         rig.transform.position = targetposition;
         photonview.RPC("Warning", RpcTarget.All, 2, true);
         yield return new WaitForSeconds(1.2f);
@@ -202,7 +205,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
 
     public void Damaged(int damage)
     {
-        throw new System.NotImplementedException();
+        photonview.RPC("DamagedRPC", RpcTarget.All, damage);
     }
 
     public IEnumerator Die()
@@ -243,5 +246,14 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
         if (!IsOn)
           anim.SetTrigger("Bump");
     }
+
+    [PunRPC]
+    public void DamagedRPC(int damage)
+    {
+        CurrentHP -= damage;
+        HPPanel.Refresh(HPPer);
+        HPBarPanel.instance.DamageText(this.transform, damage);
+    }
+
 
 }

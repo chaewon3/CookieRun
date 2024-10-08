@@ -8,7 +8,7 @@ using Cinemachine;
 
 public class RaidManager : MonoBehaviour
 {
-    public RaidManager instance { get; set; }
+    public static RaidManager instance { get; set; }
 
     public GameObject[] PlayerPositions;
     public GameObject[] BossPositions;
@@ -97,7 +97,19 @@ public class RaidManager : MonoBehaviour
             playernum++;
         }
     }
-    
+
+    public void CreateGhost()
+    {
+        // todo : 커스텀 프로퍼티로 죽음 전달
+        var ghostCookie = PhotonNetwork.Instantiate("GhostCookie", localPlayer.transform.position, localPlayer.transform.rotation);
+        
+        int parentid = localPlayer.GetComponent<PhotonView>().ViewID;
+        int childid = ghostCookie.gameObject.GetComponent<PhotonView>().ViewID;
+        PhotonView photonView = localPlayer.GetComponent<PhotonView>();
+        photonView.RPC("SetParent", RpcTarget.All, childid, parentid);
+        localPlayer.GetComponent<PlayerMove>().Cookie = ghostCookie.GetComponent<ICookie>();
+    }
+
     IEnumerator CheckReady()
     {
         warfPanel.SetActive(true);

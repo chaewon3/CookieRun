@@ -28,6 +28,11 @@ public class CookieBase : MonoBehaviour, ICookie
     protected int ATK;
     protected int DEF;
     protected PhotonView photonView;
+    protected Animator damagedVolume;
+
+    protected bool crashed;
+    protected bool isDie;
+
     public virtual void Awake()
     {
         if(PhotonNetwork.IsConnected)
@@ -47,6 +52,7 @@ public class CookieBase : MonoBehaviour, ICookie
         cc = GetComponentInParent<CharacterController>();
         anim = GetComponent<Animator>();
         RPCHP();
+        damagedVolume = GameObject.Find("Damaged").GetComponent<Animator>();
     }
 
     public virtual void Update()
@@ -79,26 +85,40 @@ public class CookieBase : MonoBehaviour, ICookie
 
     public void Hit(int damage)
     {
-        CurrentHP -= (damage);
-        if(CurrentHP <=0)
+        CurrentHP -= damage;
+        damagedVolume.SetTrigger("Damaged");
+        if (CurrentHP <=0)
         {
             CurrentHP = 0;
-            anim.SetTrigger("Die");
-            Stagemanager.instance.onGame = false;
+            Gamemanager.instance.OnGame = false;
             Gamemanager.instance.canMove = false;
+            anim.SetTrigger("Die");
+            StartCoroutine(CreateGhost());
         }
         RPCHP();
     }
 
+    IEnumerator CreateGhost()
+    {
+        crashed = true;
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+        if (PhotonNetwork.InRoom)
+            RaidManager.instance.CreateGhost();
+        Destroy(gameObject);
+    }
     public IEnumerator Crashed(Vector3 direction)
     {
+        if (crashed) yield break;
+        crashed = true;
         float time = 0.3f;
         while (time >= 0)
         {
-            cc.Move(direction * Time.deltaTime);
+            _ = cc.Move(direction * Time.deltaTime);
             yield return null;
             time -= Time.deltaTime;
         }
+        crashed = false;
     }
 
     void RPCHP()
