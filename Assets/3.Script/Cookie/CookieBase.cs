@@ -45,7 +45,7 @@ public class CookieBase : MonoBehaviour, ICookie
     private void Start()
     {
         Data = Cookie.Data;
-        maxHP = Data.baseHP;
+        maxHP = Cookie.HP;
         CurrentHP = maxHP;
         ATK = Cookie.ATK;
         DEF = Cookie.DEF;
@@ -92,12 +92,9 @@ public class CookieBase : MonoBehaviour, ICookie
             CurrentHP = 0;
             Gamemanager.instance.OnGame = false;
             Gamemanager.instance.canMove = false;
-<<<<<<< HEAD
             anim.SetTrigger("Die");
             StartCoroutine(CreateGhost());
-=======
             Gamemanager.instance.IsDie = true;
->>>>>>> 0791ca02c681814135ecb1353a903ccda21933c3
         }
         RPCHP();
     }

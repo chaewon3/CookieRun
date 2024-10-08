@@ -9,6 +9,7 @@ public class FaceIcon : MonoBehaviour
     public CookiePanel cookiepanel;
     public Image icon;
     public Toggle toggle;
+    public Animator anim;
 
     private void Awake()
     {
@@ -24,6 +25,11 @@ public class FaceIcon : MonoBehaviour
     public void setcookie(bool ison)
     {
         if(ison)
-        cookiepanel.dataRefresh(data);
+        {
+            cookiepanel.dataRefresh(data);
+            anim.SetTrigger("Selected");
+        }
+        anim.SetTrigger("Normal");
     }
 }
+

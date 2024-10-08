@@ -12,7 +12,7 @@ public class CookieData
     [JsonIgnore]
     public CookieSO Data { get => data; set => data = value; }
     public Cookies cookie; // cookie를 key로 cookieSO를 불러올 것
-    public int level;
+    public int currentlevel;
     public int HP;
     public int ATK;
     public int DEF;
@@ -23,14 +23,14 @@ public class CookieData
     public CookieData(CookieSO data, int level = 1)
     {
         this.data = data;
-        this.level = level;
+        this.currentlevel = level;
         cookie = data.cookie;
         HP = data.baseHP;
         ATK = data.baseATK;
         DEF = data.baseDEF;
     }
 
-    public CookieData(CookieSO SOdata, CookieData data) : this(SOdata, data.level)
+    public CookieData(CookieSO SOdata, CookieData data) : this(SOdata, data.currentlevel)
     {
         this.equipment = data.equipment;
         this.HP = data.HP;
@@ -41,9 +41,9 @@ public class CookieData
 
     public void levelUP()
     { // todo : 레벨업 제한은 버튼에서 할 것
-        level++;
+        currentlevel++;
 
-        int bonus = level / 20 + 1;
+        int bonus = currentlevel / 20 + 1;
         HP += 41 * bonus;
         ATK += 5 * bonus;
         DEF += 5 * bonus;

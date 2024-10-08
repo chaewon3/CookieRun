@@ -75,6 +75,18 @@ public class CookieList
         CookieData cookie = new CookieData(DataManager.instance.GetCookieSO(type));
         cookies.Add(cookie);
     }
+
+    public void UpdateCookie(CookieData data)
+    {
+        for (int i = 0; i < cookies.Count; i++)
+        {
+            if (cookies[i].cookie == data.cookie)
+            {
+                cookies[i] = data; 
+                break; 
+            }
+        }
+    }
 }
 
 [Serializable]

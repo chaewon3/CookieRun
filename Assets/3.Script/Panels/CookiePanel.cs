@@ -76,14 +76,14 @@ public class CookiePanel : MonoBehaviour
 
         cookiePrefab = Instantiate(data.Data.LobbyPrefab, cookiePosition.transform);
 
-        Level.text = data.level.ToString();
+        Level.text = data.currentlevel.ToString();
         Name.text = data.Data.name;
         Power.text = (data.ATK + data.DEF + data.HP).ToString();
         ATK.text = data.ATK.ToString();
         DEF.text = data.DEF.ToString();
         HP.text = data.HP.ToString();
         Power2.text = Power.text;
-        int requsetcoin = (data.level / 5 + 1) * 200;
+        int requsetcoin = (data.currentlevel / 5 + 1) * 200;
         requestCoin.text = requsetcoin.ToString();
 
         ATKname.text = data.Data.ATKName;
@@ -103,21 +103,28 @@ public class CookiePanel : MonoBehaviour
 
     public void levelupBtnClick()
     {
-        if(data.level == 60)
+        if(data.currentlevel == 60)
         {
             PanelManager.instance.notice("레벨이 최대치입니다.");
             return;
         }
-        int requestCoin = (data.level / 5 + 1) * 200;
+        int requestCoin = (data.currentlevel / 5 + 1) * 200;
         if(FirebaseManager.instance.userData.coin < requestCoin)
         {
+            print(FirebaseManager.instance.userData.coin);
             PanelManager.instance.notice("보유한 코인이 부족합니다.");
             return;
         }
 
-        // 유저정보 리셋
         data.levelUP();
-        // 쿠키리스트 리셋
-        dataRefresh(data);
+        FirebaseManager.instance.userData.coin -= requestCoin;
+
+        FirebaseManager.instance.UpdateUserData();
+        // ui 코인 동기화해야함
+        FirebaseManager.instance.cookieLevelUp(data,() =>
+        {
+            FirebaseManager.instance.cookieList.UpdateCookie(data);
+            dataRefresh(data);
+        });
     }
 }

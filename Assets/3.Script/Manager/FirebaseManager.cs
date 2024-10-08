@@ -89,17 +89,6 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    public async void AddCookie()
-    {
-        cookieList.AddCookie(Cookies.lemonZest);
-        foreach (CookieData cookie in cookieList.cookies)
-        {
-            DatabaseReference cookieRef = DB.GetReference($"cookieList/{userData.userid}/{cookie.cookie.ToString()}");
-            string cookielistJson = JsonConvert.SerializeObject(cookie);
-            await cookieRef.SetRawJsonValueAsync(cookielistJson);
-        }
-    }
-
     public async void Login(string email, string pw, Action callback = null, Action<string> failurecallback = null)
     {
         try
@@ -144,6 +133,24 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
+    public async void AddCookie()
+    {
+        cookieList.AddCookie(Cookies.lemonZest);
+        foreach (CookieData cookie in cookieList.cookies)
+        {
+            DatabaseReference cookieRef = DB.GetReference($"cookieList/{userData.userid}/{cookie.cookie.ToString()}");
+            string cookielistJson = JsonConvert.SerializeObject(cookie);
+            await cookieRef.SetRawJsonValueAsync(cookielistJson);
+        }
+    }
+    public async void cookieLevelUp(CookieData data, Action callback = null)
+    {
+        DatabaseReference cookieRef = DB.GetReference($"cookieList/{userData.userid}/{data.cookie.ToString()}");
+        string cookiejson = JsonConvert.SerializeObject(data);
+        await cookieRef.SetRawJsonValueAsync(cookiejson);
+        callback?.Invoke();
+    }
+
     private async void OnApplicationQuit()
     {
         await inviteRef.RemoveValueAsync();
@@ -173,6 +180,11 @@ public class FirebaseManager : MonoBehaviour
             }
         }
         callback?.Invoke();
+    }
+    public async void UpdateUserData()
+    {
+        string userdata = JsonConvert.SerializeObject(userData);
+        await userRef.SetRawJsonValueAsync(userdata);
     }
 
     public async void UpdateUserName(string name, Action callback = null, Action failureback = null)
