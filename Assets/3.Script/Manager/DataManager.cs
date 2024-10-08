@@ -64,10 +64,16 @@ public class CookieList
         cookies.Add(commoncookie);
     }
 
-    public void AddCookie(CookieData data)
+    public void FindCookie(CookieData data)
     {
         CookieData cookie = new CookieData(DataManager.instance.GetCookieSO(data.cookie), data);
-        cookies.Add(data);
+        cookies.Add(cookie);
+    }
+
+    public void AddCookie(Cookies type)
+    {
+        CookieData cookie = new CookieData(DataManager.instance.GetCookieSO(type));
+        cookies.Add(cookie);
     }
 }
 

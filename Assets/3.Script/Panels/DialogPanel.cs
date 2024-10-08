@@ -22,4 +22,9 @@ public class DialogPanel : MonoBehaviour
         dialogText.text = dialog;
         confirmBtn.onClick.AddListener(() => comfirmOnclick());
     }
+
+    public void Notice(string msg)
+    {
+        dialogText.text = msg;
+    }
 }

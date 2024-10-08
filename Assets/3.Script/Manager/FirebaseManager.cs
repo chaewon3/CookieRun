@@ -89,6 +89,17 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
+    public async void AddCookie()
+    {
+        cookieList.AddCookie(Cookies.lemonZest);
+        foreach (CookieData cookie in cookieList.cookies)
+        {
+            DatabaseReference cookieRef = DB.GetReference($"cookieList/{userData.userid}/{cookie.cookie.ToString()}");
+            string cookielistJson = JsonConvert.SerializeObject(cookie);
+            await cookieRef.SetRawJsonValueAsync(cookielistJson);
+        }
+    }
+
     public async void Login(string email, string pw, Action callback = null, Action<string> failurecallback = null)
     {
         try
@@ -112,7 +123,7 @@ public class FirebaseManager : MonoBehaviour
                 {
                     string cookiejson = childsnap.GetRawJsonValue();
                     CookieData cookiedata = JsonConvert.DeserializeObject<CookieData>(cookiejson);
-                    cookieList.AddCookie(cookiedata);
+                    cookieList.FindCookie(cookiedata);
                 }
             }
             else
