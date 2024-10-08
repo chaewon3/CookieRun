@@ -19,22 +19,25 @@ MonoBehaviour:
   ModelPrefab: {fileID: 4291244144323091323, guid: 0c554768be213e449a60e7227088e476, type: 3}
   LobbyPrefab: {fileID: 4291244144323091323, guid: b139982ea861d0c40a0c5c3dbc384616, type: 3}
   portrait: {fileID: 21300000, guid: 5133f29faddc95749a98d325853ec780, type: 3}
+  faceIcon: {fileID: 21300000, guid: 7065530587d554b4e97fef4a639c8cda, type: 3}
   moveSpeed: 5
   baseHP: 283
   baseATK: 34
   baseDEF: 27
   ATKName: "\uC2A4\uD30C\uD074\uB9C1 \uC2AC\uB798\uC2DC"
   ATKDes: "\uAC80\uC73C\uB85C \uCD5C\uB300 3\uBC88 \uACF5\uACA9\uD55C\uB2E4."
+  skillImg: {fileID: 21300000, guid: 39e5f2e9b6ee4eb4189fd88e3db51e88, type: 2}
   skillName: "\uC2A4\uD30C\uD074\uB9C1 \uB7EC\uC2DC"
   skillCT: 12
   skillDes: "\uBB3C\uC758 \uAE30\uC6B4\uC744 \uB2F4\uC544 \uAC80\uC744 \uD718\uB450\uB978\uB2E4.
     [\uC2A4\uD30C\uD074\uB9C1 \uB7EC\uC2DC]\uB294 \uCD5C\uB300 3\uBC88 \uC5F0\uC18D\uD574\uC11C
     \uC0AC\uC6A9\uD560 \uC218 \uC788\uB2E4."
+  ultimateImg: {fileID: 21300000, guid: 033f621b55bc2eb4f8dc0b994c696d5b, type: 2}
   ultimateName: "\uC18C\uB2E4 \uC2A4\uD50C\uB798\uC2DC"
   ultimateCT: 28
   ultimateDes: "\uBB3C\uC758 \uAE30\uC6B4\uC744 \uBAA8\uC544 \uC804\uBC29\uC5D0 \uAC15\uB825\uD55C
     \uBCA0\uAE30\uB97C \uC0AC\uC6A9\uD55C\uB2E4."
-  dashName: "\uB300"
+  dashName: "\uB300\uC2DC"
   dashCT: 2
   dashDes: "\uC804\uBC29\uC73C\uB85C \uBE60\uB974\uAC8C \uB3CC\uC9C4\uD55C\uB2E4."
   ChairAnim: {fileID: 9100000, guid: fe9c8ab8cdc9419489dafeb3637fc67f, type: 2}

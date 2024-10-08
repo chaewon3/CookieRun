@@ -3391,6 +3391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cookieList:
   - {fileID: 11400000, guid: 18c8c3b3e3f394f469d3bff0172b0c4b, type: 2}
+  - {fileID: 11400000, guid: 3cb47c62bda35144fbed23a64ce40fb6, type: 2}
 --- !u!4 &1765855811
 Transform:
   m_ObjectHideFlags: 0

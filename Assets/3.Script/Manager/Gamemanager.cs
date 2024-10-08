@@ -9,6 +9,8 @@ public class Gamemanager : MonoBehaviour
 
     public bool canMove { get; set; } = true; // todo : 나중에 false로 시작해야함
     public bool OnGame { get; set; } = true; // todo : 나중에 false로 시작해야함
+    public bool IsDie { get; set; } = false;
+    public int Damage { get; set; }
     public StageData CurrentStage { get; set; }
     public CookieData[] cookies = new CookieData[3];
     public List<Player> players;

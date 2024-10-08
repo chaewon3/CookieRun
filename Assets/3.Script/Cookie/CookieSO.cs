@@ -34,6 +34,7 @@ public class CookieSO : ScriptableObject
     public GameObject ModelPrefab;
     public GameObject LobbyPrefab;
     public Sprite portrait;
+    public Sprite faceIcon;
 
     [Header("Info")]
 
@@ -48,12 +49,14 @@ public class CookieSO : ScriptableObject
     public string ATKDes;
 
     [Space(10)]
+    public Sprite skillImg;
     public string skillName;
     public float skillCT;
     [TextArea(3, 10)]
     public string skillDes;
 
     [Space(10)]
+    public Sprite ultimateImg;
     public string ultimateName;
     public float ultimateCT;
     [TextArea(3, 10)]
