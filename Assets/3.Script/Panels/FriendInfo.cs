@@ -28,11 +28,14 @@ public class FriendInfo : MonoBehaviour
         if(AcceptBtn != null && RefuseBtn != null)
         {
             AcceptBtn.onClick.AddListener(AcceptBtnClick);
+            AcceptBtn.onClick.AddListener(() => SoundManager.instance.BtnClick()); 
             RefuseBtn.onClick.AddListener(RefuseBtnClick);
+            RefuseBtn.onClick.AddListener(() => SoundManager.instance.BtnClick());
         }
-        if(inviteBtn != null)
+        if (inviteBtn != null)
         {
             inviteBtn.onClick.AddListener(() => StartCoroutine(inviteBtnClick()));
+            inviteBtn.onClick.AddListener(() => SoundManager.instance.BtnClick());
         }
     }
 

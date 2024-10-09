@@ -112,7 +112,7 @@ public class FirebaseManager : MonoBehaviour
                 {
                     string cookiejson = childsnap.GetRawJsonValue();
                     CookieData cookiedata = JsonConvert.DeserializeObject<CookieData>(cookiejson);
-                    cookieList.FindCookie(cookiedata);
+                    cookieList.FindCookieSO(cookiedata);
                 }
             }
             else
@@ -344,9 +344,15 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
+    public async void UpdateStage(StageData data)
+    {
+        DatabaseReference stageref = DB.GetReference($"stages/{userData.userid}/{data.Data.Stagename}");
+        string stagedata = JsonConvert.SerializeObject(data);
+        await stageref.SetRawJsonValueAsync(stagedata);
+    }
     public async void GetCookieData(string userid, Cookies cookie, Action<CookieData> callback)
     {
-        DatabaseReference Ref = DB.GetReference($"cookieList/{userData.userid}/{cookie.ToString()}");
+        DatabaseReference Ref = DB.GetReference($"cookieList/{userid}/{cookie.ToString()}");
         DataSnapshot snapshot = await Ref.GetValueAsync();
         if (snapshot.Exists)
         { // 데이터가 있으면 가져와서 덮어씀

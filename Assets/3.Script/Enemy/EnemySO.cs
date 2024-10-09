@@ -11,4 +11,12 @@ public class EnemySO : ScriptableObject
     public int DEF;
     public float moveSpeed;
     public int coin;
+
+    public AudioClip ATK1;
+    public AudioClip ATK2;
+    public AudioClip ATK3;
+    public AudioClip RushStart;
+    public AudioClip RushLoop;
+    public AudioClip RushEnd;
+    public AudioClip Drop;
 }

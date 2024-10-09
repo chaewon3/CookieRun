@@ -62,8 +62,8 @@ public class HPBarPanel : MonoBehaviour
 
     public void RemoveEnemyHP(Transform enemies)
     {
-        Destroy(HPBarList[enemies]);
-        HPBarList.Remove(enemies);
+        //Destroy(HPBarList[enemies]);
+        //HPBarList.Remove(enemies);
 
         int index = EnemyList.IndexOf(enemies);
         if(index != -1)

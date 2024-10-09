@@ -13,6 +13,8 @@ public class CookiePanel : MonoBehaviour
 
     public GameObject cookiePosition;
     public GameObject cookiePrefab;
+    public TextMeshProUGUI coin;
+    public AudioClip levelup;
 
     [Header("Info")]
     public TextMeshProUGUI Name;
@@ -78,10 +80,10 @@ public class CookiePanel : MonoBehaviour
 
         Level.text = data.currentlevel.ToString();
         Name.text = data.Data.name;
-        Power.text = (data.ATK + data.DEF + data.HP).ToString();
-        ATK.text = data.ATK.ToString();
-        DEF.text = data.DEF.ToString();
-        HP.text = data.HP.ToString();
+        Power.text = (data.ATK + data.DEF + data.HP).ToString("N0");
+        ATK.text = data.ATK.ToString("N0");
+        DEF.text = data.DEF.ToString("N0");
+        HP.text = data.HP.ToString("N0");
         Power2.text = Power.text;
         int requsetcoin = (data.currentlevel / 5 + 1) * 200;
         requestCoin.text = requsetcoin.ToString();
@@ -99,6 +101,7 @@ public class CookiePanel : MonoBehaviour
         ultimateImg.sprite = data.Data.ultimateImg;
         ultimatename.text = data.Data.ultimateName;
         ultimatetext.text = data.Data.ultimateDes;
+        coin.text = FirebaseManager.instance.userData.coin.ToString("N0");
     }
 
     public void levelupBtnClick()
@@ -116,11 +119,12 @@ public class CookiePanel : MonoBehaviour
             return;
         }
 
+        SoundManager.instance.clipPlay(levelup);
+        cookiePrefab.GetComponent<Animator>().SetTrigger("LevelUp");
         data.levelUP();
         FirebaseManager.instance.userData.coin -= requestCoin;
 
         FirebaseManager.instance.UpdateUserData();
-        // ui 코인 동기화해야함
         FirebaseManager.instance.cookieLevelUp(data,() =>
         {
             FirebaseManager.instance.cookieList.UpdateCookie(data);

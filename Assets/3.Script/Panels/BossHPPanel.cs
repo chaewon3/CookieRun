@@ -7,7 +7,12 @@ public class BossHPPanel : MonoBehaviour
 {
     public Slider HPBar;
     public GameObject twinkle;
+    public AudioClip bossBGM;
 
+    private void Start()
+    {
+        BGMManager.instance.BGMchange(bossBGM);
+    }
     public void Refresh(float HPPer)
     {
         HPBar.value = HPPer;

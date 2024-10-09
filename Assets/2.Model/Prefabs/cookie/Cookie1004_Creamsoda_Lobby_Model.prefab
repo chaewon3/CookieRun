@@ -2140,6 +2140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4294613869014087983}
   - component: {fileID: 4241627791451004784}
+  - component: {fileID: -520394992745469674}
   m_Layer: 3
   m_Name: Cookie1004_Creamsoda_Lobby_Model
   m_TagString: Untagged
@@ -2196,6 +2197,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-520394992745469674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4291244144323091323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a6bdee8f28b04a46a29f99252481382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 18c8c3b3e3f394f469d3bff0172b0c4b, type: 2}
 --- !u!1 &4291289336185248318
 GameObject:
   m_ObjectHideFlags: 0

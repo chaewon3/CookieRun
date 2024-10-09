@@ -10,6 +10,7 @@ public class WarfPanel : MonoBehaviour
     public GameObject fadeout;
     public GameObject textImg;
     public PlayableDirector cutscene;
+    public AudioClip bossenter;
     float time = 5;
 
     private void OnEnable()
@@ -33,11 +34,13 @@ public class WarfPanel : MonoBehaviour
         fadeout.SetActive(true);
         yield return new WaitForSeconds(1f);
         textImg.SetActive(false);
+        BGMManager.instance.BGMchange(bossenter);
         cutscene.Play();
         FindObjectOfType<Enemy_Boss_Gorilla>().CutScene();
         yield return new WaitForSeconds(4.3f);
         fadeout.SetActive(false); ;
         this.gameObject.SetActive(false);
+
     }
 
     private void OnDisable()

@@ -41,9 +41,9 @@ public class LoadingManager : MonoBehaviour
     {
         changeEffect = GameObject.Find("SceneChange");
     }
-    public void SceneLoad()
+    public void SceneLoad(float leasttime = 0)
     {
-        StartCoroutine(LoadGame(currentScene));
+        StartCoroutine(LoadGame(currentScene, leasttime));
     }
 
     public void SceneChange()
@@ -51,14 +51,15 @@ public class LoadingManager : MonoBehaviour
         StartCoroutine(Change());
     }
 
-    private IEnumerator LoadGame(string scene)
+    private IEnumerator LoadGame(string scene, float leasttime)
     {
-        PanelManager.instance.PanelChange("Loading");
+        if(PanelManager.instance != null)
+           PanelManager.instance.PanelOpen("Loading");
         asyncLoad = SceneManager.LoadSceneAsync(scene);
         asyncLoad.allowSceneActivation = false;
 
         float time = 0;
-        while(!asyncLoad.isDone && time <= 2.5f)
+        while(!asyncLoad.isDone && time <= leasttime)
         {
             time += Time.deltaTime;
             yield return null;
@@ -74,7 +75,7 @@ public class LoadingManager : MonoBehaviour
         asyncLoad.allowSceneActivation = true;
     }
     
-    public async void PhotonLoadgame(Action callback)
+    public async void PhotonLoadgame(Action callback = null)
     {
         asyncLoad = SceneManager.LoadSceneAsync(currentScene);
         asyncLoad.allowSceneActivation = false;

@@ -6,10 +6,12 @@ public class Coin : MonoBehaviour
 {
     public int coin = 100;
     Animator anim;
-
+    public AudioSource audio;
+    public AudioClip coinclip;
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,7 +26,11 @@ public class Coin : MonoBehaviour
     {
         float distance = Vector3.Distance(cookie.transform.position + Vector3.up * 0.5f, transform.position);
         if (distance <= 0.8f)
-            Destroy(this.transform.parent.gameObject);
+        {
+            audio.Play();
+            this.GetComponentInChildren<MeshRenderer>().enabled = false;
+            Destroy(this.transform.parent.gameObject, 0.5f);
+        }
 
         yield return new WaitForSeconds(0.9f);
         bool get = false;
@@ -41,6 +47,7 @@ public class Coin : MonoBehaviour
             {
                 get = true;
                 anim.SetTrigger("Get");
+                audio.Play();
                 Destroy(this.transform.parent.gameObject,0.7f);
             }
 

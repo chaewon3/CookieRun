@@ -37,6 +37,7 @@ public class RPCHpBar : MonoBehaviourPunCallbacks
 
     private void LateUpdate()
     {
+        if (playerTransform == null) Destroy(gameObject);
         transform.position = MainCam.WorldToScreenPoint(playerTransform.position + new Vector3(0, 3f, 0));
     }
 

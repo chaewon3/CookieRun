@@ -49,6 +49,7 @@ public class CreamSoda : CookieBase
         Gamemanager.instance.canMove = false;
         if (comboCount == 0)
         {
+            soundPlay(Data.ATKclip1);
             comboCount++;
             comboTime = 0.95f;
             StartCoroutine(attackDash(5f, 0.1f));
@@ -58,15 +59,17 @@ public class CreamSoda : CookieBase
         }
         else if (comboCount == 1 && comboTime > 0)
         {
+            soundPlay(Data.ATKclip2);
             comboCount++;
             comboTime = 1.15f;
             StartCoroutine(attackDash(5f, 0.1f));
             StartCoroutine(Raycast(0.1f, attactrange, ATK * 0.76f, 0.1f));
             anim.SetTrigger("Attack2");
-            yield return new WaitForSeconds(0.642f);
+            yield return new WaitForSeconds(0.4f);
         }
         else if (comboCount == 2 && comboTime > 0)
         {
+            soundPlay(Data.ATKclip3);
             comboCount = 0;
             StartCoroutine(attackDash(10f, 0.1f));
             StartCoroutine(Raycast(0.1f, attactrange, ATK, 0.1f));
@@ -81,7 +84,8 @@ public class CreamSoda : CookieBase
         anim.SetBool("Move", false);
         Gamemanager.instance.canMove = false;
         if (SkillCT <= 0)
-        {            
+        {
+            soundPlay(Data.skillclip1);
             skillCount++;
             SkillCT = Data.skillCT;
             skillTime = 4;
@@ -93,6 +97,7 @@ public class CreamSoda : CookieBase
         }
         else if (skillCount == 1 && skillTime > 0)
         {
+            soundPlay(Data.skillclip2);
             skillCount++;
             skillTime = 4;
             anim.SetTrigger("Skill2");
@@ -103,6 +108,7 @@ public class CreamSoda : CookieBase
         }
         else if (skillCount == 2 && skillTime > 0)
         {
+            soundPlay(Data.skillclip3);
             skillCount = 0;
             anim.SetTrigger("Skill3");
             yield return new WaitForSeconds(0.25f);
@@ -116,6 +122,7 @@ public class CreamSoda : CookieBase
 
     public override IEnumerator Ultimate()
     {
+        soundPlay(Data.ultiamteclip);
         anim.SetBool("Move", false);
         Gamemanager.instance.canMove = false;
         UltimateCT = Data.ultimateCT;
@@ -164,4 +171,5 @@ public class CreamSoda : CookieBase
             }
         }
     }
+
 }

@@ -14,6 +14,7 @@ public class RaidPanel : MonoBehaviourPunCallbacks
     private const string chars = "ABCDEFGHIJKLMNOPQUSTUVWXYZ";
     string roomName;
     int playernum = 1;
+    public AudioClip bgmclip;
     Dictionary<int, GameObject> playersCookie = new Dictionary<int, GameObject>();
     Dictionary<int, GameObject> playersnametag = new Dictionary<int, GameObject>();
     Dictionary<int, GameObject> ReadyToggle = new Dictionary<int, GameObject>();
@@ -33,6 +34,8 @@ public class RaidPanel : MonoBehaviourPunCallbacks
     public GameObject icons;
     public Button homeBtn;
     public Toggle ReadyBtn;
+    public TextMeshProUGUI heartText;
+    public TextMeshProUGUI coinText;
 
     //todo : 이거도 플레이어의 대표쿠키 데이터가 여기로 들어오도록 SOX Data
     public CookieSO Data;
@@ -69,13 +72,18 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         ReadyBtn.onValueChanged.AddListener(ReadyBtnClick);
     }
 
-    public void Start()
-    { //todo : 쿠키리스트부터 만들고 거기서 가져와야할듯?
+    public IEnumerator Start()
+    {
+        yield return null;
+        UserData data = FirebaseManager.instance.userData;
+        CookieData dataCK = FirebaseManager.instance.cookieList.FindCookie(data.representCookie);
+
         GameObject cookie = Instantiate(Data.LobbyPrefab, cookiePositions[0]);
         cookie.GetComponent<Animator>().runtimeAnimatorController = Data.ChairAnim;
         var tag = Instantiate(playertagPrefab, icons.transform).GetComponent<PlayerTag>();
         tag.gameObject.transform.position = mainCam.WorldToScreenPoint(cookiePositions[0].position + Vector3.up * 30+Vector3.right*3);
         tag.name.text = FirebaseManager.instance.userData.username;
+        tag.ATK.text = (dataCK.ATK + dataCK.DEF + dataCK.HP).ToString("N0");
         tag.localplayer = true; 
         GameObject Ready = Instantiate(ReadyPrefab, cookiePositions[0].position, Quaternion.identity, icons.transform);
         Ready.transform.position = mainCam.WorldToScreenPoint(cookiePositions[0].position + Vector3.up * 10);
@@ -96,11 +104,23 @@ public class RaidPanel : MonoBehaviourPunCallbacks
                 icons.SetActive(false);
                 PanelManager.instance.PanelOpen("Invite");
                 friendpanel.PartyFriend(content);
+                SoundManager.instance.BtnClick();
             });
             InviteBtns.Add(InviteBtn);
         }
     }
 
+    private void OnEnable()
+    {
+        UserData data = FirebaseManager.instance.userData;
+        heartText.text = $"{data.heart}/150";
+        coinText.text = data.coin.ToString("N0");
+        BGMManager.instance.BGMchange(bgmclip);
+    }
+    private void OnDisable()
+    {
+        BGMManager.instance.LobbyBGM();
+    }
 
     public void CreatePartyButtonClick()
     {
@@ -162,14 +182,33 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         PartyID.text = roomName;
         AttendancePanel.SetActive(false);
 
-        gameRoomRefresh();
+        Player localPlayer = PhotonNetwork.LocalPlayer;
+        UserData data = FirebaseManager.instance.userData;
+        Gamemanager.instance.playersData.Add(localPlayer.ActorNumber, data);
+        Gamemanager.instance.playersCookie.Add(localPlayer.ActorNumber, FirebaseManager.instance.cookieList.FindCookie(data.representCookie));
+
+        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
+        {
+            if (player == PhotonNetwork.LocalPlayer) continue;
+            FirebaseManager.instance.GetPartyData(player.NickName, (data) =>
+            {
+                Gamemanager.instance.playersData.Add(player.ActorNumber, data);
+                CookieData cookiedata;
+                FirebaseManager.instance.GetCookieData(data.userid, data.representCookie, (cookiedata) =>
+                {
+                    Gamemanager.instance.playersCookie.Add(player.ActorNumber, cookiedata);
+                    JoinPlayer(player);
+                });
+            });
+        }
         // 방에 입장했을 때, 방장의 씬 로드 여부에 따라 함께 씬 로드
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public override void OnLeftRoom()
     {
-        print("나가짐");
+        Gamemanager.instance.playersData.Clear();
+        Gamemanager.instance.playersCookie.Clear();
         LeavePlayer();
         base.OnDisable();
     }
@@ -186,11 +225,21 @@ public class RaidPanel : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        JoinPlayer(newPlayer);
+        FirebaseManager.instance.GetPartyData(newPlayer.NickName, (data) =>
+        {
+            Gamemanager.instance.playersData.Add(newPlayer.ActorNumber, data);
+            CookieData cookiedata;
+            FirebaseManager.instance.GetCookieData(data.userid, data.representCookie, (cookiedata) =>
+            {
+                Gamemanager.instance.playersCookie.Add(newPlayer.ActorNumber, cookiedata);
+                JoinPlayer(newPlayer);
+            });
+        });
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
+        Gamemanager.instance.playersData.Remove(otherPlayer.ActorNumber);
         LeavePlayer();
     }
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
@@ -205,6 +254,7 @@ public class RaidPanel : MonoBehaviourPunCallbacks
 
         if (changedProps.ContainsKey("Ready"))
         {
+            print("호출은 됨");
             bool isReady = (bool)changedProps["Ready"];
             if (targetPlayer != PhotonNetwork.LocalPlayer)
                 ReadyToggle[targetPlayer.ActorNumber].gameObject.SetActive(isReady);
@@ -221,8 +271,6 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         PartyList[playernum].SetActive(true);
         PartyList[playernum].GetComponentInChildren<TextMeshProUGUI>().text = player.NickName;
 
-        object isReady = player.CustomProperties.TryGetValue("Ready", out object ready);
-
         GameObject PlayerCookie = Instantiate(Data.LobbyPrefab, cookiePositions[playernum]);
         PlayerCookie.GetComponent<Animator>().runtimeAnimatorController = Data.ChairAnim;
         var tag = Instantiate(playertagPrefab, icons.transform).GetComponent<PlayerTag>();
@@ -232,7 +280,10 @@ public class RaidPanel : MonoBehaviourPunCallbacks
 
         GameObject Ready = Instantiate(ReadyPrefab, cookiePositions[playernum].position, Quaternion.identity, icons.transform);
         Ready.transform.position = mainCam.WorldToScreenPoint(cookiePositions[playernum].position + Vector3.up * 10);
-        Ready.SetActive((bool)isReady);
+        if (player.CustomProperties.TryGetValue("Ready", out object ready) && ready is bool IsReady)
+            Ready.SetActive(IsReady);
+        else
+            Ready.SetActive(false);
         ReadyToggle.Add(player.ActorNumber, Ready);
 
         destroylist.Add(PlayerCookie);
@@ -240,6 +291,8 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         destroylist.Add(Ready);
 
         tag.name.text = player.NickName;
+        CookieData data = Gamemanager.instance.playersCookie[player.ActorNumber];
+        tag.ATK.text = (data.ATK + data.DEF + data.HP).ToString("N0");
 
         GameObject invitebtn = InviteBtns[playernum-1];
         invitebtn.SetActive(false);
@@ -250,6 +303,7 @@ public class RaidPanel : MonoBehaviourPunCallbacks
     {
         playersCookie.Clear();
         playersnametag.Clear();
+        ReadyToggle.Clear();
         for (int i = destroylist.Count-1;i>=0;i--)
         {
             Destroy(destroylist[i]);
@@ -309,26 +363,8 @@ public class RaidPanel : MonoBehaviourPunCallbacks
 
     void GameStart()
     {
-        int countPlayer = 0;
-        foreach (Player player in PhotonNetwork.CurrentRoom.Players.Values)
-        { //쿠키정보도 넣어야 함
-            FirebaseManager.instance.GetPartyData(player.NickName, (data) =>
-            {
-                Gamemanager.instance.playersData.Add(player.ActorNumber, data);
-
-                CookieData cookiedata;
-                FirebaseManager.instance.GetCookieData(data.userid, data.representCookie, (cookiedata) =>
-                    {
-                        Gamemanager.instance.playersCookie.Add(player.ActorNumber, cookiedata);
-                    });
-
-                countPlayer++;
-                if (countPlayer == PhotonNetwork.CurrentRoom.MaxPlayers)
-                    PanelManager.instance.RaidLoading();
-
-            });
-        }
-
+        BGMManager.instance.fadeout();
+        PanelManager.instance.RaidLoading();
         //로딩화면띄우고 씬 이동
         LoadingManager.instance.currentScene = "RaidScene";
         LoadingManager.instance.PhotonLoadgame(()=>

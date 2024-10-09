@@ -7,6 +7,7 @@ public class Goal : MonoBehaviour
 {
     public GameObject Blur;
 
+    public AudioClip completeclip;
     public GameObject chosenEffect;
     public CanvasGroup canvas;
     public GameObject completePanel;
@@ -41,8 +42,10 @@ public class Goal : MonoBehaviour
         GameObject effect = (GameObject)Instantiate(chosenEffect);
         effect.transform.position = transform.position+Vector3.up;
 
+        BGMManager.instance.fadeout();
         yield return new WaitForSeconds(loopTimeLimit);
         completePanel.SetActive(true);
+        SoundManager.instance.clipPlay(completeclip);
         Destroy(effect);
         yield return new WaitForSeconds(1.8f);
         completePanel.SetActive(false);

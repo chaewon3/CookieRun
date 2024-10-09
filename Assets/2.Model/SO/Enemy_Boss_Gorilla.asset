@@ -14,8 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tableId: 3
   ModelPrefab: {fileID: 0}
-  HP: 50000
-  ATK: 30
+  HP: 2000
+  ATK: 100
   DEF: 20
   moveSpeed: 10
   coin: 0
+  ATK1: {fileID: 8300000, guid: 7a7aa9fb982428d48b908318c2d19d9e, type: 3}
+  ATK2: {fileID: 8300000, guid: c0a7c9e3741f785459cd9e575f400d9f, type: 3}
+  ATK3: {fileID: 8300000, guid: 0e2e9891102eafe4a8adb56c747af8aa, type: 3}
+  RushStart: {fileID: 8300000, guid: a23aedbee4689f84d87bcc44d4d5eb30, type: 3}
+  RushLoop: {fileID: 8300000, guid: 323f6831e95575b41b1fde5f114320b4, type: 3}
+  RushEnd: {fileID: 8300000, guid: 49d67f78a0caab84d865e300652f34d4, type: 3}
+  Drop: {fileID: 8300000, guid: 6310e231ee94c5641ac596eb114bfd1c, type: 3}

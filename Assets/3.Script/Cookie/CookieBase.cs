@@ -29,21 +29,26 @@ public class CookieBase : MonoBehaviour, ICookie
     protected int DEF;
     protected PhotonView photonView;
     protected Animator damagedVolume;
+    protected AudioSource sound;
 
     protected bool crashed;
     protected bool isDie;
 
     public virtual void Awake()
     {
-        if(PhotonNetwork.IsConnected)
+        if(PhotonNetwork.InRoom)
         {
             if (!(photonView = GetComponent<PhotonView>()).IsMine)
                 this.GetComponent<CookieBase>().enabled = false;
         }
         
     }
-    private void Start()
+    private IEnumerator Start()
     {
+        while (Cookie == null)
+        {
+            yield return null;
+        }
         Data = Cookie.Data;
         maxHP = Cookie.HP;
         CurrentHP = maxHP;
@@ -51,6 +56,7 @@ public class CookieBase : MonoBehaviour, ICookie
         DEF = Cookie.DEF;
         cc = GetComponentInParent<CharacterController>();
         anim = GetComponent<Animator>();
+        sound = GetComponent<AudioSource>();
         RPCHP();
         damagedVolume = GameObject.Find("Damaged").GetComponent<Animator>();
     }
@@ -73,7 +79,7 @@ public class CookieBase : MonoBehaviour, ICookie
     {
          DashCT = Data.dashCT;
          anim.SetTrigger("Dash");
-        
+        soundPlay(Data.dashclip);
          float durtion = 0;
          while (durtion < 0.13f) // 이거 초도 clip길이만큼으로 바꿔줘야함
          {
@@ -90,9 +96,9 @@ public class CookieBase : MonoBehaviour, ICookie
         if (CurrentHP <=0)
         {
             CurrentHP = 0;
-            Gamemanager.instance.OnGame = false;
             Gamemanager.instance.canMove = false;
             anim.SetTrigger("Die");
+            soundPlay(Data.Die);
             StartCoroutine(CreateGhost());
             Gamemanager.instance.IsDie = true;
         }
@@ -101,12 +107,16 @@ public class CookieBase : MonoBehaviour, ICookie
 
     IEnumerator CreateGhost()
     {
+        if (!PhotonNetwork.InRoom)
+            StartCoroutine(Stagemanager.instance.endGame());
         crashed = true;
         yield return new WaitForSeconds(2f);
-        Destroy(gameObject);
         if (PhotonNetwork.InRoom)
+        {
             RaidManager.instance.CreateGhost();
-        Destroy(gameObject);
+            photonView.RPC("destroy", RpcTarget.All);
+        }
+        
     }
     public IEnumerator Crashed(Vector3 direction)
     {
@@ -122,6 +132,11 @@ public class CookieBase : MonoBehaviour, ICookie
         crashed = false;
     }
 
+    [PunRPC]
+    public void destroy()
+    {
+        Destroy(gameObject);
+    }
     void RPCHP()
     {
         if (TryGetComponent<PhotonView>(out PhotonView photonview))
@@ -138,5 +153,12 @@ public class CookieBase : MonoBehaviour, ICookie
                 localplayer.SetCustomProperties(HPPer);
             }
         }
+    }
+
+    public void soundPlay(AudioClip clip)
+    {
+        sound.Stop();
+        sound.clip = clip;
+        sound.Play();
     }
 }

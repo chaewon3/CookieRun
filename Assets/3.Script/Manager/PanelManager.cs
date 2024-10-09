@@ -64,6 +64,11 @@ public class PanelManager : MonoBehaviour
         {
             Setting.SetActive(true);
         }
+        if(Gamemanager.instance.errorMsg != string.Empty)
+        {
+            notice(Gamemanager.instance.errorMsg);
+            Gamemanager.instance.errorMsg = string.Empty;
+        }
     }
 
     public void PanelChange(string panelName)

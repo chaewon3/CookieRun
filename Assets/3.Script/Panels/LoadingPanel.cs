@@ -38,8 +38,11 @@ public class LoadingPanel : MonoBehaviour
         foreach (Player player in PhotonNetwork.PlayerList)
         {
             UserData data = Gamemanager.instance.playersData[player.ActorNumber];
+            CookieData cookie = Gamemanager.instance.playersCookie[player.ActorNumber];
             var portrait = Instantiate(portraitPrefab, portraitContent.transform).GetComponent<PlayerTag>();
             portrait.name.text = data.username;
+            int power = cookie.ATK + cookie.DEF + cookie.HP;
+            portrait.ATK.text = power.ToString("N0");
             if (player == PhotonNetwork.LocalPlayer)
                 portrait.localplayer = true;
 

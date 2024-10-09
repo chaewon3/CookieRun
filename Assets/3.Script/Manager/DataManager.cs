@@ -47,6 +47,23 @@ public class UserData
         exp = 0;
         representCookie = Cookies.BraveCookie;
     }
+
+    public void GetExp(int exp)
+    {
+        exp += exp;
+        int exprequest = 200 + level * 100;
+        while(exp >= exprequest)
+        {
+            level++;
+            exp -= exprequest;
+        }
+    }
+
+    public float ExpPer()
+    {
+        int maxexp = 200 + level * 100;
+        return exp / maxexp;
+    }
 }
 
 [Serializable]
@@ -64,10 +81,20 @@ public class CookieList
         cookies.Add(commoncookie);
     }
 
-    public void FindCookie(CookieData data)
+    public void FindCookieSO(CookieData data)
     {
         CookieData cookie = new CookieData(DataManager.instance.GetCookieSO(data.cookie), data);
         cookies.Add(cookie);
+    }
+
+    public CookieData FindCookie(Cookies type)
+    {
+        foreach(CookieData cookie in cookies)
+        {
+            if (cookie.cookie == type)
+                return cookie;
+        }
+        return null;
     }
 
     public void AddCookie(Cookies type)

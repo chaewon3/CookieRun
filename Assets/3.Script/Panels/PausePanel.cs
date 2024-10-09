@@ -7,6 +7,8 @@ using TMPro;
 public class PausePanel : MonoBehaviour
 {
     public Button restartBtn;
+    public Button stopBtn;
+    public GameObject resultpanel;
 
     public Sprite Starimg;
     public GameObject[] missions = new GameObject[3];
@@ -15,11 +17,17 @@ public class PausePanel : MonoBehaviour
     private void Awake()
     {
         restartBtn.onClick.AddListener(restartClick);
+        stopBtn.onClick.AddListener(StopClick);
     }
 
     void restartClick()
     {
         StartCoroutine(canvasOff());
+    }
+    void StopClick()
+    {
+        StartCoroutine(canvasOff());
+        resultpanel.SetActive(true);
     }
 
     public void openPanel()

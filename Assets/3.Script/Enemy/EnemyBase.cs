@@ -19,12 +19,12 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
     protected bool canMove;
     protected float atkCT;
-
+    protected AudioSource audio;
     public float HPPer => (float)HP / data.HP;
 
 
     protected float distance;
-
+    bool isDie;
     public virtual void Awake()
     {
         anim = GetComponent<Animator>();
@@ -33,10 +33,11 @@ public class EnemyBase : MonoBehaviour, IEnemy
         ATK = data.ATK;
         DEF = data.DEF;
         target = FindObjectOfType<PlayerMove>().gameObject;
+        audio = GetComponent<AudioSource>();
     }
     private IEnumerator Start()
     {
-        yield return new WaitForSeconds(2f); // 나중에 spawn애니메이션 추가하고 시간 바까야함
+        yield return new WaitForSeconds(2f); 
         canMove = true;
         SpawnEffect.SetActive(false);
     }
@@ -68,6 +69,10 @@ public class EnemyBase : MonoBehaviour, IEnemy
         }
     }
 
+    public void AttackClip()
+    {
+        audio.Play();
+    }
     public void Move()
     {
         anim.SetBool("Move", true);
@@ -119,8 +124,10 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
         HPBarPanel.instance.RefreshEnemyHP(this.transform, damage);
 
-        if (HP <= 0)
+        if (HP <= 0 && !isDie)
         {
+            print("엥");
+            isDie = true;
             StopAllCoroutines();
             StartCoroutine(Die());
         }

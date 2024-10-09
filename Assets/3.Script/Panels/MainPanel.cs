@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class MainPanel : MonoBehaviour
@@ -9,6 +10,7 @@ public class MainPanel : MonoBehaviour
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI levelText;
+    public Slider exp;
 
     public TextMeshProUGUI heartText;
     public TextMeshProUGUI coinText;    
@@ -19,6 +21,7 @@ public class MainPanel : MonoBehaviour
         nameText.text = data.username;
         levelText.text = data.level.ToString();
         heartText.text = $"{data.heart}/150";
-        coinText.text = data.coin.ToString();
+        coinText.text = data.coin.ToString("N0");
+        exp.value = data.ExpPer();
     }
 }

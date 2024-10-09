@@ -26,7 +26,7 @@ public class PlayerRPC : MonoBehaviour
     private IEnumerator Start()
     {
         yield return new WaitUntil(() => FindObjectOfType<Enemy_Boss_Gorilla>() != null);
-        FindObjectOfType<Enemy_Boss_Gorilla>().Players[playernum] = this.gameObject.transform;
+        FindObjectOfType<Enemy_Boss_Gorilla>().Players.Add(this.gameObject.transform);
     }
 
     [PunRPC]

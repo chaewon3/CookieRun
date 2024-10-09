@@ -10,14 +10,6 @@ public class Trophy : MonoBehaviour
     public Image icon;
     public TextMeshProUGUI name;
 
-    public Image goldTrophy;
-    public Image silverTrophy;
-    public Image bronzeTrophy;
-
-    public Sprite DamageIcon;
-    public Sprite LiveIcon;
-
-
     public void GetTrophy(Sprite trophy, Sprite icon, string name)
     {
         this.trophy.sprite = trophy;

@@ -19,7 +19,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
     float atkCT;
     int statelength;
     public Transform transform;
-    public Transform[] Players = new Transform[4];
+    public List<Transform> Players = new List<Transform>();
     public Transform TargetPlayer;
     public CinemachineVirtualCamera cutscene;
     public BoxCollider boxCollider;
@@ -27,10 +27,11 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
     public SphereCollider dropCollider;
     State currentState;
 
-    float distance;
+    public bool isdie;
     Rigidbody rig;
     PhotonView photonview;
     BossHPPanel HPPanel;
+    AudioSource sound;
 
     enum State
     {
@@ -53,20 +54,35 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
         dropCollider.GetComponent<AttackCollider>().ATK = (int)(data.ATK * 2);
         HPPanel = HPBarPanel.instance.gameObject.GetComponentInChildren<BossHPPanel>(true);
         CurrentHP = data.HP;
+        sound = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
+        if (isdie || !RaidManager.instance.isPlay) return;
+        if (CurrentHP <= 0)
+        {
+            StopAllCoroutines();
+            GetComponent<Collider>().enabled = false;
+            StartCoroutine(Die());
+            isdie = true;
+        }
+
         // 마스터 클라이언트에서만 움직이고 동기화 할 예정
         if (!PhotonNetwork.IsMasterClient) return;
 
-        if (TargetPlayer != null)
-            distance = Vector3.Distance(rig.transform.position, TargetPlayer.position);
+        if (TargetPlayer == null)
+        {
+            int randomTarget = RandomNum.Range(0, Players.Count);
+            TargetPlayer = Players[randomTarget];
+        }
+
         if(canMove)
         {
             StartCoroutine(Attack());
             canMove = false; 
         }
+       
     }
     
     public void CutScene()
@@ -105,7 +121,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
     {// 조건 살아있는동안으로 나중에바꾸기
         while(true)
         {
-            int randomTarget = RandomNum.Range(0, 4);
+            int randomTarget = RandomNum.Range(0, Players.Count);
             TargetPlayer = Players[randomTarget];
             yield return new WaitForSeconds(RandomNum.Range(7,15));
         }
@@ -117,6 +133,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
         rig.transform.rotation = Quaternion.Euler(0, targetrotation.eulerAngles.y, 0);
         photonview.RPC("Warning", RpcTarget.All, 0, true);
         anim.SetTrigger(currentState.ToString());
+        soundPlay(data.RushStart);
         yield return new WaitForSeconds(1.5f);
         photonview.RPC("Warning", RpcTarget.All, 0, false);
         Vector3 boxCenter = transform.position + transform.up*3 + transform.forward*2;
@@ -124,6 +141,8 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
             transform.forward, transform.rotation, 0.5f, 1 << 8);
 
         photonview.RPC("ColliderOn", RpcTarget.All, 1, true);
+        sound.loop = true;
+        soundPlay(data.RushLoop);
         while (wallhits.Length == 0)
         {
             Move();
@@ -157,6 +176,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
         rig.transform.rotation = Quaternion.Euler(0, targetrotation.eulerAngles.y, 0);
         yield return new WaitForSeconds(1f);
         photonview.RPC("ColliderOn", RpcTarget.All, 0, true);
+        soundPlay(data.ATK1);
         yield return new WaitForSeconds(0.733f);
         photonview.RPC("ColliderOn", RpcTarget.All, 0, false);
 
@@ -164,6 +184,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
         rig.transform.rotation = Quaternion.Euler(0, targetrotation.eulerAngles.y, 0);
         yield return new WaitForSeconds(0.95f);
         photonview.RPC("ColliderOn", RpcTarget.All, 0, true);
+        soundPlay(data.ATK2);
         yield return new WaitForSeconds(0.817f);
         photonview.RPC("ColliderOn", RpcTarget.All, 0, false);
 
@@ -173,6 +194,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
         yield return new WaitForSeconds(1f);
         photonview.RPC("Warning", RpcTarget.All, 1, false);
         photonview.RPC("ColliderOn", RpcTarget.All, 1, true);
+        soundPlay(data.ATK3);
         yield return new WaitForSeconds(0.4f);
         photonview.RPC("ColliderOn", RpcTarget.All, 1, false);
 
@@ -195,6 +217,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
         yield return new WaitForSeconds(1.2f);
         photonview.RPC("Warning", RpcTarget.All, 2, false);
         photonview.RPC("ColliderOn", RpcTarget.All, 2, true);
+        soundPlay(data.Drop);
         yield return new WaitForSeconds(0.4f);
         photonview.RPC("ColliderOn", RpcTarget.All, 2, false);
         GetComponent<Collider>().isTrigger = false;
@@ -206,11 +229,15 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
     public void Damaged(int damage)
     {
         photonview.RPC("DamagedRPC", RpcTarget.All, damage);
+        RaidManager.instance.Damage += damage;
     }
 
     public IEnumerator Die()
     {
-        throw new System.NotImplementedException();
+        anim.SetTrigger("Die");
+        RaidManager.instance.ClearGame = true;
+        StartCoroutine(RaidManager.instance.EndGame());
+        yield return null;
     }
 
     public void Hit()
@@ -244,7 +271,11 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
             case 2: dropCollider.enabled = IsOn; break;
         }
         if (!IsOn)
-          anim.SetTrigger("Bump");
+        {
+            sound.loop = false;
+            soundPlay(data.RushEnd);
+            anim.SetTrigger("Bump");
+        }
     }
 
     [PunRPC]
@@ -255,5 +286,11 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
         HPBarPanel.instance.DamageText(this.transform, damage);
     }
 
+    public void soundPlay(AudioClip clip)
+    {
+        sound.Stop();
+        sound.clip = clip;
+        sound.Play();
+    }
 
 }

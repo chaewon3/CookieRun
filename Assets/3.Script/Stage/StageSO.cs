@@ -19,6 +19,7 @@ public class StageSO : ScriptableObject
     public float time;
     public float clearTime;
     public int heart;
+    public int exp;
 
     public Mission Mission_1;
     [TextArea(2, 10)]

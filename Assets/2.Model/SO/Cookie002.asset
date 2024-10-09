@@ -24,20 +24,31 @@ MonoBehaviour:
   baseHP: 283
   baseATK: 34
   baseDEF: 27
+  Die: {fileID: 8300000, guid: ddc2c31a624cd094e8e372390be090b9, type: 3}
+  Win: {fileID: 8300000, guid: a52dd84ee5ce1e74486c1dfa24a6ca40, type: 3}
+  Loose: {fileID: 8300000, guid: c5c3b97b7570a544fa39a75d61ae69e5, type: 3}
   ATKName: "\uC2A4\uD30C\uD074\uB9C1 \uC2AC\uB798\uC2DC"
   ATKDes: "\uAC80\uC73C\uB85C \uCD5C\uB300 3\uBC88 \uACF5\uACA9\uD55C\uB2E4."
+  ATKclip1: {fileID: 8300000, guid: 5d6c915182954e842aa045fac9008ae4, type: 3}
+  ATKclip2: {fileID: 8300000, guid: 65dcfc2b3a0304a47a76174ba8dbba0a, type: 3}
+  ATKclip3: {fileID: 8300000, guid: bdad8d15066da29438d9a8b439502a60, type: 3}
   skillImg: {fileID: 21300000, guid: 39e5f2e9b6ee4eb4189fd88e3db51e88, type: 2}
   skillName: "\uC2A4\uD30C\uD074\uB9C1 \uB7EC\uC2DC"
   skillCT: 12
   skillDes: "\uBB3C\uC758 \uAE30\uC6B4\uC744 \uB2F4\uC544 \uAC80\uC744 \uD718\uB450\uB978\uB2E4.
     [\uC2A4\uD30C\uD074\uB9C1 \uB7EC\uC2DC]\uB294 \uCD5C\uB300 3\uBC88 \uC5F0\uC18D\uD574\uC11C
     \uC0AC\uC6A9\uD560 \uC218 \uC788\uB2E4."
+  skillclip1: {fileID: 8300000, guid: 163947bd9a7c8dc4fb671a60645379ff, type: 3}
+  skillclip2: {fileID: 8300000, guid: 7657cc0a9dd1fe14cb16c165492ae37a, type: 3}
+  skillclip3: {fileID: 8300000, guid: 294ba1fad14d480449350f3165b4638f, type: 3}
   ultimateImg: {fileID: 21300000, guid: 033f621b55bc2eb4f8dc0b994c696d5b, type: 2}
   ultimateName: "\uC18C\uB2E4 \uC2A4\uD50C\uB798\uC2DC"
   ultimateCT: 28
   ultimateDes: "\uBB3C\uC758 \uAE30\uC6B4\uC744 \uBAA8\uC544 \uC804\uBC29\uC5D0 \uAC15\uB825\uD55C
     \uBCA0\uAE30\uB97C \uC0AC\uC6A9\uD55C\uB2E4."
+  ultiamteclip: {fileID: 8300000, guid: 2a84e0be93363c1479f3d79ac8ba6c03, type: 3}
   dashName: "\uB300\uC2DC"
   dashCT: 2
   dashDes: "\uC804\uBC29\uC73C\uB85C \uBE60\uB974\uAC8C \uB3CC\uC9C4\uD55C\uB2E4."
+  dashclip: {fileID: 8300000, guid: e783737a6268b054f8acf6d3f6c5b0c4, type: 3}
   ChairAnim: {fileID: 9100000, guid: fe9c8ab8cdc9419489dafeb3637fc67f, type: 2}
