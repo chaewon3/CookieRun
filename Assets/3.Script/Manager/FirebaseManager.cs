@@ -197,7 +197,7 @@ public class FirebaseManager : MonoBehaviour
         if(!snapshot.Exists)
         {
             string refKey = nameof(userData.username);
-
+            userData.username = name;
             var nameRef = Ref.Child(userData.userid);
             await nameRef.SetValueAsync(userData.userid);
 

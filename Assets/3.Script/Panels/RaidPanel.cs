@@ -181,7 +181,7 @@ public class RaidPanel : MonoBehaviourPunCallbacks
         RaidmodText.text = roomName;
         PartyID.text = roomName;
         AttendancePanel.SetActive(false);
-
+        print(PhotonNetwork.CurrentRoom.Name);
         Player localPlayer = PhotonNetwork.LocalPlayer;
         UserData data = FirebaseManager.instance.userData;
         Gamemanager.instance.playersData.Add(localPlayer.ActorNumber, data);

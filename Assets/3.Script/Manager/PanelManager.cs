@@ -47,13 +47,13 @@ public class PanelManager : MonoBehaviour
                 {"Cookie", CookieInfo.gameObject }
             };
         }
-        PanelOpen("SceneChange");
         if (PhotonNetwork.InRoom)
         {
             PanelChange("Raid");
             return;
         }
         PanelChange("Main");
+        PanelOpen("SceneChange");
     }
 
     private IEnumerator Start()

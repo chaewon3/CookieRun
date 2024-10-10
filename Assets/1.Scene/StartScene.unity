@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScene: LobbyScene
   touchBtn: {fileID: 1968543784}
+  progress: 0
 --- !u!4 &11622252
 Transform:
   m_ObjectHideFlags: 0

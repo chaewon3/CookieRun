@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tableId: 3
   ModelPrefab: {fileID: 0}
-  HP: 2000
+  HP: 1000
   ATK: 100
   DEF: 20
   moveSpeed: 10

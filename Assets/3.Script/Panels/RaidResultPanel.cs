@@ -66,9 +66,9 @@ public class RaidResultPanel : MonoBehaviour
         }
         switch(RaidManager.instance.DamageRank)
         {
-            case 1: trophies[index].GetTrophy(goldTrophy, LiveIcon, "입힌 피해량"); bonous += 3; break;
-            case 2: trophies[index].GetTrophy(silverTrophy, LiveIcon, "입힌 피해량"); bonous += 2; break;
-            case 3: trophies[index].GetTrophy(bronzeTrophy, LiveIcon, "입힌 피해량"); bonous += 1; break;
+            case 1: trophies[index].GetTrophy(goldTrophy, DamageIcon, "입힌 피해량"); bonous += 3; break;
+            case 2: trophies[index].GetTrophy(silverTrophy, DamageIcon, "입힌 피해량"); bonous += 2; break;
+            case 3: trophies[index].GetTrophy(bronzeTrophy, DamageIcon, "입힌 피해량"); bonous += 1; break;
         }
         index++;
 

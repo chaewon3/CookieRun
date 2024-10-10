@@ -31,7 +31,6 @@ public class LoadingPanel : MonoBehaviour
     private void OnEnable()
     {
         LoadImg.gameObject.SetActive(true);
-        raidLoading.SetActive(false);
         RandomImage();
     }
 
@@ -49,6 +48,7 @@ public class LoadingPanel : MonoBehaviour
 
     public void RaidLoading()
     {
+        raidLoading.SetActive(true);
         stageloading.gameObject.SetActive(false);
         foreach (Player player in PhotonNetwork.PlayerList)
         {

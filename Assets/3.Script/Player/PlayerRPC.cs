@@ -9,6 +9,7 @@ public class PlayerRPC : MonoBehaviour
 
     PhotonView photonview;
     int playernum = 0;
+    public bool isDie;
 
     private void Awake()
     {
@@ -41,6 +42,12 @@ public class PlayerRPC : MonoBehaviour
     public void WarfBoss(Vector3 position)
     {
         this.transform.position = position;
+    }
+
+    [PunRPC]
+    public void IsDie()
+    {
+        isDie = true;
     }
 
     public void PlayerMove(Vector3 direction)

@@ -82,9 +82,16 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
             StartCoroutine(Attack());
             canMove = false; 
         }
-       
+
+        if (TargetPlayer.GetComponent<PlayerRPC>().isDie)
+        {
+            Players.Remove(TargetPlayer);
+            int randomTarget = RandomNum.Range(0, Players.Count);
+            TargetPlayer = Players[randomTarget];
+        }
+
     }
-    
+
     public void CutScene()
     {
         StartCoroutine(cutScenecoroutine());
@@ -124,6 +131,7 @@ public class Enemy_Boss_Gorilla : MonoBehaviourPunCallbacks, IEnemy
             int randomTarget = RandomNum.Range(0, Players.Count);
             TargetPlayer = Players[randomTarget];
             yield return new WaitForSeconds(RandomNum.Range(7,15));
+
         }
     }
 

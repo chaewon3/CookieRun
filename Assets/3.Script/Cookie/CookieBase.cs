@@ -99,23 +99,22 @@ public class CookieBase : MonoBehaviour, ICookie
             Gamemanager.instance.canMove = false;
             anim.SetTrigger("Die");
             soundPlay(Data.Die);
-            StartCoroutine(CreateGhost());
+            if (!PhotonNetwork.InRoom)
+                StartCoroutine(Stagemanager.instance.endGame()); 
+            else
+                StartCoroutine(CreateGhost());
             Gamemanager.instance.IsDie = true;
         }
         RPCHP();
     }
 
     IEnumerator CreateGhost()
-    {
-        if (!PhotonNetwork.InRoom)
-            StartCoroutine(Stagemanager.instance.endGame());
+    {        
         crashed = true;
         yield return new WaitForSeconds(2f);
-        if (PhotonNetwork.InRoom)
-        {
-            RaidManager.instance.CreateGhost();
-            photonView.RPC("destroy", RpcTarget.All);
-        }
+        Destroy(gameObject);
+        RaidManager.instance.CreateGhost();
+        photonView.RPC("destroy", RpcTarget.All);
         
     }
     public IEnumerator Crashed(Vector3 direction)

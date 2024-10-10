@@ -3418,11 +3418,7 @@ MonoBehaviour:
   CurrentHP: 0
   canMove: 0
   transform: {fileID: 7633078416586706782}
-  Players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  Players: []
   TargetPlayer: {fileID: 0}
   cutscene: {fileID: 5758230481898238803}
   boxCollider: {fileID: 5942499285236614435}

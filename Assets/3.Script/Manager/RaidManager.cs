@@ -235,6 +235,7 @@ public class RaidManager : MonoBehaviourPunCallbacks
         int childid = ghostCookie.gameObject.GetComponent<PhotonView>().ViewID;
         PhotonView photonView = localPlayer.GetComponent<PhotonView>();
         photonView.RPC("SetParent", RpcTarget.All, childid, parentid);
+        photonView.RPC("IsDie", RpcTarget.All);
         localPlayer.GetComponent<PlayerMove>().Cookie = ghostCookie.GetComponent<ICookie>();
     }
 
