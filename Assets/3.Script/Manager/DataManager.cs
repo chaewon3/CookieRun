@@ -45,7 +45,7 @@ public class UserData
         heart = 100;
         coin = 0;
         exp = 0;
-        representCookie = Cookies.BraveCookie;
+        representCookie = Cookies.Creamsoda;
     }
 
     public void GetExp(int exp)

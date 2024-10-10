@@ -10,6 +10,7 @@ public class Stagemanager : MonoBehaviour
     public CookieData cookiedata;
     public static Stagemanager instance { get; set; }
 
+    public GameObject stageInfo;
     public Transform playerposition;
     public Transform captureposition;
     public GameObject resultpanel;
@@ -57,6 +58,7 @@ public class Stagemanager : MonoBehaviour
 
     private IEnumerator Start()
     {
+        stageInfo.SetActive(true);
         yield return new WaitForEndOfFrame();
 
         int i = 0;
@@ -67,6 +69,9 @@ public class Stagemanager : MonoBehaviour
             Jelly[key] = stagedata.Jellies[i];
             i++;
         }
+        yield return new WaitForSeconds(1.05f);
+        stageInfo.SetActive(false);
+        Gamemanager.instance.canMove = true;
     }
     private void Update()
     {
@@ -82,6 +87,7 @@ public class Stagemanager : MonoBehaviour
     
     public IEnumerator endGame()
     {
+        Gamemanager.instance.canMove = false;
         onGame = false;
         yield return new WaitForSeconds(1.2f);
         resultpanel.SetActive(true);

@@ -19,9 +19,9 @@ public enum Type
 
 public enum Cookies
 {
-    BraveCookie,
     Creamsoda,
-    lemonZest
+    lemonZest,
+    Chili
 }
 
 [CreateAssetMenu(fileName = "Cookie", menuName = "CookieRun/Add Cookie")]

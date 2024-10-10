@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3101607efaf6634990bed88e7b1dfb7, type: 3}
+  m_Name: Cookie004
+  m_EditorClassIdentifier: 
+  cookie: 2
+  name: "\uCE60\uB9AC\uB9DB \uCFE0\uD0A4"
+  grade: 2
+  type: 0
+  ModelPrefab: {fileID: 4291244144323091323, guid: 0c554768be213e449a60e7227088e476, type: 3}
+  LobbyPrefab: {fileID: 1075797802381279, guid: ac150524245743240845bfe1477fab28, type: 3}
+  portrait: {fileID: 21300000, guid: d6e3b470a5fb45243bac01685b58b522, type: 3}
+  faceIcon: {fileID: 21300000, guid: 3b0d1ec02b1c7cf4286960b1728cfd1d, type: 3}
+  moveSpeed: 5
+  baseHP: 283
+  baseATK: 34
+  baseDEF: 27
+  Die: {fileID: 8300000, guid: ddc2c31a624cd094e8e372390be090b9, type: 3}
+  Win: {fileID: 8300000, guid: a52dd84ee5ce1e74486c1dfa24a6ca40, type: 3}
+  Loose: {fileID: 8300000, guid: c5c3b97b7570a544fa39a75d61ae69e5, type: 3}
+  ATKName: "\uCE60\uB9AC \uC2AC\uB798\uC2DC"
+  ATKDes: "\uB2E8\uAC80\uC744 \uD718\uB458\uB7EC \uCD5C\uB300 4\uBC88 \uACF5\uACA9\uD55C\uB2E4."
+  ATKclip1: {fileID: 8300000, guid: 5d6c915182954e842aa045fac9008ae4, type: 3}
+  ATKclip2: {fileID: 8300000, guid: 65dcfc2b3a0304a47a76174ba8dbba0a, type: 3}
+  ATKclip3: {fileID: 8300000, guid: bdad8d15066da29438d9a8b439502a60, type: 3}
+  skillImg: {fileID: 21300000, guid: c38ce02b42697aa47b14ef05c2d4e2fd, type: 3}
+  skillName: "\uB9E4\uCF64\uD55C \uC2B5\uACA9"
+  skillCT: 9
+  skillDes: "\uCE60\uB9AC\uB9DB \uCFE0\uD0A4\uAC00 \uC0AC\uB77C\uC9C0\uBA70 \uC9C0\uC815\uB41C
+    \uBC94\uC704\uC758 \uC801\uC744 \uBE60\uB974\uAC8C \uACF5\uACA9\uD55C\uB2E4."
+  skillclip1: {fileID: 8300000, guid: 163947bd9a7c8dc4fb671a60645379ff, type: 3}
+  skillclip2: {fileID: 8300000, guid: 7657cc0a9dd1fe14cb16c165492ae37a, type: 3}
+  skillclip3: {fileID: 8300000, guid: 294ba1fad14d480449350f3165b4638f, type: 3}
+  ultimateImg: {fileID: 21300000, guid: e4227cc0a324ffd4fa02cf93b007fea0, type: 3}
+  ultimateName: "\uC2A4\uD30C\uC774\uC2A4 \uC5C5"
+  ultimateCT: 30
+  ultimateDes: "\uC790\uC2E0\uC758 HP\uB97C \uC18C\uBAA8\uD558\uC5EC \uAC15\uD654
+    \uC0C1\uD0DC\uC5D0 \uB3CC\uC785\uD55C\uB2E4. \uAC15\uD654 \uC0C1\uD0DC \uC2DC,
+    \uCE60\uB9AC\uB9DB \uCFE0\uD0A4\uC758 \uBD88 \uC18D\uC131 \uD53C\uD574\uC640
+    \uCE58\uBA85\uD0C0 \uD53C\uD574\uAC00 \uC99D\uAC00\uD558\uACE0, [\uCE60\uB9AC
+    \uC2AC\uB798\uC2DC]\uB85C \uC801\uC744 8\uD68C \uBA85\uC911\uD560 \uB54C\uB9C8\uB2E4
+    [\uCE60\uB9AC\uC18C\uC2A4]\uB97C \uD68D\uB4DD\uD55C\uB2E4.\n\uAC15\uD654 \uC0C1\uD0DC
+    \uC885\uB8CC \uD6C4, \uC911\uCCA9\uB41C [\uCE60\uB9AC\uC18C\uC2A4] \uAC1C\uC218\uC5D0
+    \uBE44\uB840\uD558\uC5EC \uC790\uC2E0\uC758 HP\uAC00 \uD68C\uBCF5\uB41C\uB2E4."
+  ultiamteclip: {fileID: 8300000, guid: 2a84e0be93363c1479f3d79ac8ba6c03, type: 3}
+  dashName: "\uB300\uC2DC"
+  dashCT: 3
+  dashDes: "\uC804\uBC29\uC73C\uB85C \uBE60\uB974\uAC8C \uB3CC\uC9C4\uD55C\uB2E4.
+    3\uCD08 \uC548\uC5D0 \uC7AC\uC0AC\uC6A9\uD558\uBA74 \uCC98\uC74C \uC704\uCE58\uB85C
+    \uB3CC\uC544\uAC04\uB2E4."
+  dashclip: {fileID: 8300000, guid: e783737a6268b054f8acf6d3f6c5b0c4, type: 3}
+  ChairAnim: {fileID: 9100000, guid: fe9c8ab8cdc9419489dafeb3637fc67f, type: 2}

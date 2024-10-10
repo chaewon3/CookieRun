@@ -7,7 +7,7 @@ public class Gamemanager : MonoBehaviour
 {
     public static Gamemanager instance { get; set; }
 
-    public bool canMove { get; set; } = true; // todo : 나중에 false로 시작해야함
+    public bool canMove { get; set; } = false;
     public bool OnGame { get; set; } = true; // todo : 나중에 false로 시작해야함
     public bool IsDie { get; set; } = false;
     public StageData CurrentStage { get; set; }

@@ -25,7 +25,7 @@ public class RaidManager : MonoBehaviourPunCallbacks
     public GameObject completePanel;
     public TextMeshProUGUI timeText;
     public AudioClip completeclip;
-
+    public GameObject raqidStart;
     int playerEnter = 0;
     int loaclPLNum;
     bool leftgame;
@@ -59,9 +59,13 @@ public class RaidManager : MonoBehaviourPunCallbacks
         }
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
         CreatePlayer();
+        raqidStart.SetActive(true);
+        yield return new WaitForSeconds(1.05f);
+        raqidStart.SetActive(false);
+        Gamemanager.instance.canMove = true;
     }
 
     private void Update()
@@ -249,6 +253,7 @@ public class RaidManager : MonoBehaviourPunCallbacks
         leftgame = true;
         isPlay = false;
         localPlayer.GetComponent<PlayerMove>().enabled = false;
+        Gamemanager.instance.canMove = false;
         //각자의 누적댜미지 프로퍼티로 전달
         Player localplayer = PhotonNetwork.LocalPlayer;
         Hashtable customprops = localplayer.CustomProperties;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3101607efaf6634990bed88e7b1dfb7, type: 3}
   m_Name: Cookie003
   m_EditorClassIdentifier: 
-  cookie: 2
+  cookie: 1
   name: "\uB808\uBAAC\uC81C\uC2A4\uD2B8\uB9DB \uCFE0\uD0A4"
   grade: 2
   type: 2
@@ -24,13 +24,22 @@ MonoBehaviour:
   baseHP: 208
   baseATK: 40
   baseDEF: 20
+  Die: {fileID: 0}
+  Win: {fileID: 0}
+  Loose: {fileID: 0}
   ATKName: "\uC9DC\uB9BF\uD55C \uD654\uC0B4"
   ATKDes: "\uBC88\uAC1C \uD654\uC0B4\uC744 \uBC1C\uC0AC\uD558\uC5EC \uACF5\uACA9\uD55C\uB2E4."
+  ATKclip1: {fileID: 0}
+  ATKclip2: {fileID: 0}
+  ATKclip3: {fileID: 0}
   skillImg: {fileID: 21300000, guid: 4773f3a1f95e4ea43abc130c7d73f502, type: 3}
   skillName: "\uC9D1\uC911 \uB1CC\uC6B0"
   skillCT: 13
   skillDes: "\uC9C0\uC815\uB41C \uBC94\uC704\uC5D0 \uBC88\uAC1C \uD654\uC0B4\uBE44\uB97C
     \uB0B4\uB9B0\uB2E4."
+  skillclip1: {fileID: 0}
+  skillclip2: {fileID: 0}
+  skillclip3: {fileID: 0}
   ultimateImg: {fileID: 21300000, guid: 1e9c485d7a9252946b143195b2278f6e, type: 3}
   ultimateName: "\uB099\uB8B0"
   ultimateCT: 28
@@ -38,7 +47,9 @@ MonoBehaviour:
     \uBC1C\uC0AC\uD558\uC5EC \uC804\uACA9 \uD3ED\uD314\uC744 \uC77C\uC73C\uD0A8\uB2E4.
     \uC801\uC911\uD55C \uB300\uC0C1 \uC911 \uD558\uB098\uC5D0\uAC8C [\uD45C\uC2DD]\uC744
     \uBD80\uC5EC\uD55C\uB2E4."
+  ultiamteclip: {fileID: 0}
   dashName: "\uB300\uC2DC"
   dashCT: 2
   dashDes: "\uC804\uBC29\uC73C\uB85C \uBE60\uB974\uAC8C \uB3CC\uC9C4\uD55C\uB2E4."
+  dashclip: {fileID: 0}
   ChairAnim: {fileID: 9100000, guid: fe9c8ab8cdc9419489dafeb3637fc67f, type: 2}

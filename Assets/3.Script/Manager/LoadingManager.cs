@@ -16,6 +16,7 @@ public class LoadingManager : MonoBehaviour
     public string currentScene = "LobbyScene";
     public GameObject touchBtn;
     private GameObject changeEffect;
+    public float progress;
 
     private void Awake()
     {
@@ -61,6 +62,7 @@ public class LoadingManager : MonoBehaviour
         float time = 0;
         while(!asyncLoad.isDone && time <= leasttime)
         {
+             progress = asyncLoad.progress;
             time += Time.deltaTime;
             yield return null;
         }
@@ -83,6 +85,7 @@ public class LoadingManager : MonoBehaviour
         float time = 0;
         while(!asyncLoad.isDone && time <= 3f)
         {
+            progress = asyncLoad.progress;
             time += Time.deltaTime;
             await Task.Yield();
         }

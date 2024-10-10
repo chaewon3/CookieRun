@@ -72,12 +72,15 @@ public class FirebaseManager : MonoBehaviour
             string userDataJson = JsonConvert.SerializeObject(userData);
             await userRef.SetRawJsonValueAsync(userDataJson);
 
-            CookieList cookieList = new CookieList(Cookies.BraveCookie);
-            foreach(CookieData cookie in cookieList.cookies)
+            CookieList cookieList = new CookieList(Cookies.Creamsoda);
+            cookieList.AddCookie(Cookies.lemonZest);
+            cookieList.AddCookie(Cookies.Chili);
+            foreach (CookieData cookie in cookieList.cookies)
             {
                 DatabaseReference cookieRef = DB.GetReference($"cookieList/{result.User.UserId}/{cookie.cookie.ToString()}");
                 string cookielistJson = JsonConvert.SerializeObject(cookie);
                 await cookieRef.SetRawJsonValueAsync(cookielistJson);
+                print("안되고있나?");
             }
 
             callback?.Invoke(result.User);
